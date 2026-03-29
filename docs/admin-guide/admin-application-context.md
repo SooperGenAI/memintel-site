@@ -4,7 +4,7 @@ title: Step 2 — Application Context
 sidebar_label: Step 2 — Context
 ---
 
-# Step 1 — Application Context
+# Step 2 — Application Context
 
 Application context is a description of your application that you provide to Memintel before anything else. Think of it as the briefing you give a new analyst before they start work — background on what the business does, who the customers are, what specific terms mean, and what matters most.
 
@@ -552,6 +552,3 @@ Tasks on older versions continue running correctly — they are pinned to their 
 
 ---
 
-## Next Step
-
-→ [Step 2: Primitives](/docs/admin-guide/admin-primitives)
