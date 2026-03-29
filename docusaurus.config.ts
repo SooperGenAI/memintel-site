@@ -13,7 +13,7 @@ const config: Config = {
   url: 'https://www.memintel.io',
   baseUrl: '/',
   organizationName: 'SooperGenAI',
-  projectName: 'memintel',
+  projectName: 'memintel-site',
   deploymentBranch: 'gh-pages',
   trailingSlash: false,
 
@@ -90,7 +90,6 @@ const config: Config = {
       defaultMode: 'dark',
       respectPrefersColorScheme: true,
     },
-    // languageTabs belongs here in themeConfig, not in the plugin config
     languageTabs: [
       { highlight: 'bash',       language: 'curl',   logoClass: 'bash'   },
       { highlight: 'python',     language: 'python', logoClass: 'python' },
@@ -125,12 +124,6 @@ const config: Config = {
           sidebarId: 'adminSidebar',
           position: 'left',
           label: 'Admin Guide',
-        },
-        {
-          type: 'docSidebar',
-          sidebarId: 'deploySidebar',
-          position: 'left',
-          label: 'Deploy',
         },
         {
           type: 'docSidebar',
