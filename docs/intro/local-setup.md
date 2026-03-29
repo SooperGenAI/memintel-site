@@ -32,7 +32,7 @@ Optional — only needed if you use the LLM-assisted pipeline (`/execute/full`):
 ## Step 1 — Clone the repository
 
 ```bash
-git clone https://github.com/SooperGenAI/memintel.git
+git clone https://github.com/your-org/memintel.git
 cd memintel/backend/memintel-backend
 ```
 
@@ -221,6 +221,29 @@ openssl rand -hex 32
 # Python (any platform)
 python -c "import secrets; print(secrets.token_hex(32))"
 ```
+
+---
+
+## Explore the API
+
+With the server running, three API interfaces are available in your browser:
+
+| URL | What it is |
+|---|---|
+| `http://127.0.0.1:8000/docs` | **Swagger UI** — interactive console; try every endpoint directly from the browser |
+| `http://127.0.0.1:8000/redoc` | **ReDoc** — clean, readable reference format |
+| `http://127.0.0.1:8000/openapi.json` | **Raw OpenAPI spec** — import into Postman, Insomnia, or any API client |
+
+:::tip Swagger UI is the fastest way to explore
+Open `http://127.0.0.1:8000/docs` and you can call any endpoint directly — no curl, no Postman setup required. Expand an endpoint, click **Try it out**, fill in the fields, and hit **Execute**.
+:::
+
+:::note These calls are real
+The Swagger UI and ReDoc are connected to your local database. Any `POST`, `PATCH`, or `DELETE` calls you make will modify real data in your local Memintel instance. This is fine for development — just be aware there is no sandbox mode.
+:::
+
+For endpoints that require authentication, use the **Authorize** button at the top right of the Swagger UI to set your `X-API-Key` and `X-Elevated-Key` headers once — they will be applied to all subsequent requests in that session.
+
 
 ---
 

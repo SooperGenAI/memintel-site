@@ -487,6 +487,29 @@ This patch is applied to your local venv only and does not affect the source cod
 
 ---
 
+## Explore the API
+
+Once the server is running, three API interfaces are available at your server's base URL:
+
+| URL | What it is |
+|---|---|
+| `https://your-server/docs` | **Swagger UI** — interactive console; try every endpoint directly from the browser |
+| `https://your-server/redoc` | **ReDoc** — clean, readable reference format |
+| `https://your-server/openapi.json` | **Raw OpenAPI spec** — import into Postman, Insomnia, or any API client |
+
+Replace `your-server` with your actual domain or IP — for example `https://api.mycompany.com/docs`.
+
+:::tip Use Swagger UI for onboarding
+Share the `/docs` URL with your development team as their first stop. They can explore every endpoint, see the request and response schemas, and make live calls without setting up a local client. Use the **Authorize** button at the top right to set `X-API-Key` and `X-Elevated-Key` headers once for the session.
+:::
+
+:::note Restrict access in production
+The `/docs` and `/redoc` interfaces expose your full API surface. In production, consider restricting access to internal network addresses or placing them behind authentication middleware. The `/openapi.json` endpoint can be disabled entirely if you do not want the spec publicly accessible.
+:::
+
+
+---
+
 ## Further Reading
 
 - [Application Context](/docs/intro/application-context) — configure domain context for more accurate task compilation
