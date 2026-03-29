@@ -2,6 +2,7 @@
 id: admin-calibration
 title: Calibration
 sidebar_label: Calibration
+pagination_next: admin-guide/admin-governance-overview
 ---
 
 # Calibration

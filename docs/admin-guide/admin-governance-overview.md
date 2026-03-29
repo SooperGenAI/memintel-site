@@ -1,7 +1,7 @@
 ---
 id: admin-governance-overview
 title: Governance
-sidebar_label: Governance
+sidebar_label: Overview
 ---
 
 # Governance
