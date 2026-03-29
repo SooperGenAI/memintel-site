@@ -88,6 +88,10 @@ bias_rules:
 | **Tasks** | `POST /tasks` (API call) | Users |
 | **Application context** | `POST /context` (API call) | Admin |
 
+As admin, your configuration work happens in two places:
+1. **`memintel_guardrails.yaml`** — the policy file you own and edit
+2. **`POST /context`** — the API call you make to define domain context
+
 ---
 
 ## The Admin Setup Flow
@@ -102,7 +106,7 @@ bias_rules:
 | **Step 4** | Configure actions in `memintel_config.yaml` | Yes |
 
 :::tip
-Use Step 3A (API) unless you need to set guardrails before the server is running for the first time. The API is simpler, takes effect immediately, and keeps a full version history.
+Use Step 2A (API) unless you need to set guardrails before the server is running for the first time. The API is simpler, takes effect immediately, and keeps a full version history.
 :::
 
 ---
@@ -136,9 +140,3 @@ Never send these files by email or store them in a shared document. They contain
 - [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) — recommended: manage guardrails without a server restart
 - [Step 3B — Guardrails via File](/docs/admin-guide/admin-guardrails) — advanced: edit `memintel_guardrails.yaml` directly
 - [Step 4 — Actions](/docs/admin-guide/admin-actions) — configure alert delivery
-
----
-
-## Ready to Start?
-
-→ [Self-Hosting](/docs/intro/self-hosting)
