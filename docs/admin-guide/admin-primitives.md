@@ -1,10 +1,10 @@
 ---
 id: admin-primitives
-title: Step 2 — Primitives
-sidebar_label: Step 2 — Primitives
+title: Step 1 — Primitives
+sidebar_label: Step 1 — Primitives
 ---
 
-# Step 2 — Primitives
+# Step 1 — Primitives
 
 A primitive is a single signal that you want Memintel to be able to monitor. Think of primitives as the **vocabulary of measurable things** in your domain — the building blocks that all monitoring tasks are made from.
 

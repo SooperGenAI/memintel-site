@@ -1,7 +1,7 @@
 ---
 id: admin-guardrails
-title: Step 2B — Guardrails via File
-sidebar_label: Step 2B — Guardrails (File)
+title: Step 3B — Guardrails via File
+sidebar_label: Step 3B — Guardrails (File)
 ---
 
 # Step 2B — Guardrails via File (memintel_guardrails.yaml)

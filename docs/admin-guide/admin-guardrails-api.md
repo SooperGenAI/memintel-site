@@ -1,7 +1,7 @@
 ---
 id: admin-guardrails-api
-title: Step 2A — Guardrails via API
-sidebar_label: Step 2A — Guardrails (API)
+title: Step 3A — Guardrails via API
+sidebar_label: Step 3A — Guardrails (API)
 ---
 
 # Step 2A — Managing Guardrails via API

@@ -1,7 +1,7 @@
 ---
 id: admin-application-context
-title: Step 1 — Application Context
-sidebar_label: Step 1 — Context
+title: Step 2 — Application Context
+sidebar_label: Step 2 — Context
 ---
 
 # Step 1 — Application Context

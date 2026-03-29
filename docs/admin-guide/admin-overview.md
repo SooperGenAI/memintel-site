@@ -83,14 +83,10 @@ bias_rules:
 
 | What | How it is managed | Who does it |
 |---|---|---|
-| **Primitives** | `POST /definitions` (API call) | Data engineer |
+| **Primitives** | `POST /definitions` (API call) | Admin |
 | **Conditions / Concepts** | Compiled automatically from user intent | Memintel compiler |
 | **Tasks** | `POST /tasks` (API call) | Users |
 | **Application context** | `POST /context` (API call) | Admin |
-
-As admin, your configuration work happens in two places:
-1. **`memintel_guardrails.yaml`** — the policy file you own and edit
-2. **`POST /context`** — the API call you make to define domain context
 
 ---
 
@@ -98,13 +94,15 @@ As admin, your configuration work happens in two places:
 
 | Step | Action | Requires restart? |
 |---|---|---|
-| **Step 1** | `POST /context` — define application context | No |
-| **Step 2A** *(recommended)* | `POST /guardrails` — define guardrails via API | No |
-| **Step 2B** *(advanced)* | Edit `memintel_guardrails.yaml` on server | Yes |
-| **Step 3** | Ask your data engineer to verify startup and run smoke test | N/A |
+| **Deploy** | Install and run the Memintel server | N/A |
+| **Step 1** | Define primitives and actions in `memintel_config.yaml` | Yes |
+| **Step 2** | `POST /context` — define application context | No |
+| **Step 3A** *(recommended)* | `POST /guardrails` — define guardrails via API | No |
+| **Step 3B** *(advanced)* | Edit `memintel_guardrails.yaml` on server | Yes |
+| **Step 4** | Configure actions in `memintel_config.yaml` | Yes |
 
 :::tip
-Use Step 2A (API) unless you need to set guardrails before the server is running for the first time. The API is simpler, takes effect immediately, and keeps a full version history.
+Use Step 3A (API) unless you need to set guardrails before the server is running for the first time. The API is simpler, takes effect immediately, and keeps a full version history.
 :::
 
 ---
@@ -131,12 +129,16 @@ Never send these files by email or store them in a shared document. They contain
 
 ## Pages in This Guide
 
-- [Step 1 — Application Context](/docs/admin-guide/admin-application-context) — domain briefing via API call
-- [Step 2A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) — recommended: manage guardrails without a server restart
-- [Step 2B — Guardrails via File](/docs/admin-guide/admin-guardrails) — advanced: edit `memintel_guardrails.yaml` directly
+- [Self-Hosting](/docs/intro/self-hosting) — deploy Memintel to a production server
+- [Local Setup](/docs/intro/local-setup) — run Memintel on your local machine
+- [Step 1 — Primitives](/docs/admin-guide/admin-primitives) — define the signal vocabulary
+- [Step 2 — Application Context](/docs/admin-guide/admin-application-context) — domain briefing via API call
+- [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) — recommended: manage guardrails without a server restart
+- [Step 3B — Guardrails via File](/docs/admin-guide/admin-guardrails) — advanced: edit `memintel_guardrails.yaml` directly
+- [Step 4 — Actions](/docs/admin-guide/admin-actions) — configure alert delivery
 
 ---
 
 ## Ready to Start?
 
-→ [Step 1: Application Context](/docs/admin-guide/admin-application-context)
+→ [Self-Hosting](/docs/intro/self-hosting)
