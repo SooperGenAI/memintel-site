@@ -1,7 +1,7 @@
 ---
 id: admin-primitives
-title: Step 1 — Primitives
-sidebar_label: Step 1 — Primitives
+title: Step 2 — Primitives
+sidebar_label: Step 2 — Primitives
 ---
 
 # Step 1 — Primitives
@@ -380,6 +380,3 @@ A clear description makes the data engineer's job much easier. The better you de
 
 ---
 
-## Next Step
-
-→ [Step 3: Guardrails](/docs/admin-guide/admin-guardrails)

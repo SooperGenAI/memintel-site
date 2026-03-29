@@ -4,7 +4,7 @@ title: Step 3A — Guardrails via API
 sidebar_label: Step 3A — Guardrails (API)
 ---
 
-# Step 2A — Managing Guardrails via API
+# Step 3A — Managing Guardrails via API
 
 This is the recommended way to manage guardrails after your first deployment. Changes take effect immediately — no server restart required — and every change creates a versioned, auditable record.
 
@@ -78,7 +78,7 @@ The full schema is documented in the [Guardrails API Reference](/docs/api-refere
 }
 ```
 
-See [Step 2B — Guardrails via File](/docs/admin-guide/admin-guardrails) for the full guide on what each field means and how to set the right values for your domain.
+See [Step 3B — Guardrails via File](/docs/admin-guide/admin-guardrails) for the full guide on what each field means and how to set the right values for your domain.
 
 ---
 
@@ -189,6 +189,3 @@ The file is the seed and fallback. The API is the override.
 
 ---
 
-## Next Step
-
-→ [Step 3: Validate with your data engineer](/docs/intro/self-hosting#step-6----smoke-test)

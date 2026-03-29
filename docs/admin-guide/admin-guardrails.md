@@ -4,10 +4,10 @@ title: Step 3B — Guardrails via File
 sidebar_label: Step 3B — Guardrails (File)
 ---
 
-# Step 2B — Guardrails via File (memintel_guardrails.yaml)
+# Step 3B — Guardrails via File (memintel_guardrails.yaml)
 
 :::note API alternative available
-For most deployments, managing guardrails via the API is simpler — it takes effect immediately without a server restart and maintains a full version history. See [Step 2A — Guardrails via API](/docs/admin-guide/admin-guardrails-api).
+For most deployments, managing guardrails via the API is simpler — it takes effect immediately without a server restart and maintains a full version history. See [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api).
 
 This page covers the file-based approach, which is still fully supported and is the right choice for initial deployment seeding or environments where API access is not yet available.
 :::
@@ -28,7 +28,7 @@ The guardrails file defines the policy layer — which evaluation strategies are
 :::warning
 Changes to this file require a **server restart** to take effect. After editing, ask your data engineer to restart the server.
 
-To avoid restarts, use `POST /guardrails` instead — changes via API take effect immediately. See [Step 2A — Guardrails via API](/docs/admin-guide/admin-guardrails-api).
+To avoid restarts, use `POST /guardrails` instead — changes via API take effect immediately. See [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api).
 :::
 
 ---
@@ -483,7 +483,7 @@ curl -X POST https://your-memintel-domain/guardrails \
   -d @guardrails.json
 ```
 
-Changes take effect immediately. See [Step 2A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) for full details.
+Changes take effect immediately. See [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) for full details.
 
 ### Option B — Via file (requires restart)
 
