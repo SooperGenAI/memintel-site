@@ -1,7 +1,7 @@
 ---
 id: admin-primitives
-title: Step 2 — Primitives
-sidebar_label: Step 2 — Primitives
+title: Step 1 — Primitives
+sidebar_label: Step 1 — Primitives
 ---
 
 # Step 1 — Primitives
