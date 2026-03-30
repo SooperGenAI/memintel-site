@@ -214,7 +214,7 @@
 
 .stepLabel {
   font-family: 'IBM Plex Mono', monospace;
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   font-weight: 500;
   color: #c7d2fe;           /* clearly visible on dark bg */
   white-space: nowrap;
@@ -225,7 +225,7 @@
 }
 
 .stepDesc {
-  font-size: 0.6875rem;
+  font-size: 0.8125rem;
   font-weight: 400;
   color: #94a3b8;            /* FIX 4: was #475569 — too faint in light */
   margin-top: 0.3rem;
@@ -293,7 +293,7 @@
 
 .featureTitle {
   font-family: 'Inter', sans-serif;
-  font-size: 0.9375rem;
+  font-size: 1.0rem;
   font-weight: 600;
   margin: 0 0 0.5rem;
   letter-spacing: -0.02em;
@@ -302,7 +302,7 @@
 [data-theme='light'] .featureTitle { color: #0f172a; }
 
 .featureDesc {
-  font-size: 0.875rem;
+  font-size: 0.9375rem;
   color: #64748b;
   line-height: 1.7;
   margin: 0;
