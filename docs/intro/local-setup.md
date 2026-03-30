@@ -199,9 +199,9 @@ Certain endpoints require the `X-Elevated-Key` header in addition to the standar
 | Endpoint | Operation |
 |---|---|
 | `POST /compile` | Compile a concept to an execution graph |
-| `POST /conditions/register` | Register a new condition |
-| `POST /concepts/register` | Register a new concept |
-| `POST /actions/register` | Register a new action |
+| `POST /registry/definitions` | Register a primitive type schema |
+| `POST /guardrails` | Post guardrails policy |
+| `POST /actions` | Register an action |
 | `POST /conditions/apply-calibration` | Apply a calibration recommendation |
 
 Set the header value to match `MEMINTEL_ELEVATED_KEY`:

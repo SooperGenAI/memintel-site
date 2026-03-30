@@ -314,7 +314,7 @@ Run these tests with `USE_LLM_FIXTURES=true` before switching to a real LLM. Thi
 ### Define Application Context
 
 ```bash
-curl -X POST http://localhost:8000/context \
+curl -X POST http://localhost:8000/context/context \
   -H "Content-Type: application/json" \
   -d '{
     "domain": {
@@ -403,7 +403,7 @@ Test one task creation for each strategy type to confirm the LLM is resolving co
 The first action after deployment is verified — define your application context. This significantly improves task creation accuracy from the first real user request.
 
 ```bash
-curl -X POST https://your-domain/context \
+curl -X POST https://your-domain/context/context \
   -H "Content-Type: application/json" \
   -d @your-context-file.json
 ```
@@ -438,7 +438,7 @@ Memintel emits structured logs with `trace_id`, `entity`, `concept_id`, and `con
 
 | Day | Action |
 |---|---|
-| Day 1 | Define application context (`POST /context`). Post guardrails (`POST /guardrails`). Create first task. |
+| Day 1 | Define application context (`POST /context/context`). Post guardrails (`POST /guardrails`). Create first task. |
 | Day 2–3 | Run executions. Collect initial feedback. Verify feedback is being recorded. |
 | Day 4–5 | Run first calibration cycle. Review `statistically_optimal` vs `context_adjusted` values. |
 | Day 7 | Review execution logs. Check for unexpected errors. Verify determinism is holding. |
