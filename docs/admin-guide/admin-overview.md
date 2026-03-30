@@ -114,21 +114,116 @@ As admin, your configuration work happens in two places:
 
 ## The Admin Setup Flow
 
-| Step | Action | Requires restart? |
-|---|---|---|
-| **Prerequisites** | Data engineer installs PostgreSQL, creates the Memintel database, runs `alembic upgrade head`, installs Redis, and sets all required environment variables | N/A |
-| **Prerequisites** | Data engineer creates `memintel_config.yaml` and `memintel_guardrails.yaml` on the server | N/A |
-| **Deploy** | Start the Memintel server | N/A |
-| **Step 1a** | Data engineer adds primitive connector mappings to `memintel_config.yaml` and restarts | Yes |
-| **Step 1b** | Data engineer registers primitive types via `POST /registry/definitions` | No |
-| **Step 2** | `POST /context` — define application context | No |
-| **Step 3A** *(recommended)* | `POST /guardrails` — define guardrails via API | No |
-| **Step 3B** *(advanced)* | Edit `memintel_guardrails.yaml` on server | Yes |
-| **Step 4** | Register actions via `POST /actions` | No |
+### Step 1 — Infrastructure (Data Engineer)
+
+Before the server can start, all of the following must be in place:
+
+**1. Install PostgreSQL and create the database**
+```bash
+createdb memintel
+```
+
+**2. Run database migrations**
+```bash
+alembic upgrade head
+```
+This creates all tables Memintel needs. Run this once after install and again after any update that includes new migration files.
+
+**3. Install and start Redis**
+
+Redis must be running and reachable before the server starts.
+
+**4. Set all required environment variables**
+
+The server will not boot without these:
+
+| Variable | Purpose |
+|---|---|
+| `DATABASE_URL` | PostgreSQL connection URL |
+| `REDIS_URL` | Redis connection URL |
+| `MEMINTEL_ELEVATED_KEY` | Secret key for privileged API endpoints |
+| `ANTHROPIC_API_KEY` | Anthropic API key for the LLM pipeline |
+| `MEMINTEL_CONFIG_PATH` | Path to `memintel_config.yaml` |
+
+Plus any connector-specific variables referenced in your config file, for example `ANALYTICS_DB_HOST`, `ANALYTICS_DB_USER`, `ANALYTICS_DB_PASSWORD`.
+
+**5. Create `memintel_config.yaml`**
+
+Contains database, cache, LLM provider, and connector configuration. See the example in [The Two Config Files](#the-two-config-files) above.
+
+**6. Create `memintel_guardrails.yaml`**
+
+Contains the initial guardrails policy — strategy registry, type-strategy map, parameter priors, and bias rules. This file is loaded as the seed policy on first boot. See [Step 3B — Guardrails via File](/docs/admin-guide/admin-guardrails) for the full format.
+
+---
+
+### Step 2 — Start the Server
+
+Once all prerequisites are in place, start the server:
+
+```bash
+uvicorn app.main:app --host 0.0.0.0 --port 8000
+```
+
+On startup, Memintel:
+- Connects to PostgreSQL — **fails immediately** if not reachable
+- Connects to Redis — **fails immediately** if not reachable
+- Loads `memintel_config.yaml` — **fails immediately** if missing or invalid
+- Loads `memintel_guardrails.yaml` as the seed policy
+
+If any of these fail, the server exits with a `startup_failed` error in the logs. Fix the underlying issue and restart.
+
+---
+
+### Step 3 — Register Primitives (Data Engineer)
+
+With the server running, the data engineer registers each primitive's type schema via the API:
+
+```bash
+curl -X POST https://api.memsdl.ai/v1/registry/definitions   -H "X-Elevated-Key: your-elevated-key"   -H "Content-Type: application/json"   -d '{"primitive_id": "account.active_user_rate_30d", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+```
+
+See [Step 1 — Primitives](/docs/admin-guide/admin-primitives) for the full guide.
+
+---
+
+### Step 4 — Set Application Context (Admin)
+
+Post your domain context so the LLM compiler understands your business:
+
+```bash
+curl -X POST https://api.memsdl.ai/v1/context   -H "X-API-Key: your-api-key"   -H "Content-Type: application/json"   -d '{"context": "SaaS platform monitoring customer health and churn risk..."}'
+```
+
+See [Step 2 — Application Context](/docs/admin-guide/admin-application-context) for the full guide.
+
+---
+
+### Step 5 — Post Guardrails (Admin)
+
+Refine the policy beyond the seed file by posting guardrails via the API:
+
+```bash
+curl -X POST https://api.memsdl.ai/v1/guardrails   -H "X-Elevated-Key: your-elevated-key"   -H "Content-Type: application/json"   -d '{...}'
+```
 
 :::tip
-Use Step 3A (API) unless you need to set guardrails before the server is running for the first time. The API is simpler, takes effect immediately, and keeps a full version history.
+The API version always takes precedence over the seed file. Use the API unless you need to set guardrails before the server is running for the first time.
 :::
+
+See [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) for the full guide.
+
+---
+
+### Step 6 — Register Actions (Admin)
+
+Define what happens when a condition fires — Slack alerts, emails, webhooks:
+
+```bash
+curl -X POST https://api.memsdl.ai/v1/actions   -H "X-API-Key: your-api-key"   -H "Content-Type: application/json"   -d '{"action_id": "slack_cs_team", "type": "notification", "channel": "slack", "endpoint": "https://hooks.slack.com/..."}'
+```
+
+See [Step 4 — Actions](/docs/admin-guide/admin-actions) for the full guide.
 
 ---
 
