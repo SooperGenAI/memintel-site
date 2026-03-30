@@ -115,9 +115,10 @@ Defines how the system behaves when a primitive cannot return a value for a give
 |---|---|
 | `"null"` | Return null — the concept evaluation receives a null input |
 | `"zero"` | Return zero — treat missing data as the zero value for this type |
-| `"error"` | Raise an evaluation error — the decision record shows a data error |
+| `"forward_fill"` | Use the most recent previously known value for this entity |
+| `"backward_fill"` | Use the next known value for this entity |
 
-Use `"null"` for signals that are legitimately absent (a customer with no calls, a borrower with no commentary). Use `"error"` for signals that should always be present and whose absence indicates a data pipeline problem.
+Use `"null"` for signals that are legitimately absent (a customer with no calls, a borrower with no commentary). Use `"forward_fill"` for signals where the last known value remains valid until updated (e.g. a credit tier that doesn't change frequently).
 
 ---
 
@@ -264,8 +265,6 @@ Steps 2 and 3 can happen in either order, but both must be complete before a mon
 ---
 
 ## Common Mistakes
-
-**Adding a `primitives:` section to `memintel_config.yaml`.** This section does not exist in the current implementation and will be silently ignored or cause a validation error. Primitives are registered exclusively via `POST /registry/definitions`.
 
 **Using `boolean` as the primitive type.** No condition strategy can evaluate a boolean primitive. Use `categorical` with `labels: ["true", "false"]` and the `equals` strategy instead.
 

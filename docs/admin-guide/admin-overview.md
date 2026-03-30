@@ -116,7 +116,9 @@ As admin, your configuration work happens in two places:
 
 | Step | Action | Requires restart? |
 |---|---|---|
-| **Deploy** | Install and run the Memintel server | N/A |
+| **Prerequisites** | Data engineer installs PostgreSQL, creates the Memintel database, runs `alembic upgrade head`, installs Redis, and sets all required environment variables | N/A |
+| **Prerequisites** | Data engineer creates `memintel_config.yaml` and `memintel_guardrails.yaml` on the server | N/A |
+| **Deploy** | Start the Memintel server | N/A |
 | **Step 1a** | Data engineer adds primitive connector mappings to `memintel_config.yaml` and restarts | Yes |
 | **Step 1b** | Data engineer registers primitive types via `POST /registry/definitions` | No |
 | **Step 2** | `POST /context` — define application context | No |
