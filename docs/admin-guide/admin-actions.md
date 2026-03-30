@@ -18,7 +18,7 @@ Actions are registered via `POST /actions` and stored in the database. There is 
 
 ```bash
 curl -X POST https://api.memsdl.ai/v1/actions \
-  -H "X-API-Key: your-api-key" \
+  -H "X-Elevated-Key: your-elevated-key" \
   -H "Content-Type: application/json" \
   -d '{
     "action_id": "slack_customer_success",
@@ -223,7 +223,9 @@ Remove `dry_run` to trigger the action for real against the test entity.
 
 ```bash
 # Slack alert — customer success team
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "slack_cs_team",
   "version": "v1",
   "config": { "type": "notification", "channel": "slack-cs-alerts" },
@@ -232,7 +234,9 @@ curl -X POST .../v1/actions -d '{
 }'
 
 # CRM webhook — trigger outreach sequence
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "crm_churn_webhook",
   "version": "v1",
   "config": {
@@ -245,7 +249,9 @@ curl -X POST .../v1/actions -d '{
 }'
 
 # Write-back — update churn risk flag primitive
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "write_churn_flag",
   "version": "v1",
   "config": { "type": "register", "primitive_id": "account.churn_risk_flag" },
@@ -258,7 +264,9 @@ curl -X POST .../v1/actions -d '{
 
 ```bash
 # Compliance notification
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "compliance_alert",
   "version": "v1",
   "config": { "type": "notification", "channel": "slack-compliance" },
@@ -267,7 +275,9 @@ curl -X POST .../v1/actions -d '{
 }'
 
 # Compliance system webhook — high priority
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "compliance_system_webhook",
   "version": "v1",
   "config": {
@@ -287,7 +297,9 @@ curl -X POST .../v1/actions -d '{
 
 ```bash
 # Safety alert — medical monitor
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "safety_alert",
   "version": "v1",
   "config": { "type": "notification", "channel": "slack-medical-monitor" },
@@ -296,7 +308,9 @@ curl -X POST .../v1/actions -d '{
 }'
 
 # Pharmacovigilance system webhook
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "safety_system_webhook",
   "version": "v1",
   "config": {
@@ -313,7 +327,9 @@ curl -X POST .../v1/actions -d '{
 
 ```bash
 # PagerDuty — critical SLO breach
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "pagerduty_critical",
   "version": "v1",
   "config": {
@@ -326,7 +342,9 @@ curl -X POST .../v1/actions -d '{
 }'
 
 # CI/CD deployment block workflow
-curl -X POST .../v1/actions -d '{
+curl -X POST .../v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -d '{
   "action_id": "block_deployment",
   "version": "v1",
   "config": {
