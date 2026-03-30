@@ -187,7 +187,7 @@
   border: 1px solid rgba(99,102,241,0.2);
   border-radius: 10px;
   background: #0d1526;
-  max-width: 700px;
+  max-width: 900px;
   margin: 0 auto;
 }
 
@@ -203,7 +203,7 @@
   justify-content: center;
   padding: 1.1rem 1.4rem;
   flex: 1;
-  min-width: 130px;
+  min-width: 170px;
   position: relative;
   border-right: 1px solid rgba(99,102,241,0.12);
 }
@@ -356,7 +356,7 @@
 
 .quicklink strong {
   font-family: 'Inter', sans-serif;
-  font-size: 0.9375rem;
+  font-size: 1.0rem;
   font-weight: 600;
   color: #c7d2fe;
   letter-spacing: -0.01em;
@@ -364,7 +364,7 @@
 [data-theme='light'] .quicklink strong { color: #4f46e5; }
 
 .quicklink span {
-  font-size: 0.8125rem;
+  font-size: 0.9375rem;
   color: #64748b;
   line-height: 1.55;
 }
