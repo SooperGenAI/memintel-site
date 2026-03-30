@@ -33,7 +33,6 @@ llm:
   api_key: ${ANTHROPIC_API_KEY}
   model: claude-sonnet-4-6
 
-guardrails_path: /etc/memintel/memintel_guardrails.yaml
 
 connectors:
   postgres.analytics:
@@ -74,7 +73,6 @@ strategy_registry:
 type_strategy_map:
   float:    [threshold, percentile, z_score, change]
   int:      [threshold, percentile, change]
-  boolean:  [equals]
 
 parameter_priors:
   account.active_user_rate_30d:
@@ -124,7 +122,7 @@ As admin, your configuration work happens in two places:
 | **Step 2** | `POST /context` — define application context | No |
 | **Step 3A** *(recommended)* | `POST /guardrails` — define guardrails via API | No |
 | **Step 3B** *(advanced)* | Edit `memintel_guardrails.yaml` on server | Yes |
-| **Step 4** | Define actions in `memintel_config.yaml` and restart | Yes |
+| **Step 4** | Register actions via `POST /actions` | No |
 
 :::tip
 Use Step 3A (API) unless you need to set guardrails before the server is running for the first time. The API is simpler, takes effect immediately, and keeps a full version history.

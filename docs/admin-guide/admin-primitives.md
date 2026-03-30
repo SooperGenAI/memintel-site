@@ -23,63 +23,9 @@ The compiler derives concepts from primitives. Your job is to define the primiti
 
 ---
 
-## How Primitives Work — Two Steps
+## How Primitives Are Registered
 
-Setting up a primitive requires two separate steps. Both are required. Neither replaces the other.
-
-| Step | Where | What it does | Who does it |
-|---|---|---|---|
-| **1. Config file mapping** | `memintel_config.yaml` | Tells the runtime *where* to fetch the primitive's value — which database, which query, which REST endpoint | Data engineer |
-| **2. Type registry** | `POST /registry/definitions` | Tells the compiler and runtime *what type* the primitive is — float, int, boolean, etc. | Data engineer |
-
-The primitive name must match in both places. The registry owns the type. The config owns the data source.
-
-:::warning Both steps are required
-A primitive registered via the API but missing from the config file will fail at execution time — the runtime has no data source to fetch from. A primitive in the config but not registered via the API will fail at compile time — the compiler does not know its type.
-:::
-
----
-
-## Step 1 — Config File Mapping
-
-The `memintel_config.yaml` file maps each primitive name to its data source. This is the data plumbing — it tells the runtime where to fetch each value at execution time.
-
-```yaml
-# memintel_config.yaml
-
-primitives:
-  account.active_user_rate_30d:
-    connector: postgres.analytics
-    query: >
-      SELECT (active_users::float / total_seats)
-      FROM account_metrics
-      WHERE account_id = :entity_id
-      AND recorded_at <= :as_of
-      ORDER BY recorded_at DESC LIMIT 1
-
-  account.days_to_renewal:
-    connector: postgres.accounts
-    query: >
-      SELECT EXTRACT(DAY FROM (renewal_date - :as_of::date))::int
-      FROM subscriptions
-      WHERE account_id = :entity_id
-      AND status = 'active' LIMIT 1
-
-  account.payment_failed_flag:
-    connector: rest.billing_api
-    path: /accounts/:entity_id/payment-status
-    field: payment_failed
-```
-
-Each entry maps a primitive name to a connector (defined in the `connectors:` section) and a query or endpoint. The `:entity_id` and `:as_of` parameters are injected by the runtime at execution time — `:as_of` ensures deterministic, point-in-time fetching.
-
-Your data engineer writes and maintains these entries. You provide the primitive names and descriptions; they handle the SQL and connector wiring.
-
----
-
-## Step 2 — Type Registry
-
-Once the config file is updated and the server has restarted, register each primitive's type schema via the API:
+Primitives are registered via the API using `POST /registry/definitions`. This is the only registration step required — there is no primitives section in `memintel_config.yaml`.
 
 ```bash
 curl -X POST https://api.memsdl.ai/v1/registry/definitions \
@@ -89,23 +35,25 @@ curl -X POST https://api.memsdl.ai/v1/registry/definitions \
     "primitive_id": "account.active_user_rate_30d",
     "type": "float",
     "namespace": "org",
-    "missing_data_policy": "null",
-    "label": "Active user rate (30d)",
-    "description": "Ratio of active users to total licensed seats in last 30 days, 0-1"
+    "missing_data_policy": "null"
   }'
 ```
-
-This is what the compiler uses to validate concepts and select evaluation strategies. A primitive must be registered here before any monitoring task can reference it.
 
 :::note Elevated key required
 `POST /registry/definitions` is a privileged operation — it requires the `X-Elevated-Key` header.
 :::
 
+Once registered, the primitive is available for use in monitoring tasks. The compiler validates that any concept referencing a primitive uses a compatible type and strategy. Tasks cannot be created against unregistered primitives.
+
+The data engineer separately configures how each primitive's value is fetched — which database, which query, which REST endpoint — via the `connectors:` section of `memintel_config.yaml`. Both must be in place before a monitoring task can execute.
+
 ---
 
-## The Primitive Name
+## The Four Registration Fields
 
-The primitive name is the single identifier that must match across both the config file and the registry. Use the format `entity.signal_name` — lowercase, dot-separated, underscores between words.
+### primitive_id — the signal's name
+
+A unique identifier for this signal. Use the format `entity.signal_name` — lowercase, with a dot separating the entity type from the signal name, and underscores between words.
 
 ```
 account.active_user_rate_30d
@@ -121,42 +69,105 @@ The part after the dot is the **signal name** — what is being measured, often 
 This makes the registry easy to browse as it grows.
 :::
 
----
+### type — what kind of data it contains
 
-## Types
+The type tells the system what kind of values this signal produces and which evaluation strategies are available for it.
 
-The type tells the system what kind of values this primitive produces and which evaluation strategies are available for it.
-
-| Type | What it means | Example signals |
+| Type | What it means | Supported strategies |
 |---|---|---|
-| `float` | A decimal number, usually between 0 and 1 or a ratio | Sentiment score, engagement rate, LTV ratio |
-| `int` | A whole number | Days since login, count of events, number of calls |
-| `boolean` | True or false only | Payment failed flag, OIG exclusion flag, license active |
-| `categorical` | One value from a fixed list | Risk tier (low/medium/high), status (active/paused/closed) |
-| `time_series<float>` | A sequence of decimal values over time | Error rate over last hour, DSCR over last 4 quarters |
-| `time_series<int>` | A sequence of whole numbers over time | Daily transaction count over last 30 days |
+| `float` | A decimal number, ratio, or score | threshold, percentile, z_score, change |
+| `int` | A whole number | threshold, percentile, change |
+| `categorical` | One value from a fixed set of labels | equals |
+| `time_series<float>` | A sequence of decimal values over time | z_score, change, percentile |
+| `time_series<int>` | A sequence of whole numbers over time | z_score, change, percentile |
+
+:::warning Boolean primitives
+`boolean` is not a usable primitive type in the current implementation — no condition strategy can evaluate a boolean primitive directly. Use one of these alternatives instead:
+
+- **`categorical` with `labels: ["true", "false"]`** — use the `equals` strategy to check for a specific value
+- **`int` (0 for false, 1 for true)** — use the `threshold` strategy
+
+Example: register `account.payment_failed_flag` as `categorical` with labels `["true", "false"]`, not as `boolean`.
+:::
 
 **When to use `time_series` vs a plain number:**
 
-Use a time series when you want the system to be able to detect **trends and trajectories** — not just the current value. For example:
+Use a time series when you want the system to detect **trends and trajectories** — not just the current value. For example:
 
 - `borrower.dscr` (type: `float`) — the current DSCR value right now
 - `borrower.dscr_trend_4q` (type: `time_series<float>`) — the DSCR across the last 4 quarters, enabling detection of a declining trend
 
-If a user might say "alert me when X is declining" or "alert me when X is trending upward", register a time series variant.
+If a user might say "alert me when X is declining" or "alert me when X is trending upward", register a time series variant alongside the scalar.
 
-**Nullable signals:**
+### namespace — which organisation owns this primitive
 
-If a signal sometimes has no value — for example, a sentiment score for a customer who has never sent an email — use a nullable type:
+The namespace scopes the primitive to your organisation. For most deployments this is set once and reused across all primitives.
+
+```json
+"namespace": "org"
+```
+
+### missing_data_policy — what happens when there is no value
+
+Defines how the system behaves when a primitive cannot return a value for a given entity at a given time.
+
+| Policy | Behaviour |
+|---|---|
+| `"null"` | Return null — the concept evaluation receives a null input |
+| `"zero"` | Return zero — treat missing data as the zero value for this type |
+| `"error"` | Raise an evaluation error — the decision record shows a data error |
+
+Use `"null"` for signals that are legitimately absent (a customer with no calls, a borrower with no commentary). Use `"error"` for signals that should always be present and whose absence indicates a data pipeline problem.
+
+---
+
+## Optional: Labels for Categorical Primitives
+
+For `categorical` primitives, specify the set of valid values using the `labels` field:
+
+```bash
+curl -X POST https://api.memsdl.ai/v1/registry/definitions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "primitive_id": "account.plan_tier",
+    "type": "categorical",
+    "namespace": "org",
+    "missing_data_policy": "null",
+    "labels": ["starter", "growth", "enterprise"]
+  }'
+```
+
+Labels constrain what values the `equals` strategy can be evaluated against. A condition checking `account.plan_tier equals "premium"` would be rejected at compile time if "premium" is not in the registered label set.
+
+For boolean-like signals, use two labels:
+
+```json
+{
+  "primitive_id": "account.payment_failed_flag",
+  "type": "categorical",
+  "namespace": "org",
+  "missing_data_policy": "null",
+  "labels": ["true", "false"]
+}
+```
+
+---
+
+## Nullable Signals
+
+If a signal sometimes has no value, append `?` to the type and set `missing_data_policy` to `"null"`:
 
 ```json
 {
   "primitive_id": "deal.last_call_sentiment",
   "type": "float?",
-  "missing_data_policy": "null",
-  "description": "Sentiment score from the last call recording — null if no calls"
+  "namespace": "org",
+  "missing_data_policy": "null"
 }
 ```
+
+An unexpected null on a non-nullable primitive causes an evaluation error. Always mark signals that can legitimately be absent as nullable.
 
 ---
 
@@ -164,13 +175,13 @@ If a signal sometimes has no value — for example, a sentiment score for a cust
 
 The most important design rule: **each primitive measures exactly one thing**.
 
-If you find yourself writing "and" or "or" in a description, you are probably trying to combine two signals into one primitive. Split them.
+If you find yourself wanting "engagement and sentiment" in a single primitive, split them:
 
-```json
-// Wrong — two signals combined
+```bash
+# Wrong — two signals in one
 { "primitive_id": "deal.engagement_and_sentiment", "type": "float" }
 
-// Right — two separate primitives
+# Right — two separate primitives
 { "primitive_id": "deal.engagement_score", "type": "float" }
 { "primitive_id": "deal.sentiment_score", "type": "float" }
 ```
@@ -183,85 +194,58 @@ The system combines primitives into concepts automatically. Your job is to provi
 
 One of Memintel's key capabilities is evaluating **your internal data against external signals** — regulatory changes, market data, peer benchmarks. Both types are registered as primitives in exactly the same way.
 
-```json
-// Internal signal — your own data
-{
-  "primitive_id": "filing.deprecated_tag_count",
-  "type": "int",
-  "description": "Number of XBRL tags in this draft that are deprecated in the new taxonomy"
-}
+```bash
+# Internal signal — your own data
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "filing.deprecated_tag_count", "type": "int", "namespace": "org", "missing_data_policy": "zero"}'
 
-// External signal — regulatory feed
-{
-  "primitive_id": "taxonomy.tag_deprecated_flag",
-  "type": "boolean",
-  "description": "True if this tag is deprecated in the current SEC GAAP taxonomy version"
-}
+# External signal — regulatory feed (boolean-like → categorical)
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "taxonomy.tag_deprecated_flag", "type": "categorical", "namespace": "org", "missing_data_policy": "null", "labels": ["true", "false"]}'
 
-// External signal — peer benchmark
-{
-  "primitive_id": "provider.peer_deviation_percentile",
-  "type": "float",
-  "description": "This provider's billing deviation percentile within their specialty peer group, 0-100"
-}
+# External signal — peer benchmark
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "provider.peer_deviation_percentile", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
 ```
 
-Register external signals the same way as internal ones. Your data engineer connects them to the appropriate external data source in the config file.
+Your data engineer connects each primitive to its data source via `memintel_config.yaml`. The primitive registry records the type and policy; the connector configuration records where to fetch the value.
 
 ---
 
-## Complete Examples by Domain
+## Domain Examples
 
 ### SaaS Churn Detection
 
-**Config file entries:**
-```yaml
-primitives:
-  user.days_since_last_login:
-    connector: postgres.auth
-    query: >
-      SELECT EXTRACT(DAY FROM (:as_of::date - last_login_at::date))::int
-      FROM users WHERE user_id = :entity_id
-
-  account.active_user_rate_30d:
-    connector: postgres.analytics
-    query: >
-      SELECT (active_users::float / total_seats)
-      FROM account_metrics
-      WHERE account_id = :entity_id AND recorded_at <= :as_of
-      ORDER BY recorded_at DESC LIMIT 1
-
-  account.payment_failed_flag:
-    connector: rest.billing_api
-    path: /accounts/:entity_id/payment-status
-    field: payment_failed
-```
-
-**API registrations:**
 ```bash
-# Register each primitive
-curl -X POST .../v1/registry/definitions -d '{"primitive_id": "user.days_since_last_login", "type": "int", "missing_data_policy": "null"}'
-curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.active_user_rate_30d", "type": "float", "missing_data_policy": "null"}'
-curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.payment_failed_flag", "type": "boolean", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "user.days_since_last_login", "type": "int", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "user.core_actions_30d", "type": "int", "namespace": "org", "missing_data_policy": "zero"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "user.session_frequency_trend_8w", "type": "time_series<float>", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.active_user_rate_30d", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.seat_utilization_rate", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.days_to_renewal", "type": "int", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.payment_failed_flag", "type": "categorical", "namespace": "org", "missing_data_policy": "null", "labels": ["true", "false"]}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.nps_score", "type": "float?", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.support_ticket_rate_30d", "type": "float", "namespace": "org", "missing_data_policy": "zero"}'
 ```
 
 ### Credit Risk Monitoring
 
-```json
-{ "primitive_id": "borrower.dscr", "type": "float", "description": "Debt service coverage ratio — EBITDA divided by total debt service. Below 1.0 means insufficient cash flow." }
-{ "primitive_id": "borrower.dscr_trend_4q", "type": "time_series<float>", "description": "DSCR across last 4 quarters, oldest to newest — enables declining trend detection" }
-{ "primitive_id": "borrower.leverage_ratio", "type": "float", "description": "Total debt divided by EBITDA" }
-{ "primitive_id": "loan.covenant_headroom_pct", "type": "float", "description": "Distance to nearest covenant threshold as a percentage — negative means breach" }
-{ "primitive_id": "borrower.management_sentiment_score", "type": "float?", "description": "LLM-extracted sentiment from most recent management commentary, 0-1 — null if unavailable" }
+```bash
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "borrower.dscr", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "borrower.dscr_trend_4q", "type": "time_series<float>", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "borrower.leverage_ratio", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "borrower.management_sentiment_score", "type": "float?", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "loan.covenant_headroom_pct", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "loan.days_since_financial_submission", "type": "int", "namespace": "org", "missing_data_policy": "null"}'
 ```
 
 ### Clinical Trial Safety
 
-```json
-{ "primitive_id": "patient.ae_severity_score", "type": "float", "description": "Composite adverse event severity score based on MedDRA grades, 0-1" }
-{ "primitive_id": "patient.ae_relatedness_signal", "type": "float", "description": "LLM-extracted probability that the most recent AE is related to the study drug, 0-1" }
-{ "primitive_id": "patient.sae_count_30d", "type": "int", "description": "Number of serious adverse events in the last 30 days" }
-{ "primitive_id": "compound.fda_class_safety_alert_flag", "type": "boolean", "description": "True if FDA has issued a safety communication for this compound class in the last 90 days" }
+```bash
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "patient.ae_severity_score", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "patient.ae_relatedness_signal", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "patient.ae_relatedness_confidence", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "patient.sae_count_30d", "type": "int", "namespace": "org", "missing_data_policy": "zero"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "trial.treatment_vs_comparator_ratio", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "trial.stopping_rule_proximity_score", "type": "float", "namespace": "org", "missing_data_policy": "null"}'
+curl -X POST .../v1/registry/definitions -d '{"primitive_id": "compound.fda_class_safety_alert_flag", "type": "categorical", "namespace": "org", "missing_data_policy": "null", "labels": ["true", "false"]}'
 ```
 
 ---
@@ -270,22 +254,24 @@ curl -X POST .../v1/registry/definitions -d '{"primitive_id": "account.payment_f
 
 For each primitive, the workflow is:
 
-1. **You define the signal** — agree on the name, what it measures, and its value range. Write a clear description.
-2. **Data engineer adds the config entry** — maps the primitive to its data source with the appropriate query or REST call. Server restarts to load the new config.
-3. **Data engineer registers the type** — calls `POST /registry/definitions` with the primitive's type, namespace, and missing data policy.
-4. **You verify** — create a test monitoring task using the primitive and confirm the results make sense.
+1. **You define the signal** — agree on the name, what it measures, its type, and its value range.
+2. **Register the type** — call `POST /registry/definitions` with the correct type, namespace, and missing data policy.
+3. **Data engineer connects the data source** — adds the connector mapping to `memintel_config.yaml` so the runtime knows how to fetch the value at execution time. This requires a server restart.
+4. **You verify** — create a test monitoring task using the primitive and confirm results make sense.
 
-A clear description makes steps 2 and 3 much faster. The better you describe what the signal measures and what its value range means, the less back-and-forth is needed.
+Steps 2 and 3 can happen in either order, but both must be complete before a monitoring task can execute successfully.
 
 ---
 
 ## Common Mistakes
 
-**Forgetting to restart after config changes.** Changes to `memintel_config.yaml` require a server restart to take effect. If you add a primitive to the config but don't restart, the runtime still uses the old config.
+**Adding a `primitives:` section to `memintel_config.yaml`.** This section does not exist in the current implementation and will be silently ignored or cause a validation error. Primitives are registered exclusively via `POST /registry/definitions`.
 
-**Registering via API before restarting.** Register the type via `POST /registry/definitions` after the server has restarted with the new config — not before. The runtime needs the config entry to be live before it can execute concepts that use the primitive.
+**Using `boolean` as the primitive type.** No condition strategy can evaluate a boolean primitive. Use `categorical` with `labels: ["true", "false"]` and the `equals` strategy instead.
 
-**Name mismatch between config and registry.** The primitive name in `memintel_config.yaml` and the `primitive_id` in `POST /registry/definitions` must match exactly — case-sensitive, including dots and underscores.
+**Using wrong field names in the API.** The endpoint accepts `primitive_id`, `type`, `namespace`, `missing_data_policy`, and `labels`. Fields like `id`, `source`, `entity`, and `description` do not exist in the current model.
+
+**Registering a primitive but forgetting the connector mapping.** The registry records the type; the connector configuration in `memintel_config.yaml` records where to fetch the value. Without a matching connector mapping, task execution will fail with a data resolution error.
 
 **Defining concepts as primitives.** "Deal health score", "customer risk level", "account engagement" — these are concepts the compiler derives from primitive signals. Register the underlying signals instead.
 
