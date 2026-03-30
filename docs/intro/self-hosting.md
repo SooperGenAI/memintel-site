@@ -30,7 +30,7 @@ LLM Provider (Anthropic / AWS Bedrock / Google Vertex AI)
 
 **Three dependencies. One process. No scheduler.**
 
-The application layer owns scheduling — your application calls `POST /execute/full` on whatever cadence it needs. Memintel does not include a built-in scheduler.
+The application layer owns scheduling — your application calls `POST /evaluate/full` on whatever cadence it needs. Memintel does not include a built-in scheduler.
 
 ---
 
@@ -242,7 +242,7 @@ alembic upgrade head
 Then revert `DATABASE_URL` back to `postgresql://` before starting the server.
 :::
 
-Verify the schema — you should see all seven tables:
+Verify the schema — you should see all eight tables:
 
 ```bash
 psql $DATABASE_URL -c "\dt"
@@ -290,10 +290,10 @@ If startup fails with `ConfigError`, check that all required environment variabl
 ### Health Check
 
 ```bash
-curl http://localhost:8000/health
+curl http://localhost:8000/openapi.json
 ```
 
-If the health endpoint returns `Not Found`, verify the server is running by opening the Swagger API docs in your browser:
+If the openapi endpoint returns `Not Found`, verify the server is running by opening the Swagger API docs in your browser:
 
 ```
 http://localhost:8000/docs
@@ -344,7 +344,7 @@ Expected: HTTP `200` with `task_id`, `condition_id`, `"context_version": "v1"`, 
 ### Execute Full Pipeline
 
 ```bash
-curl -X POST http://localhost:8000/execute/full \
+curl -X POST http://localhost:8000/evaluate/full \
   -H "Content-Type: application/json" \
   -d '{
     "concept_id": "<concept_id from task>",
@@ -364,7 +364,7 @@ Run the same execute call three times with identical parameters. All three respo
 
 ```bash
 for i in 1 2 3; do
-  curl -s -X POST http://localhost:8000/execute/full \
+  curl -s -X POST http://localhost:8000/evaluate/full \
     -H 'Content-Type: application/json' \
     -d '{...same payload...}' | jq '.result.value'
 done
@@ -484,29 +484,6 @@ sed -i 's/class TimeoutError(asyncio.TimeoutError, builtins.TimeoutError, RedisE
 ```
 
 This patch is applied to your local venv only and does not affect the source code. It will need to be reapplied if you recreate the venv.
-
----
-
-## Explore the API
-
-Once the server is running, three API interfaces are available at your server's base URL:
-
-| URL | What it is |
-|---|---|
-| `https://your-server/docs` | **Swagger UI** — interactive console; try every endpoint directly from the browser |
-| `https://your-server/redoc` | **ReDoc** — clean, readable reference format |
-| `https://your-server/openapi.json` | **Raw OpenAPI spec** — import into Postman, Insomnia, or any API client |
-
-Replace `your-server` with your actual domain or IP — for example `https://api.mycompany.com/docs`.
-
-:::tip Use Swagger UI for onboarding
-Share the `/docs` URL with your development team as their first stop. They can explore every endpoint, see the request and response schemas, and make live calls without setting up a local client. Use the **Authorize** button at the top right to set `X-API-Key` and `X-Elevated-Key` headers once for the session.
-:::
-
-:::note Restrict access in production
-The `/docs` and `/redoc` interfaces expose your full API surface. In production, consider restricting access to internal network addresses or placing them behind authentication middleware. The `/openapi.json` endpoint can be disabled entirely if you do not want the spec publicly accessible.
-:::
-
 
 ---
 

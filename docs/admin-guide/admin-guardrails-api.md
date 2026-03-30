@@ -146,7 +146,7 @@ Returns all versions, newest first. Each entry shows when it was created, who cr
 
 ## Checking Which Tasks Are on Older Versions
 
-After updating guardrails, use `GET /guardrails/impact` to see how many tasks were compiled under older versions:
+After updating guardrails, use `GET /guardrails/impact *(not yet implemented)*` to see how many tasks were compiled under older versions:
 
 ```bash
 curl https://your-memintel-domain/guardrails/impact

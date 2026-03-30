@@ -2,7 +2,6 @@
 id: admin-calibration
 title: Calibration
 sidebar_label: Calibration
-pagination_next: admin-guide/admin-governance-overview
 ---
 
 # Calibration
@@ -37,8 +36,6 @@ Every piece of feedback falls into one of three categories:
 | `false_positive` | The condition fired but the outcome showed it was wrong | Threshold is too sensitive — needs to be tighter |
 | `false_negative` | The condition did not fire but the outcome showed it should have | Threshold is not sensitive enough — needs to be looser |
 
-You submit feedback against a specific decision — identified by its `decision_id` — using `POST /feedback`.
-
 ---
 
 ## How Calibration Works — End to End
@@ -47,43 +44,60 @@ Calibration is a four-step process. Each step is a separate API call.
 
 ### Step 1 — Submit Feedback
 
-When you observe a wrong outcome, record it:
+When you observe a wrong outcome, record it against the condition that produced it:
 
 ```bash
-curl -X POST https://api.memsdl.ai/v1/feedback \
+curl -X POST https://api.memsdl.ai/v1/feedback/decision \
   -H "X-API-Key: your-api-key" \
   -H "Content-Type: application/json" \
   -d '{
-    "decision_id": "dec_abc123",
-    "feedback_type": "false_positive",
-    "note": "Deal closed successfully — threshold too aggressive for enterprise accounts"
+    "condition_id": "cond_churn_risk",
+    "condition_version": "v1",
+    "entity": "account_abc123",
+    "feedback": "false_positive"
   }'
 ```
+
+**Required fields:**
+
+| Field | Description |
+|---|---|
+| `condition_id` | The condition that produced the decision |
+| `condition_version` | The specific version of the condition |
+| `entity` | The entity the decision was made about |
+| `feedback` | `"correct"`, `"false_positive"`, or `"false_negative"` |
 
 You can submit multiple feedback records against the same condition over time. The more feedback you accumulate, the more reliable the calibration recommendation will be.
 
 ### Step 2 — Request a Calibration Recommendation
 
-When you have enough feedback to act on, call the calibrate endpoint for the condition:
+When you have enough feedback to act on, call the calibrate endpoint:
 
 ```bash
 curl -X POST https://api.memsdl.ai/v1/conditions/calibrate \
   -H "X-API-Key: your-api-key" \
   -H "Content-Type: application/json" \
   -d '{
-    "condition_id": "cond_xyz789"
+    "condition_id": "cond_churn_risk",
+    "condition_version": "v1"
   }'
 ```
 
-The system analyses the accumulated feedback and returns a calibration recommendation — a suggested new parameter value and a `calibration_token`:
+Both `condition_id` and `condition_version` are required — calibration is always against a specific version.
+
+The system analyses the accumulated feedback and returns a recommendation:
 
 ```json
 {
-  "condition_id": "cond_xyz789",
-  "current_value": 0.35,
-  "recommended_value": 0.28,
+  "status": "recommendation_ready",
+  "current_params": { "threshold": 0.35, "direction": "below" },
+  "recommended_params": { "threshold": 0.28, "direction": "below" },
   "calibration_token": "cal_tok_def456",
-  "reasoning": "5 false positives in last 30 days — threshold adjusted downward to reduce sensitivity"
+  "impact": {
+    "false_positive_rate_before": 0.18,
+    "false_positive_rate_after": 0.09,
+    "feedback_count": 5
+  }
 }
 ```
 
@@ -95,27 +109,28 @@ Before applying, review the recommendation. Check that:
 
 - The direction makes sense (tightening vs loosening)
 - The magnitude is reasonable for your domain
-- The reasoning matches what you observed
+- The impact metrics (false positive rate change, feedback count) justify the change
 
 You are not obligated to apply every recommendation. If the suggested change looks wrong — for example, if the false positives were caused by a data quality issue rather than a threshold problem — discard the token and fix the underlying cause first.
 
 ### Step 4 — Apply the Calibration
 
-If the recommendation looks right, apply it:
+If the recommendation looks right, apply it by providing both the calibration token and the new version identifier:
 
 ```bash
 curl -X POST https://api.memsdl.ai/v1/conditions/apply-calibration \
   -H "X-Elevated-Key: your-elevated-key" \
   -H "Content-Type: application/json" \
   -d '{
-    "calibration_token": "cal_tok_def456"
+    "token": "cal_tok_def456",
+    "new_version": "v2"
   }'
 ```
 
-This creates a new version of the condition with the calibrated parameter. The existing condition version is unchanged and remains in the audit log. Any tasks currently bound to the old version continue using it until explicitly rebound.
+This creates a new version of the condition with the calibrated parameters. The existing condition version is unchanged and remains in the audit log. Any tasks currently bound to the old version continue using it until explicitly rebound.
 
 :::note Apply-calibration requires the elevated key
-`POST /conditions/apply-calibration` is a privileged operation — it modifies shared registry state. It requires the `X-Elevated-Key` header, the same key used for compile and register endpoints.
+`POST /conditions/apply-calibration` is a privileged operation — it requires the `X-Elevated-Key` header.
 :::
 
 ### Step 5 — Rebind Tasks to the New Version
@@ -140,8 +155,8 @@ This is intentional — rebinding is an explicit action that you control. It mea
 Calibration never mutates an existing condition. Every calibration creates a new version:
 
 ```
-cond_xyz789 v1  →  threshold: 0.35  (original)
-cond_xyz789 v2  →  threshold: 0.28  (calibrated)
+cond_churn_risk v1  →  threshold: 0.35  (original)
+cond_churn_risk v2  →  threshold: 0.28  (calibrated)
 ```
 
 Both versions remain in the system. You can query either version, see which tasks are bound to each, and understand exactly when and why each version was created.
@@ -176,44 +191,62 @@ Calibration is most valuable when you see a consistent pattern — not a single 
 
 ### SaaS Churn Detection
 
-**Scenario:** The `account.active_user_rate_30d` condition is set to fire at 0.35 (35% active users). Over the past quarter, the customer success team has flagged 8 decisions as false positives — accounts that received churn-risk alerts but renewed without any intervention.
+**Scenario:** The `account.active_user_rate_30d` condition is set to fire at 0.35. Over the past quarter, the customer success team has flagged 8 decisions as false positives — accounts that received churn-risk alerts but renewed without any intervention.
 
-**Action:** Submit `false_positive` feedback for each of the 8 decisions. Call `POST /conditions/calibrate` for the condition. The recommendation comes back suggesting 0.28. Review: the team agrees enterprise accounts tend to have lower login rates due to SSO and API usage that doesn't register in the activity pipeline. Apply the calibration and rebind affected tasks.
+**Action:**
+```bash
+# Submit feedback for each false positive
+curl -X POST .../v1/feedback/decision -d '{
+  "condition_id": "cond_churn_risk",
+  "condition_version": "v1",
+  "entity": "account_enterprise_001",
+  "feedback": "false_positive"
+}'
+# ... repeat for each false positive
+
+# Request calibration
+curl -X POST .../v1/conditions/calibrate -d '{
+  "condition_id": "cond_churn_risk",
+  "condition_version": "v1"
+}'
+```
+
+The recommendation comes back suggesting 0.28. Review: enterprise accounts tend to have lower login rates due to SSO and API usage. Apply and rebind.
 
 ---
 
 ### Credit Risk Monitoring
 
-**Scenario:** A `borrower.dscr` condition fires when DSCR drops below 1.20. The credit team has identified 3 false negatives — borrowers who were flagged as healthy but subsequently breached covenant at 1.15.
+**Scenario:** A `borrower.dscr` condition fires when DSCR drops below 1.20. The credit team has identified 3 false negatives — borrowers who were flagged as healthy but subsequently breached covenant.
 
-**Action:** Submit `false_negative` feedback for each. The calibration recommendation raises the threshold to 1.22. Before applying, the credit committee reviews and agrees — the extra headroom is appropriate given current market volatility. Apply and rebind.
+**Action:** Submit `false_negative` feedback for each. The calibration recommendation raises the threshold to 1.22. The credit committee reviews and agrees — the extra headroom is appropriate given current market volatility.
 
 ---
 
 ### Clinical Trial Safety
 
-**Scenario:** A patient adverse event severity condition is generating alerts that the medical monitor consistently classifies as expected toxicity rather than drug-related signals. The feedback pattern is 12 `false_positive` records over 6 weeks.
+**Scenario:** A patient adverse event severity condition is generating alerts that the medical monitor consistently classifies as expected toxicity rather than drug-related signals — 12 `false_positive` records over 6 weeks.
 
-**Action:** Submit feedback, request calibration. Review the recommendation carefully before applying — in a clinical context, loosening a safety threshold requires sign-off from the medical monitor and should be documented in the trial master file alongside the calibration token for regulatory inspection readiness.
+**Action:** Submit feedback, request calibration. Review the recommendation carefully before applying — in a clinical context, loosening a safety threshold requires sign-off from the medical monitor and should be documented in the trial master file alongside the `calibration_token` for regulatory inspection readiness.
 
 ---
 
 ### DevOps / SRE
 
-**Scenario:** An error rate condition fires at 0.5% but the SRE team has reconfigured the load balancer, changing the baseline traffic pattern. What was previously a signal of real degradation is now normal operating noise. The last 2 weeks of feedback are almost entirely `false_positive`.
+**Scenario:** An error rate condition fires at 0.5% but the SRE team has reconfigured the load balancer, changing the baseline traffic pattern. The last 2 weeks of feedback are almost entirely `false_positive`.
 
-**Action:** Submit feedback, request calibration. The recommendation adjusts the threshold upward. Apply and rebind. Note the infrastructure change in the calibration note field so the audit log captures the reason for the shift.
+**Action:** Submit feedback, request calibration. Apply and rebind. The calibration token provides the audit record of why the threshold shifted.
 
 ---
 
 ## Common Mistakes
 
-**Calibrating after a single outlier.** One false positive is not a pattern. Accumulate at least 3–5 consistent feedback records before requesting a calibration recommendation. A single data point produces an unreliable suggestion.
+**Calibrating after a single outlier.** One false positive is not a pattern. Accumulate at least 3–5 consistent feedback records before requesting a calibration recommendation.
 
-**Applying without reviewing.** The calibration recommendation is a suggestion, not an instruction. Always review the direction and magnitude before applying — especially for safety-critical conditions.
+**Applying without reviewing.** The calibration recommendation is a suggestion, not an instruction. Always review the `recommended_params` and `impact` before applying — especially for safety-critical conditions.
 
-**Forgetting to rebind tasks.** Applying a calibration creates a new condition version but does not automatically update running tasks. If you skip the rebind step, tasks continue using the old threshold and nothing changes in practice.
+**Forgetting to rebind tasks.** Applying a calibration creates a new condition version but does not automatically update running tasks. If you skip the rebind step, tasks continue using the old threshold.
 
 **Calibrating instead of fixing data quality.** If false positives are caused by a faulty data source, calibrating the condition papers over the real problem. Investigate data quality first.
 
-**Not noting the reason.** The `note` field in `POST /feedback` and the `change_note` field in `POST /conditions/apply-calibration` are your audit trail. Fill them in — especially for regulated domains where you may need to explain threshold changes to auditors or regulators.
+**Omitting `condition_version` from the calibrate request.** Both `condition_id` and `condition_version` are required. Calibration is always against a specific, immutable version — not "the latest."
