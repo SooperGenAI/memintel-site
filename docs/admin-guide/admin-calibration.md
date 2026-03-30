@@ -205,10 +205,9 @@ curl -X POST .../v1/feedback/decision -d '{
 # ... repeat for each false positive
 
 # Request calibration
-curl -X POST .../v1/conditions/calibrate -d '{
-  "condition_id": "cond_churn_risk",
-  "condition_version": "v1"
-}'
+curl -X POST .../v1/conditions/calibrate \
+  -H "X-API-Key: your-api-key" \
+  -d '{"condition_id": "cond_churn_risk", "condition_version": "v1"}'
 ```
 
 The recommendation comes back suggesting 0.28. Review: enterprise accounts tend to have lower login rates due to SSO and API usage. Apply and rebind.

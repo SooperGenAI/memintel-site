@@ -37,7 +37,7 @@ Unlike the other three sections, application context is **not** defined in `memi
 The easiest way to do this is via a `curl` command from a terminal, or using a tool like [Postman](https://www.postman.com) or [Insomnia](https://insomnia.rest) if you prefer a graphical interface.
 
 ```bash
-curl -X POST https://your-memintel-domain/context \
+curl -X POST https://your-memintel-domain/context/context \
   -H "Content-Type: application/json" \
   -d @context.json
 ```
@@ -391,7 +391,7 @@ Once you have written your context JSON:
 ```bash
 # Save your context to a file, e.g. context.json
 # Then submit it:
-curl -X POST https://your-memintel-domain/context \
+curl -X POST https://your-memintel-domain/context/context \
   -H "Content-Type: application/json" \
   -d @context.json
 ```
@@ -412,7 +412,7 @@ The `version: v1` confirms it was received. Every time you update context, the v
 
 ## Updating Context Later
 
-You can update context at any time without restarting the server. Just submit a new `POST /context` call with your updated content. The new version immediately becomes active.
+You can update context at any time without restarting the server. Just submit a new `POST /context/context` call with your updated content. The new version immediately becomes active.
 
 After updating, ask your data engineer to recompile any existing tasks so they benefit from the updated context.
 

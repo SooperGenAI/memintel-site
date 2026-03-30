@@ -94,7 +94,8 @@ Never commit `start_server.ps1` or `start_server.sh` — they contain real crede
 
 | Variable | Purpose | Required | Example |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | Anthropic API key for the LLM-assisted pipeline (`/execute/full`) | Only if using `/execute/full` | `sk-ant-...` |
+| `ANTHROPIC_API_KEY` | Anthropic API key for the LLM-assisted pipeline | Only if `USE_LLM_FIXTURES=false` | `sk-ant-...` |
+| `USE_LLM_FIXTURES` | Set to `false` in production to use a real LLM provider. Defaults to `true` (fixture mode) — safe for local dev without an API key | No | `false` |
 
 #### Data connector credentials
 
@@ -221,29 +222,6 @@ openssl rand -hex 32
 # Python (any platform)
 python -c "import secrets; print(secrets.token_hex(32))"
 ```
-
----
-
-## Explore the API
-
-With the server running, three API interfaces are available in your browser:
-
-| URL | What it is |
-|---|---|
-| `http://127.0.0.1:8000/docs` | **Swagger UI** — interactive console; try every endpoint directly from the browser |
-| `http://127.0.0.1:8000/redoc` | **ReDoc** — clean, readable reference format |
-| `http://127.0.0.1:8000/openapi.json` | **Raw OpenAPI spec** — import into Postman, Insomnia, or any API client |
-
-:::tip Swagger UI is the fastest way to explore
-Open `http://127.0.0.1:8000/docs` and you can call any endpoint directly — no curl, no Postman setup required. Expand an endpoint, click **Try it out**, fill in the fields, and hit **Execute**.
-:::
-
-:::note These calls are real
-The Swagger UI and ReDoc are connected to your local database. Any `POST`, `PATCH`, or `DELETE` calls you make will modify real data in your local Memintel instance. This is fine for development — just be aware there is no sandbox mode.
-:::
-
-For endpoints that require authentication, use the **Authorize** button at the top right of the Swagger UI to set your `X-API-Key` and `X-Elevated-Key` headers once — they will be applied to all subsequent requests in that session.
-
 
 ---
 

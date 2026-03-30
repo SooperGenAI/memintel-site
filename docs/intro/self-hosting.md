@@ -124,8 +124,8 @@ The server will refuse to start if any required variable is missing. This is by 
 
 | Variable | Required | Default | Description |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | No* | — | Required when `USE_LLM_FIXTURES=false` and using Anthropic |
-| `MEMINTEL_ELEVATED_KEY` | No | — | Admin key for registry global namespace promotion. Use a strong random string |
+| `ANTHROPIC_API_KEY` | No* | — | Required when `USE_LLM_FIXTURES=false`. Omit for local dev with fixture mode |
+| `MEMINTEL_ELEVATED_KEY` | **Yes** | — | Secret key for privileged API endpoints (registry, compile, guardrails, calibration). Use a strong random string |
 | `USE_LLM_FIXTURES` | No | `true` | Set to `false` in production to use a real LLM provider |
 | `MAX_RETRIES` | No | `3` | LLM refinement loop retries before failing |
 | `DB_POOL_MIN` | No | `5` | Minimum asyncpg connection pool size |
