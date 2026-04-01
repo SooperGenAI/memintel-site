@@ -33,6 +33,13 @@ llm:
   api_key: ${ANTHROPIC_API_KEY}
   model: claude-sonnet-4-6
 
+  # On-premise alternative:
+  # provider: openai_compatible
+  # base_url: https://llm.internal.yourcompany.com/v1
+  # model: llama3.1:70b
+  # timeout_seconds: 60
+  # ssl_verify: false
+
 
 connectors:
   postgres.analytics:
@@ -71,8 +78,11 @@ strategy_registry:
   - equals
 
 type_strategy_map:
-  float:    [threshold, percentile, z_score, change]
-  int:      [threshold, percentile, change]
+  float:       [threshold, percentile, z_score, change]
+  int:         [threshold, percentile, change]
+  categorical: [equals]
+  # Note: boolean type has no supported strategies.
+  # Use categorical with labels: ['true', 'false'] instead.
 
 parameter_priors:
   account.active_user_rate_30d:

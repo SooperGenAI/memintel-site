@@ -25,7 +25,8 @@ Optional — only needed if you use the LLM-assisted pipeline (`/execute/full`):
 
 | Dependency | Notes |
 |---|---|
-| Anthropic API key | [console.anthropic.com/settings/api-keys](https://console.anthropic.com/settings/api-keys) |
+| Anthropic API key | Required when `llm.provider: anthropic` and `USE_LLM_FIXTURES=false`. Get from [console.anthropic.com](https://console.anthropic.com/settings/api-keys) |
+| OpenAI-compatible endpoint | Required when `llm.provider: openai_compatible`. Set `base_url` in `memintel_config.yaml`. Covers Ollama, vLLM, LM Studio, Azure OpenAI, and on-premise model servers. No additional environment variable needed unless your endpoint requires authentication. |
 
 ---
 
@@ -94,7 +95,8 @@ Never commit `start_server.ps1` or `start_server.sh` — they contain real crede
 
 | Variable | Purpose | Required | Example |
 |---|---|---|---|
-| `ANTHROPIC_API_KEY` | Anthropic API key for the LLM-assisted pipeline | Only if `USE_LLM_FIXTURES=false` | `sk-ant-...` |
+| `ANTHROPIC_API_KEY` | Anthropic API key for the LLM-assisted pipeline | Only if `llm.provider: anthropic` and `USE_LLM_FIXTURES=false` | `sk-ant-...` |
+| `MEMINTEL_LLM_API_KEY` | API key for OpenAI-compatible endpoints that require authentication | Only if endpoint requires auth when `llm.provider: openai_compatible` | `your-internal-key` |
 | `USE_LLM_FIXTURES` | Set to `false` in production to use a real LLM provider. Defaults to `true` (fixture mode) — safe for local dev without an API key | No | `false` |
 
 #### Data connector credentials

@@ -24,11 +24,11 @@ Every decision produces a permanent, immutable record containing:
 | Field | What it captures |
 |---|---|
 | `decision_id` | Unique identifier for this decision |
-| `task_id` + `task_version` | Which task produced this decision, at which version |
 | `condition_id` + `condition_version` | Which condition evaluated it, at which version |
 | `concept_result` | The computed concept value that was evaluated |
 | `input_primitives` | The raw primitive values that drove the concept |
 | `threshold_applied` | The exact parameter value in effect at decision time |
+| `signal_errors` | Which signal fetches failed during evaluation, with error details — distinguishes connector failure from legitimate null |
 | `outcome` | `triggered` or `not_triggered` |
 | `action_id` | Which action was taken (if triggered) |
 | `entity_id` | The entity this decision relates to (pseudonymised) |
