@@ -153,8 +153,8 @@ curl https://api.memsdl.ai/v1/decisions/dec_abc123/verify \
 A DSMB (Data Safety Monitoring Board) requests documentation of every adverse event alert generated during the trial period and the exact logic that produced each one.
 
 ```bash
-# Retrieve all triggered decisions for the safety monitoring task
-curl "https://api.memsdl.ai/v1/decisions?task_id=task_safety_monitor&outcome=triggered&from=2025-01-01&to=2025-06-30" \
+# Retrieve all triggered decisions for the safety monitoring condition
+curl "https://api.memsdl.ai/v1/decisions?condition_id=cond_safety_monitor&outcome=triggered&from=2025-01-01&to=2025-06-30" \
   -H "X-API-Key: your-api-key"
 ```
 

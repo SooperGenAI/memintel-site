@@ -230,7 +230,16 @@ See [Step 3A — Guardrails via API](/docs/admin-guide/admin-guardrails-api) for
 Define what happens when a condition fires — Slack alerts, emails, webhooks:
 
 ```bash
-curl -X POST https://api.memsdl.ai/v1/actions   -H "X-API-Key: your-api-key"   -H "Content-Type: application/json"   -d '{"action_id": "slack_cs_team", "type": "notification", "channel": "slack", "endpoint": "https://hooks.slack.com/..."}'
+curl -X POST https://api.memsdl.ai/v1/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action_id": "slack_cs_team",
+    "version": "v1",
+    "config": { "type": "notification", "channel": "slack-cs-alerts" },
+    "trigger": { "fire_on": "true", "condition_id": "cond_churn_risk", "condition_version": "v1" },
+    "namespace": "org"
+  }'
 ```
 
 See [Step 4 — Actions](/docs/admin-guide/admin-actions) for the full guide.
