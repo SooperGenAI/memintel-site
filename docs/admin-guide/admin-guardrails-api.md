@@ -42,7 +42,6 @@ The full schema is documented in the [Guardrails API Reference](/docs/api-refere
     "type_strategy_map": {
       "float":              ["threshold", "percentile", "z_score", "change"],
       "int":                ["threshold", "percentile", "change"],
-      "boolean":            ["equals"],
       "categorical":        ["equals"],
       "time_series<float>": ["z_score", "change", "percentile"],
       "float?":             ["threshold"]
