@@ -28,7 +28,7 @@ operator: 'AND' | 'OR'
 operands: list of condition_ids to evaluate (minimum 2)
 
 Compiler enforcement rules (checked at compile time, not here):
-  - all operands must produce decision<boolean&gt; — equals is excluded
+  - all operands must produce decision&lt;boolean&gt; — equals is excluded
   - composite cannot be nested inside another composite's operands
   - all operand condition_ids must exist in the registry
 
@@ -40,3 +40,4 @@ Minimum 2 operands is enforced here at model construction time.
   
 </Schema>
             
+
