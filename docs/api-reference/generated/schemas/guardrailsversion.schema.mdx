@@ -1,14 +1,15 @@
 ---
 id: guardrailsversion
 title: "GuardrailsVersion"
-description: ""
+description: "A versioned snapshot of the guardrails configuration."
 sidebar_label: "GuardrailsVersion"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"guardrails_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","version":"string","guardrails":{},"change_note":"string","created_at":"2024-07-29T15:51:28.071Z","is_active":true,"source":"api"}
+sample: {"guardrails_id":"string","version":"v1","guardrails":{"strategy_registry":["string"],"type_strategy_map":{},"parameter_priors":{},"bias_rules":{},"threshold_directions":{},"global_preferred_strategy":"percentile","global_default_strategy":"threshold"},"change_note":"string","created_at":"2024-07-29T15:51:28.071Z","is_active":true,"source":"api"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,13 @@ import Heading from "@theme/Heading";
 
 
 
+A versioned snapshot of the guardrails configuration.
 
+guardrails_id is auto-generated at construction time.
+version is auto-assigned by GuardrailsStore ("v1", "v2", …).
+created_at defaults to the current UTC time.
+is_active is True for the most recently created version.
+source tracks whether this was loaded from the API or from file.
 
 <Schema
   {...require("./guardrailsversion.Schema.json")}
@@ -29,10 +36,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

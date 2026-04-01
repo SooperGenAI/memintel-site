@@ -1,7 +1,7 @@
 ---
 id: constraintsconfig
 title: "ConstraintsConfig"
-description: ""
+description: "Optional authoring-time constraints forwarded to the LLM during POST /tasks."
 sidebar_label: "ConstraintsConfig"
 hide_title: true
 hide_table_of_contents: true
@@ -9,6 +9,7 @@ schema: true
 sample: {"sensitivity":"low","namespace":"personal"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,14 @@ import Heading from "@theme/Heading";
 
 
 
+Optional authoring-time constraints forwarded to the LLM during POST /tasks.
 
+sensitivity — overrides the severity derived from natural language intent.
+  The LLM uses this as a prior for threshold selection within the guardrails
+  bounds. Does not bypass guardrails — only shifts the prior within them.
+
+namespace — the registry namespace in which the generated definitions will
+  be registered. Defaults to 'personal' if not supplied.
 
 <Schema
   {...require("./constraintsconfig.Schema.json")}
@@ -29,10 +37,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

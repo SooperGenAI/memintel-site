@@ -1,14 +1,15 @@
 ---
 id: conditionexplanation
 title: "ConditionExplanation"
-description: "Explains the logic and parameters of a condition definition"
+description: "Explains the logic and parameters of a condition definition."
 sidebar_label: "ConditionExplanation"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"condition_id":"string","condition_version":"string","strategy":{"type":"threshold","params":{}},"concept_id":"string","concept_version":"string","natural_language_summary":"string","parameter_rationale":"string"}
+sample: {"condition_id":"string","condition_version":"string","strategy":{"type":"threshold","params":{"direction":"above","value":0}},"concept_id":"string","concept_version":"string","natural_language_summary":"string","parameter_rationale":"string"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,12 @@ import Heading from "@theme/Heading";
 
 
 
-Explains the logic and parameters of a condition definition
+Explains the logic and parameters of a condition definition.
+
+Returned by POST /conditions/explain.
+Deterministic given (condition_id, condition_version) — application
+context may influence wording but MUST NOT influence strategy type,
+parameter values, or the natural language summary's factual claims.
 
 <Schema
   {...require("./conditionexplanation.Schema.json")}
@@ -29,10 +35,3 @@ Explains the logic and parameters of a condition definition
   
 </Schema>
             
-
-
-
-
-
-
-

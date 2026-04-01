@@ -1,7 +1,7 @@
 ---
 id: actiontriggered
 title: "ActionTriggered"
-description: ""
+description: "Delivery record for a single action invocation after a condition fires."
 sidebar_label: "ActionTriggered"
 hide_title: true
 hide_table_of_contents: true
@@ -9,6 +9,7 @@ schema: true
 sample: {"action_id":"string","action_version":"string","status":"triggered","payload_sent":{},"error":{"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}}}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,13 @@ import Heading from "@theme/Heading";
 
 
 
+Delivery record for a single action invocation after a condition fires.
 
+Actions are best-effort — status='failed' does NOT roll back the decision.
+The full pipeline response returns HTTP 200 regardless of action outcomes.
+
+payload_sent is populated for triggered actions (webhook / workflow payloads).
+error is populated only when status='failed'.
 
 <Schema
   {...require("./actiontriggered.Schema.json")}
@@ -29,10 +36,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

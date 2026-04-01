@@ -1,7 +1,7 @@
 ---
 id: applycalibrationrequest
 title: "ApplyCalibrationRequest"
-description: "Applies a calibration recommendation as a new immutable condition version. rebind_tasks is NOT a field on this request — rebinding is always a separate explicit caller action via PATCH /tasks/{id}. threshold is NOT a field — use calibration_token from the calibrate response; params are resolved server-side from the token."
+description: "Request body for POST /conditions/apply-calibration."
 sidebar_label: "ApplyCalibrationRequest"
 hide_title: true
 hide_table_of_contents: true
@@ -9,6 +9,7 @@ schema: true
 sample: {"calibration_token":"string","new_version":"string"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,8 +22,14 @@ import Heading from "@theme/Heading";
 
 
 
-Applies a calibration recommendation as a new immutable condition version. rebind_tasks is NOT a field on this request — rebinding is always a separate explicit caller action via PATCH /tasks/\{id\}. threshold is NOT a field — use calibration_token from the calibrate response; params are resolved server-side from the token.
+Request body for POST /conditions/apply-calibration.
 
+calibration_token is the only path to applying calibrated params.
+Do NOT add condition_id, condition_version, threshold, or explicit params.
+The token resolves all of these server-side, ensuring atomicity.
+
+new_version is optional. When absent, the service auto-increments the
+source version (e.g. '1.0' → '1.1').
 
 <Schema
   {...require("./applycalibrationrequest.Schema.json")}
@@ -30,10 +37,3 @@ Applies a calibration recommendation as a new immutable condition version. rebin
   
 </Schema>
             
-
-
-
-
-
-
-

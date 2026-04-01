@@ -1,7 +1,7 @@
 ---
 id: errorresponse
 title: "ErrorResponse"
-description: ""
+description: "Top-level API error envelope."
 sidebar_label: "ErrorResponse"
 hide_title: true
 hide_table_of_contents: true
@@ -9,6 +9,7 @@ schema: true
 sample: {"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,10 @@ import Heading from "@theme/Heading";
 
 
 
+Top-level API error envelope.
 
+Wire shape:
+  \{ "error": \{ "type": "...", "message": "..." \} \}
 
 <Schema
   {...require("./errorresponse.Schema.json")}
@@ -29,10 +33,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

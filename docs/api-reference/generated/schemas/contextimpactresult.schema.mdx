@@ -1,14 +1,15 @@
 ---
 id: contextimpactresult
 title: "ContextImpactResult"
-description: ""
+description: "How tasks are distributed across context versions."
 sidebar_label: "ContextImpactResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"current_version":"string","tasks_on_current_version":0,"tasks_on_older_versions":[{"version":"string","task_count":0}],"total_stale_tasks":0}
+sample: {"total_tasks":0,"tasks_on_current_version":0,"tasks_on_older_versions":0,"older_version_task_ids":["string"]}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,13 @@ import Heading from "@theme/Heading";
 
 
 
+How tasks are distributed across context versions.
 
+Returned by GET /context/impact.
+
+older_version_task_ids lists tasks compiled under a previous context
+version (or no context at all) — these may benefit from re-creation
+under the current context to pick up updated domain knowledge.
 
 <Schema
   {...require("./contextimpactresult.Schema.json")}
@@ -29,10 +36,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

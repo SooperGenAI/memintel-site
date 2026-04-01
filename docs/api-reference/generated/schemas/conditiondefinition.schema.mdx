@@ -1,14 +1,15 @@
 ---
 id: conditiondefinition
 title: "ConditionDefinition"
-description: ""
+description: "A registered, versioned condition definition."
 sidebar_label: "ConditionDefinition"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"condition_id":"string","version":"string","concept_id":"string","concept_version":"string","strategy":{"type":"threshold","params":{}},"namespace":"personal","created_at":"2024-07-29T15:51:28.071Z","deprecated":true}
+sample: {"condition_id":"string","version":"string","concept_id":"string","concept_version":"string","strategy":{"type":"threshold","params":{"direction":"above","value":0}},"namespace":"personal","created_at":"2024-07-29T15:51:28.071Z","deprecated":false}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,20 @@ import Heading from "@theme/Heading";
 
 
 
+A registered, versioned condition definition.
 
+Stored in the `definitions` table with definition_type='condition'.
+The body JSONB column holds the serialisation of this model.
+
+Immutability: once registered, a (condition_id, version) pair is permanent.
+Updates require a new version. The unique constraint on the definitions
+table enforces this at the DB level.
+
+Deprecation: deprecated conditions are retained for audit. All existing
+task references continue to resolve. deprecated=True is advisory — the
+runtime does not automatically reject deprecated conditions, but the
+rebinding validation step warns when a task is being rebound to a
+deprecated condition version.
 
 <Schema
   {...require("./conditiondefinition.Schema.json")}
@@ -29,10 +43,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

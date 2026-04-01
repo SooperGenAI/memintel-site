@@ -1,14 +1,15 @@
 ---
 id: applicationcontext
 title: "ApplicationContext"
-description: ""
+description: "A versioned snapshot of the application's domain context."
 sidebar_label: "ApplicationContext"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"context_id":"3fa85f64-5717-4562-b3fc-2c963f66afa6","version":"string","domain":{},"behavioural":{},"semantic_hints":[{}],"calibration_bias":{},"created_at":"2024-07-29T15:51:28.071Z","is_active":true}
+sample: {"context_id":"string","version":"v1","domain":{"description":"string","entities":[{"name":"string","description":"string"}],"decisions":["string"]},"behavioural":{"data_cadence":"batch","meaningful_windows":{},"regulatory":["string"]},"semantic_hints":[{"term":"string","definition":"string"}],"calibration_bias":{"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"},"created_at":"2024-07-29T15:51:28.071Z","is_active":true}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,12 @@ import Heading from "@theme/Heading";
 
 
 
+A versioned snapshot of the application's domain context.
 
+context_id is auto-generated at construction time.
+version is auto-assigned by ContextStore ("v1", "v2", …).
+created_at defaults to the current UTC time.
+is_active is True for the most recently created context.
 
 <Schema
   {...require("./applicationcontext.Schema.json")}
@@ -29,10 +35,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

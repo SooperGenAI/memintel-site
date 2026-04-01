@@ -1,14 +1,15 @@
 ---
 id: guardrailsimpactresult
 title: "GuardrailsImpactResult"
-description: ""
+description: "How tasks are distributed across guardrails versions."
 sidebar_label: "GuardrailsImpactResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"current_version":"string","tasks_on_current_version":0,"tasks_on_older_versions":[{"version":"string","task_count":0}],"total_stale_tasks":0}
+sample: {"total_tasks":0,"tasks_on_current_version":0,"tasks_on_older_guardrails_version":0,"older_version_task_ids":["string"]}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,13 @@ import Heading from "@theme/Heading";
 
 
 
+How tasks are distributed across guardrails versions.
 
+Returned by GET /guardrails/impact.
+
+older_version_task_ids lists tasks compiled under a previous guardrails
+version (or no version at all) — these may benefit from re-creation
+under the current guardrails to pick up updated configuration.
 
 <Schema
   {...require("./guardrailsimpactresult.Schema.json")}
@@ -29,10 +36,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

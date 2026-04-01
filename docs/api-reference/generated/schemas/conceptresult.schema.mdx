@@ -1,14 +1,15 @@
 ---
 id: conceptresult
 title: "ConceptResult"
-description: "The output of concept execution (Rt). explanation is populated when explain: true is passed to the request. SDK mapping: result (not conceptResult), result.value, result.deterministic, result.explanation (camelCase)."
+description: "Output of concept execution (Rₜ). The ψ layer result."
 sidebar_label: "ConceptResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"value":0,"type":"float","entity":"string","version":"string","deterministic":true,"timestamp":"2024-07-29T15:51:28.071Z","explanation":{"output":0,"contributions":{},"nodes":[{"node_id":"string","op":"string","inputs":{},"params":{},"output_value":0,"output_type":"string"}],"trace":[{}]}}
+sample: {"value":0,"type":"float","entity":"string","version":"string","deterministic":true,"timestamp":"string","explanation":{"output":0,"contributions":{},"nodes":[{"node_id":"string","op":"string","inputs":{},"params":{},"output_value":0,"output_type":"string"}],"trace":[{}]}}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,8 +22,14 @@ import Heading from "@theme/Heading";
 
 
 
-The output of concept execution (Rt). explanation is populated when explain: true is passed to the request. SDK mapping: result (not conceptResult), result.value, result.deterministic, result.explanation (camelCase).
+Output of concept execution (Rₜ). The ψ layer result.
 
+deterministic reflects the execution mode, not the value stability:
+  True  → timestamp was provided; same inputs always produce the same result.
+  False → snapshot mode; reflects current state at call time.
+
+explanation is None when explain=False (the default). The executor sets it
+only when the caller passes explain=True on the request.
 
 <Schema
   {...require("./conceptresult.Schema.json")}
@@ -30,10 +37,3 @@ The output of concept execution (Rt). explanation is populated when explain: tru
   
 </Schema>
             
-
-
-
-
-
-
-

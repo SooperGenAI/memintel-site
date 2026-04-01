@@ -1,14 +1,15 @@
 ---
 id: calibraterequest
 title: "CalibrateRequest"
-description: ""
+description: "Request body for POST /conditions/calibrate."
 sidebar_label: "CalibrateRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"condition_id":"string","condition_version":"string","target":{"alerts_per_day":0},"feedback_direction":"tighten"}
+sample: {"condition_id":"string","condition_version":"string","target":{"alerts_per_day":0},"feedback_direction":"string"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,14 @@ import Heading from "@theme/Heading";
 
 
 
+Request body for POST /conditions/calibrate.
 
+feedback_direction overrides the direction derived from stored feedback.
+Valid values: 'tighten' | 'relax'. When absent, CalibrationService
+derives direction from the majority of stored feedback records.
+
+target is optional. When provided, the service targets the specified
+alert volume rather than a fixed adjustment step.
 
 <Schema
   {...require("./calibraterequest.Schema.json")}
@@ -29,10 +37,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

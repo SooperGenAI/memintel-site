@@ -1,14 +1,15 @@
 ---
 id: createguardrailsrequest
 title: "CreateGuardrailsRequest"
-description: ""
+description: "Request body for POST /guardrails."
 sidebar_label: "CreateGuardrailsRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"guardrails":{"strategy_registry":["string"],"type_strategy_map":{},"parameter_priors":{},"bias_rules":{},"threshold_directions":{},"global_preferred_strategy":"string","global_default_strategy":"string"},"change_note":"string"}
+sample: {"guardrails":{"strategy_registry":["string"],"type_strategy_map":{},"parameter_priors":{},"bias_rules":{},"threshold_directions":{},"global_preferred_strategy":"percentile","global_default_strategy":"threshold"},"change_note":"string"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,7 @@ import Heading from "@theme/Heading";
 
 
 
-
+Request body for POST /guardrails.
 
 <Schema
   {...require("./createguardrailsrequest.Schema.json")}
@@ -29,10 +30,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

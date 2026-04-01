@@ -1,14 +1,15 @@
 ---
 id: calibrationresult
 title: "CalibrationResult"
-description: ""
+description: "Output of POST /conditions/calibrate."
 sidebar_label: "CalibrationResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"status":"recommendation_available","no_recommendation_reason":"string","calibration_token":"string","recommended_params":{},"current_params":{},"impact":{"delta_alerts":0,"direction":"increase"}}
+sample: {"status":"recommendation_available","current_params":{},"calibration_token":"string","recommended_params":{},"impact":{"delta_alerts":0,"direction":"increase"},"no_recommendation_reason":"bounds_exceeded","statistically_optimal":0,"context_adjusted":0,"adjustment_explanation":"string"}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,7 +22,22 @@ import Heading from "@theme/Heading";
 
 
 
+Output of POST /conditions/calibrate.
 
+status drives branching:
+  recommendation_available — calibration_token and recommended_params are populated.
+  no_recommendation        — no_recommendation_reason is populated; token is None.
+
+current_params reflects the strategy params of the requested condition version.
+It is always populated regardless of status.
+
+Invariants (enforced by validator):
+  When status=recommendation_available:
+    calibration_token, recommended_params, and impact must be non-None.
+    no_recommendation_reason must be None.
+  When status=no_recommendation:
+    no_recommendation_reason must be non-None.
+    calibration_token, recommended_params, and impact must be None.
 
 <Schema
   {...require("./calibrationresult.Schema.json")}
@@ -29,10 +45,3 @@ import Heading from "@theme/Heading";
   
 </Schema>
             
-
-
-
-
-
-
-

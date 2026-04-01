@@ -1,7 +1,7 @@
 ---
 id: decisionexplanation
 title: "DecisionExplanation"
-description: "Explains a specific decision result for an entity at a given timestamp. Supports both boolean and categorical decision outputs."
+description: "Explains a specific decision result for an entity at a given timestamp."
 sidebar_label: "DecisionExplanation"
 hide_title: true
 hide_table_of_contents: true
@@ -9,6 +9,7 @@ schema: true
 sample: {"condition_id":"string","condition_version":"string","entity":"string","timestamp":"2024-07-29T15:51:28.071Z","decision":true,"decision_type":"boolean","concept_value":0,"strategy_type":"threshold","threshold_applied":0,"label_matched":"string","drivers":[{"signal":"string","contribution":0,"value":0}]}
 custom_edit_url: null
 ---
+
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -21,8 +22,22 @@ import Heading from "@theme/Heading";
 
 
 
-Explains a specific decision result for an entity at a given timestamp. Supports both boolean and categorical decision outputs.
+Explains a specific decision result for an entity at a given timestamp.
 
+Returned by POST /decisions/explain.
+Fully deterministic given (condition_id, condition_version, entity,
+timestamp). Application context has zero influence on decision, parameter
+values, or attribution weights (see guardrails.md §2.5).
+
+Naming alignment (from API spec x-ts-note):
+  DecisionResult.value     ← the decision output in evaluation results
+  DecisionExplanation.decision ← the same concept in explain responses
+  These use different field names by spec design — do not rename either.
+
+threshold_applied: present for threshold/percentile/change/z_score.
+  Null for equals (no numeric parameter) and composite (operator, not threshold).
+label_matched: present for equals only.
+  Null for all boolean strategies.
 
 <Schema
   {...require("./decisionexplanation.Schema.json")}
@@ -30,10 +45,3 @@ Explains a specific decision result for an entity at a given timestamp. Supports
   
 </Schema>
             
-
-
-
-
-
-
-
