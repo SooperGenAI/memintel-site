@@ -25,7 +25,7 @@ Memintel Backend  (Python / FastAPI)
       ↓           ↓
 PostgreSQL 15+   Redis 7+
       ↑
-LLM Provider (Anthropic / AWS Bedrock / Google Vertex AI)
+LLM Provider (Anthropic / Any OpenAI-compatible endpoint / AWS Bedrock / Google Vertex AI)
 ```
 
 **Three dependencies. One process. No scheduler.**
@@ -37,13 +37,13 @@ The application layer owns scheduling — your application calls `POST /evaluate
 ## Prerequisites
 
 | Dependency | Minimum Version | Notes |
-|---|---|---|
+| --- | --- | --- |
 | Python | 3.11+ | Required to run the backend |
 | PostgreSQL | 15+ | Primary database. Cloud-hosted recommended |
 | Redis | 7+ | Cache layer. Cloud-hosted recommended |
 | Node.js | 18+ | Required for TypeScript SDK only — not needed for the backend |
 | Git | Any recent | To clone the repository |
-| LLM Provider API Key | — | Anthropic, AWS Bedrock, or Google Vertex AI |
+| LLM Provider | — | Anthropic (cloud), any OpenAI-compatible endpoint (Ollama, vLLM, Azure OpenAI, on-premise), AWS Bedrock (planned), Google Vertex AI (planned) |
 
 ---
 
@@ -54,7 +54,7 @@ The application layer owns scheduling — your application calls `POST /evaluate
 Set up a PostgreSQL 15+ instance. Recommended cloud providers:
 
 | Provider | Notes | Free Tier |
-|---|---|---|
+| --- | --- | --- |
 | [Supabase](https://supabase.com) | Easiest setup. Managed PostgreSQL with dashboard | Yes — 500MB |
 | [Neon](https://neon.tech) | Serverless PostgreSQL. Good for variable workloads | Yes — 3GB |
 | [AWS RDS](https://aws.amazon.com/rds/postgresql/) | Best for production at scale | No |
@@ -75,7 +75,7 @@ Never put credentials in any config file committed to Git. Always use environmen
 Set up a Redis 7+ instance. Recommended providers:
 
 | Provider | Notes | Free Tier |
-|---|---|---|
+| --- | --- | --- |
 | [Upstash](https://upstash.com) | Serverless Redis. Easiest setup. Pay per request | Yes — 10,000 req/day |
 | [Redis Cloud](https://redis.com/cloud) | Official Redis hosting | Yes — 30MB |
 | [AWS ElastiCache](https://aws.amazon.com/elasticache/) | Best for production at scale | No |
@@ -83,22 +83,47 @@ Set up a Redis 7+ instance. Recommended providers:
 
 ### LLM Provider
 
-Memintel supports three LLM providers:
+Memintel supports two LLM providers today, with two more planned:
 
-| Provider | Environment Variable | Notes |
-|---|---|---|
-| Anthropic (direct) | `ANTHROPIC_API_KEY` | Simplest setup. Recommended for getting started |
-| AWS Bedrock | AWS credentials + region | Best for AWS-native deployments |
-| Google Vertex AI | GCP credentials + project | Best for GCP-native deployments |
+| Provider | Config value | Notes |
+| --- | --- | --- |
+| Anthropic | `provider: anthropic` | Simplest setup. Recommended for cloud deployments. |
+| OpenAI-compatible | `provider: openai_compatible` | Covers any server that speaks the OpenAI chat completions API: Ollama, vLLM, LM Studio, Azure OpenAI, and any on-premise model deployment. |
+| AWS Bedrock | `provider: bedrock` | Planned — not yet implemented. |
+| Google Vertex AI | `provider: vertex` | Planned — not yet implemented. |
 
-Get your Anthropic API key from [console.anthropic.com](https://console.anthropic.com). Store it as an environment variable — never in a file.
+The provider is selected in `memintel_config.yaml`:
+
+```yaml
+# Cloud deployment — Anthropic
+llm:
+  provider: anthropic
+  model: claude-sonnet-4-6
+  api_key: ${ANTHROPIC_API_KEY}
+
+# On-premise deployment — any OpenAI-compatible endpoint
+# Covers: Ollama, vLLM, LM Studio, Azure OpenAI, private model servers
+llm:
+  provider: openai_compatible
+  base_url: https://llm.internal.yourcompany.com/v1
+  model: llama3.1:70b
+  api_key: ${INTERNAL_LLM_KEY}   # omit entirely if your endpoint needs no auth
+  timeout_seconds: 60             # increase for slower on-premise GPU servers
+  ssl_verify: false               # set false for self-signed internal certificates
+```
+
+For Anthropic, get your API key from [console.anthropic.com](https://console.anthropic.com). For on-premise deployments, the `api_key` field is optional — omit it entirely if your internal endpoint requires no authentication.
+
+:::note On-premise deployments
+When using an on-premise model via `openai_compatible`, the LLM inference, data evaluation, and all decision records remain entirely within your network. Nothing leaves your infrastructure at any point in the pipeline. The guardrails system bounds the LLM's output regardless of which model is used — a weaker on-premise model produces the same validated, deterministic compiled output as a cloud model. Tighter guardrails configuration compensates for any capability difference.
+:::
 
 ### Backend Hosting
 
 The FastAPI backend runs on any platform that supports Python:
 
 | Platform | Best For | Notes |
-|---|---|---|
+| --- | --- | --- |
 | [Railway](https://railway.app) | Quickest deployment | Supports env vars, auto-deploy from GitHub |
 | [Render](https://render.com) | Simple managed hosting | Free tier available. Auto-deploy from GitHub |
 | [AWS EC2 / ECS](https://aws.amazon.com/ecs/) | Full control at scale | More configuration required |
@@ -115,7 +140,7 @@ The server will refuse to start if any required variable is missing. This is by 
 ### Required Variables
 
 | Variable | Required | Default | Description |
-|---|---|---|---|
+| --- | --- | --- | --- |
 | `DATABASE_URL` | **Yes** | — | Full PostgreSQL connection string including credentials |
 | `REDIS_URL` | **Yes** | — | Full Redis connection string including credentials |
 | `MEMINTEL_CONFIG_PATH` | **Yes** | — | Absolute path to `memintel_config.yaml` on the server |
@@ -123,8 +148,8 @@ The server will refuse to start if any required variable is missing. This is by 
 ### Optional Variables
 
 | Variable | Required | Default | Description |
-|---|---|---|---|
-| `ANTHROPIC_API_KEY` | No* | — | Required when `USE_LLM_FIXTURES=false`. Omit for local dev with fixture mode |
+| --- | --- | --- | --- |
+| `ANTHROPIC_API_KEY` | No\* | — | Required when `llm.provider: anthropic` and `USE_LLM_FIXTURES=false` |
 | `MEMINTEL_ELEVATED_KEY` | **Yes** | — | Secret key for privileged API endpoints (registry, compile, guardrails, calibration). Use a strong random string |
 | `USE_LLM_FIXTURES` | No | `true` | Set to `false` in production to use a real LLM provider |
 | `MAX_RETRIES` | No | `3` | LLM refinement loop retries before failing |
@@ -133,7 +158,7 @@ The server will refuse to start if any required variable is missing. This is by 
 | `DB_COMMAND_TIMEOUT` | No | `30` | Per-statement database timeout in seconds |
 
 :::tip
-`ANTHROPIC_API_KEY` is only required when `USE_LLM_FIXTURES=false` and using Anthropic as the provider. During initial setup and smoke testing, leave `USE_LLM_FIXTURES=true` — this validates the full pipeline without consuming LLM credits.
+`ANTHROPIC_API_KEY` is only required when `USE_LLM_FIXTURES=false` and `llm.provider` is set to `anthropic`. For `openai_compatible` providers, set `base_url` in `memintel_config.yaml` instead — no additional environment variable is needed unless your endpoint requires an API key. During initial setup and smoke testing, leave `USE_LLM_FIXTURES=true` — this validates the full pipeline without consuming LLM credits regardless of which provider is configured.
 :::
 
 :::note
@@ -145,11 +170,20 @@ If your `memintel_config.yaml` references connector environment variables (for e
 On Linux / Mac:
 
 ```bash
+# For Anthropic:
 export DATABASE_URL="postgresql://user:password@host:5432/memintel"
 export REDIS_URL="redis://host:6379/0"
 export MEMINTEL_CONFIG_PATH="/etc/memintel/memintel_config.yaml"
 export USE_LLM_FIXTURES="false"
 export ANTHROPIC_API_KEY="sk-ant-..."
+
+# For OpenAI-compatible / on-premise (set base_url in memintel_config.yaml):
+export DATABASE_URL="postgresql://user:password@host:5432/memintel"
+export REDIS_URL="redis://host:6379/0"
+export MEMINTEL_CONFIG_PATH="/etc/memintel/memintel_config.yaml"
+export USE_LLM_FIXTURES="false"
+# Only set if your endpoint requires authentication:
+export INTERNAL_LLM_KEY="your-internal-key"
 ```
 
 On Railway, Render, or other cloud platforms: set these in the platform's environment variables dashboard. Never put them in a `.env` file committed to Git.
@@ -219,6 +253,7 @@ Expected output:
 INFO [alembic.runtime.migration] Running upgrade -> 0001, initial_schema
 INFO [alembic.runtime.migration] Running upgrade 0001 -> 0002, add_application_context
 INFO [alembic.runtime.migration] Running upgrade 0002 -> 0003, add_guardrails_versions
+INFO [alembic.runtime.migration] Running upgrade 0003 -> 0004, add_decision_records
 ```
 
 :::warning
@@ -242,14 +277,14 @@ alembic upgrade head
 Then revert `DATABASE_URL` back to `postgresql://` before starting the server.
 :::
 
-Verify the schema — you should see all eight tables:
+Verify the schema — you should see all nine tables:
 
 ```bash
 psql $DATABASE_URL -c "\dt"
 ```
 
 | Table | Purpose |
-|---|---|
+| --- | --- |
 | `tasks` | Task definitions with version pinning. Carries three provenance fields: `context_version`, `guardrails_version`, `context_warning` |
 | `definitions` | Concept, primitive, and condition definitions |
 | `feedback` | User feedback for calibration |
@@ -258,6 +293,7 @@ psql $DATABASE_URL -c "\dt"
 | `jobs` | Async job tracking |
 | `application_context` | Application context versions |
 | `guardrails_versions` | Guardrails versions — created by Migration 0003. Stores all API-posted guardrails with full audit trail |
+| `decisions` | Decision audit trail — every evaluation recorded with concept_value, threshold_applied, condition_version, ir_hash, input_primitives, signal_errors, and outcome |
 
 ---
 
@@ -376,19 +412,50 @@ If the values diverge, stop and investigate before going to production.
 
 ## Step 7 — Switch to Real LLM
 
-Once all smoke tests pass against the real database:
+Once all smoke tests pass against the real database, update your environment variables and `memintel_config.yaml` to enable the real LLM provider.
+
+**For Anthropic:**
 
 ```bash
 export USE_LLM_FIXTURES=false
 export ANTHROPIC_API_KEY="sk-ant-..."
 ```
 
-Restart the server after changing these variables, then repeat the smoke test with real LLM. This will consume LLM credits — run once to verify, not repeatedly.
+Ensure `memintel_config.yaml` has:
+
+```yaml
+llm:
+  provider: anthropic
+  model: claude-sonnet-4-6
+  api_key: ${ANTHROPIC_API_KEY}
+```
+
+**For OpenAI-compatible / on-premise:**
+
+```bash
+export USE_LLM_FIXTURES=false
+# Only if your endpoint requires authentication:
+export INTERNAL_LLM_KEY="your-internal-key"
+```
+
+Ensure `memintel_config.yaml` has:
+
+```yaml
+llm:
+  provider: openai_compatible
+  base_url: https://llm.internal.yourcompany.com/v1
+  model: llama3.1:70b
+  api_key: ${INTERNAL_LLM_KEY}   # omit this line if no auth required
+  timeout_seconds: 60
+  ssl_verify: false               # only if using self-signed certificates
+```
+
+Restart the server after changing these variables, then repeat the smoke test with the real LLM. This will consume LLM credits for Anthropic — run once to verify, not repeatedly.
 
 Test one task creation for each strategy type to confirm the LLM is resolving correctly within guardrails:
 
 | Strategy | Test Intent |
-|---|---|
+| --- | --- |
 | `threshold` | `"Alert when churn score exceeds 0.8"` |
 | `z_score` | `"Alert when login frequency drops significantly"` |
 | `equals` | `"Alert when user segment is high_risk"` |
@@ -437,10 +504,10 @@ Memintel emits structured logs with `trace_id`, `entity`, `concept_id`, and `con
 ### First Week
 
 | Day | Action |
-|---|---|
+| --- | --- |
 | Day 1 | Define application context (`POST /context/context`). Post guardrails (`POST /guardrails`). Create first task. |
 | Day 2–3 | Run executions. Collect initial feedback. Verify feedback is being recorded. |
-| Day 4–5 | Run first calibration cycle. Review `statistically_optimal` vs `context_adjusted` values. |
+| Day 4–5 | Run first calibration cycle. Review recommended parameter adjustments. |
 | Day 7 | Review execution logs. Check for unexpected errors. Verify determinism is holding. |
 
 ---
@@ -448,7 +515,7 @@ Memintel emits structured logs with `trace_id`, `entity`, `concept_id`, and `con
 ## Estimated Deployment Time
 
 | Phase | Estimated Time |
-|---|---|
+| --- | --- |
 | Infrastructure setup | 30–60 minutes |
 | Environment configuration | 15 minutes |
 | Database migration | 5 minutes |
