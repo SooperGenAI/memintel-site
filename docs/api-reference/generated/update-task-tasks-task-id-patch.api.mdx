@@ -21,16 +21,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Update a task"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Update a task"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"patch"}
-  path={"/tasks/{task_id}"}
-  context={"endpoint"}
+  method=&#123;"patch"&#125;
+  path=&#123;"/tasks/&#123;task_id&#125;"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
@@ -54,27 +54,27 @@ Deleted task → HTTP 409 (ConflictError from store).
 Not found → HTTP 404.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  {...require("./update-task-tasks-task-id-patch.ParamsDetails.json")}
+  &#123;...require("./update-task-tasks-task-id-patch.ParamsDetails.json")&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./update-task-tasks-task-id-patch.RequestSchema.json")}
+  &#123;...require("./update-task-tasks-task-id-patch.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./update-task-tasks-task-id-patch.StatusCodes.json")}
+  &#123;...require("./update-task-tasks-task-id-patch.StatusCodes.json")&#125;
 >
   
 </StatusCodes>

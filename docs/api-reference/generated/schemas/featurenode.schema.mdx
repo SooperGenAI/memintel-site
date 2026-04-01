@@ -6,7 +6,7 @@ sidebar_label: "FeatureNode"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"op":"string","inputs":{},"params":{}}
+sample: &#123;"op":"string","inputs":&#123;&#125;,"params":&#123;&#125;&#125;
 custom_edit_url: null
 ---
 
@@ -14,9 +14,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"FeatureNode"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"FeatureNode"&#125;
 >
 </Heading>
 
@@ -33,12 +33,12 @@ The compiler resolves symbolic names to upstream node_ids when producing
 GraphNode. output_type is NOT set by the author — it is inferred by the
 type checker during compilation.
 
-params carries operator-specific parameters (e.g. \{'window': '30d'\} for
+params carries operator-specific parameters (e.g. \&#123;'window': '30d'\&#125; for
 pct_change or moving_average). Duration values must follow the format:
 positive integer + suffix (h/d/w/m/y). E.g. '30d', '4w'.
 
 <Schema
-  {...require("./featurenode.Schema.json")}
+  &#123;...require("./featurenode.Schema.json")&#125;
 >
   
 </Schema>

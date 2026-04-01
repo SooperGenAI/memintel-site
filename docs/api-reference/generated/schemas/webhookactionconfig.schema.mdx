@@ -6,7 +6,7 @@ sidebar_label: "WebhookActionConfig"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"type":"webhook","endpoint":"string","method":"POST","headers":{},"payload_template":{}}
+sample: &#123;"type":"webhook","endpoint":"string","method":"POST","headers":&#123;&#125;,"payload_template":&#123;&#125;&#125;
 custom_edit_url: null
 ---
 
@@ -14,9 +14,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"WebhookActionConfig"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"WebhookActionConfig"&#125;
 >
 </Heading>
 
@@ -28,13 +28,13 @@ payload_template is an opaque dict; the executor fills entity, timestamp,
 decision_value, and condition_id into it before sending. When absent, the
 executor sends a default payload containing all decision provenance fields.
 
-headers may include auth tokens — these should reference $\{ENV_VAR\}
+headers may include auth tokens — these should reference $\&#123;ENV_VAR\&#125;
 substitutions resolved at config apply time, never logged as plaintext.
 
 method defaults to 'POST'. 'GET' is permitted for fire-and-forget pings.
 
 <Schema
-  {...require("./webhookactionconfig.Schema.json")}
+  &#123;...require("./webhookactionconfig.Schema.json")&#125;
 >
   
 </Schema>

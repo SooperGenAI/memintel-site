@@ -21,16 +21,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Enqueue an async concept execution job"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Enqueue an async concept execution job"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"post"}
-  path={"/execute/async"}
-  context={"endpoint"}
+  method=&#123;"post"&#125;
+  path=&#123;"/execute/async"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
@@ -39,7 +39,7 @@ import Translate from "@docusaurus/Translate";
 
 Enqueue a concept execution job and return immediately.
 
-The response contains a job_id — poll GET /jobs/\{job_id\} at the
+The response contains a job_id — poll GET /jobs/\&#123;job_id\&#125; at the
 returned poll_interval_seconds to retrieve the result once the job
 reaches status='completed'.
 
@@ -49,27 +49,27 @@ unacceptable. The job executes the same path as POST /execute.
 Returns HTTP 202 Accepted — the job is queued, not yet complete.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={undefined}
+  parameters=&#123;undefined&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./execute-async-execute-async-post.RequestSchema.json")}
+  &#123;...require("./execute-async-execute-async-post.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./execute-async-execute-async-post.StatusCodes.json")}
+  &#123;...require("./execute-async-execute-async-post.StatusCodes.json")&#125;
 >
   
 </StatusCodes>

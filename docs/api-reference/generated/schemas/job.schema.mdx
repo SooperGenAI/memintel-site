@@ -1,12 +1,12 @@
 ---
 id: job
 title: "Job"
-description: "Async job record. Returned by POST /execute/async and GET /jobs/{id}."
+description: "Async job record. Returned by POST /execute/async and GET /jobs/&#123;id&#125;."
 sidebar_label: "Job"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"job_id":"string","job_type":"execute","status":"queued","poll_interval_seconds":2}
+sample: &#123;"job_id":"string","job_type":"execute","status":"queued","poll_interval_seconds":2&#125;
 custom_edit_url: null
 ---
 
@@ -14,18 +14,18 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Job"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Job"&#125;
 >
 </Heading>
 
 
 
-Async job record. Returned by POST /execute/async and GET /jobs/\{id\}.
+Async job record. Returned by POST /execute/async and GET /jobs/\&#123;id\&#125;.
 
 poll_interval_seconds — caller should wait this many seconds between
-  GET /jobs/\{id\} polls. The DB column is poll_interval_s; the store
+  GET /jobs/\&#123;id\&#125; polls. The DB column is poll_interval_s; the store
   maps between them.
 
 Internal DB fields (excluded from API serialisation):
@@ -33,7 +33,7 @@ Internal DB fields (excluded from API serialisation):
   request_body — the original ExecuteRequest stored for audit / retry.
 
 <Schema
-  {...require("./job.Schema.json")}
+  &#123;...require("./job.Schema.json")&#125;
 >
   
 </Schema>

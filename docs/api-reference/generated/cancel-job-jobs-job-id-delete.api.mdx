@@ -21,16 +21,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Cancel an async job"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Cancel an async job"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"delete"}
-  path={"/jobs/{job_id}"}
-  context={"endpoint"}
+  method=&#123;"delete"&#125;
+  path=&#123;"/jobs/&#123;job_id&#125;"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
@@ -47,27 +47,27 @@ Terminal jobs (completed, failed, already cancelled) → HTTP 409.
 HTTP 404 — job not found.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  {...require("./cancel-job-jobs-job-id-delete.ParamsDetails.json")}
+  &#123;...require("./cancel-job-jobs-job-id-delete.ParamsDetails.json")&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./cancel-job-jobs-job-id-delete.RequestSchema.json")}
+  &#123;...require("./cancel-job-jobs-job-id-delete.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./cancel-job-jobs-job-id-delete.StatusCodes.json")}
+  &#123;...require("./cancel-job-jobs-job-id-delete.StatusCodes.json")&#125;
 >
   
 </StatusCodes>

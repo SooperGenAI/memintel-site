@@ -21,16 +21,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Delete a task"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Delete a task"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"delete"}
-  path={"/tasks/{id}"}
-  context={"endpoint"}
+  method=&#123;"delete"&#125;
+  path=&#123;"/tasks/&#123;id&#125;"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
@@ -41,27 +41,27 @@ Soft-deletes a task (status = deleted). Deleted tasks are inactive and skipped d
 
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  {...require("./delete-task.ParamsDetails.json")}
+  &#123;...require("./delete-task.ParamsDetails.json")&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./delete-task.RequestSchema.json")}
+  &#123;...require("./delete-task.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./delete-task.StatusCodes.json")}
+  &#123;...require("./delete-task.StatusCodes.json")&#125;
 >
   
 </StatusCodes>

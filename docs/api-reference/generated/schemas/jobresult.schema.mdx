@@ -1,12 +1,12 @@
 ---
 id: jobresult
 title: "JobResult"
-description: "Response shape for GET /jobs/{id} and DELETE /jobs/{id}."
+description: "Response shape for GET /jobs/&#123;id&#125; and DELETE /jobs/&#123;id&#125;."
 sidebar_label: "JobResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"job_id":"string","status":"queued","result":{"value":0,"type":"float","entity":"string","version":"string","deterministic":true,"timestamp":"string","explanation":{"output":0,"contributions":{},"nodes":[{"node_id":"string","op":"string","inputs":{},"params":{},"output_value":0,"output_type":"string"}],"trace":[{}]}},"error":{"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}},"poll_interval_seconds":2}
+sample: &#123;"job_id":"string","status":"queued","result":&#123;"value":0,"type":"float","entity":"string","version":"string","deterministic":true,"timestamp":"string","explanation":&#123;"output":0,"contributions":&#123;&#125;,"nodes":[&#123;"node_id":"string","op":"string","inputs":&#123;&#125;,"params":&#123;&#125;,"output_value":0,"output_type":"string"&#125;],"trace":[&#123;&#125;]&#125;&#125;,"error":&#123;"error":&#123;"type":"syntax_error","message":"string","location":"string","suggestion":"string"&#125;&#125;,"poll_interval_seconds":2&#125;
 custom_edit_url: null
 ---
 
@@ -14,22 +14,22 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"JobResult"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"JobResult"&#125;
 >
 </Heading>
 
 
 
-Response shape for GET /jobs/\{id\} and DELETE /jobs/\{id\}.
+Response shape for GET /jobs/\&#123;id\&#125; and DELETE /jobs/\&#123;id\&#125;.
 
 result is populated (from result_body) only when status=completed.
 error  is populated (from error_body)  only when status=failed.
 Both are None for all other statuses.
 
 <Schema
-  {...require("./jobresult.Schema.json")}
+  &#123;...require("./jobresult.Schema.json")&#125;
 >
   
 </Schema>

@@ -6,7 +6,7 @@ sidebar_label: "ErrorDetail"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"type":"syntax_error","message":"string","location":"string","suggestion":"string"}
+sample: &#123;"type":"syntax_error","message":"string","location":"string","suggestion":"string"&#125;
 custom_edit_url: null
 ---
 
@@ -14,9 +14,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"ErrorDetail"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"ErrorDetail"&#125;
 >
 </Heading>
 
@@ -25,12 +25,12 @@ import Heading from "@theme/Heading";
 The inner ``error`` object serialised inside ErrorResponse.
 
 This is the exact shape the API spec requires:
-  { "type": "...", "message": "...", "location": null, "suggestion": null }
+  &#123; "type": "...", "message": "...", "location": null, "suggestion": null &#125;
 
 Callers must branch on ``type``, never on ``message``.
 
 <Schema
-  {...require("./errordetail.Schema.json")}
+  &#123;...require("./errordetail.Schema.json")&#125;
 >
   
 </Schema>

@@ -21,16 +21,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Apply a calibration recommendation as a new condition version"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Apply a calibration recommendation as a new condition version"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"post"}
-  path={"/conditions/apply-calibration"}
-  context={"endpoint"}
+  method=&#123;"post"&#125;
+  path=&#123;"/conditions/apply-calibration"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
@@ -46,7 +46,7 @@ the same token return HTTP 400 for all but the first.
 
 Does NOT automatically rebind tasks. tasks_pending_rebind in the response
 lists tasks still referencing the previous condition version — the caller
-must rebind them explicitly via PATCH /tasks/\{id\}.
+must rebind them explicitly via PATCH /tasks/\&#123;id\&#125;.
 
 new_version is optional. When absent, the service auto-increments the
 source version (e.g. '1.0' → '1.1').
@@ -54,27 +54,27 @@ source version (e.g. '1.0' → '1.1').
 HTTP 400 — calibration_token is invalid, expired, or already used.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={undefined}
+  parameters=&#123;undefined&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./apply-calibration-conditions-apply-calibration-post.RequestSchema.json")}
+  &#123;...require("./apply-calibration-conditions-apply-calibration-post.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./apply-calibration-conditions-apply-calibration-post.StatusCodes.json")}
+  &#123;...require("./apply-calibration-conditions-apply-calibration-post.StatusCodes.json")&#125;
 >
   
 </StatusCodes>

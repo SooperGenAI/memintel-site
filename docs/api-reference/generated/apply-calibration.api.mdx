@@ -1,7 +1,7 @@
 ---
 id: apply-calibration
 title: "Apply a calibration recommendation as a new condition version"
-description: "Creates a new immutable condition version using the parameters from a calibration recommendation. Does NOT modify the existing version. Does NOT automatically rebind any tasks — rebinding is always an explicit user action via PATCH /tasks/{id}. Returns tasks_pending_rebind listing tasks still bound to the previous version."
+description: "Creates a new immutable condition version using the parameters from a calibration recommendation. Does NOT modify the existing version. Does NOT automatically rebind any tasks — rebinding is always an explicit user action via PATCH /tasks/&#123;id&#125;. Returns tasks_pending_rebind listing tasks still bound to the previous version."
 sidebar_label: "Apply a calibration recommendation as a new condition version"
 hide_title: true
 hide_table_of_contents: true
@@ -21,47 +21,47 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Apply a calibration recommendation as a new condition version"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Apply a calibration recommendation as a new condition version"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"post"}
-  path={"/conditions/apply-calibration"}
-  context={"endpoint"}
+  method=&#123;"post"&#125;
+  path=&#123;"/conditions/apply-calibration"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
 
 
 
-Creates a new immutable condition version using the parameters from a calibration recommendation. Does NOT modify the existing version. Does NOT automatically rebind any tasks — rebinding is always an explicit user action via PATCH /tasks/\{id\}. Returns tasks_pending_rebind listing tasks still bound to the previous version.
+Creates a new immutable condition version using the parameters from a calibration recommendation. Does NOT modify the existing version. Does NOT automatically rebind any tasks — rebinding is always an explicit user action via PATCH /tasks/\&#123;id\&#125;. Returns tasks_pending_rebind listing tasks still bound to the previous version.
 
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  parameters={undefined}
+  parameters=&#123;undefined&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./apply-calibration.RequestSchema.json")}
+  &#123;...require("./apply-calibration.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./apply-calibration.StatusCodes.json")}
+  &#123;...require("./apply-calibration.StatusCodes.json")&#125;
 >
   
 </StatusCodes>

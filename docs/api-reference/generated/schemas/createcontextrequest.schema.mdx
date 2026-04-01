@@ -6,7 +6,7 @@ sidebar_label: "CreateContextRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"domain":{"description":"string","entities":[{"name":"string","description":"string"}],"decisions":["string"]},"behavioural":{"data_cadence":"batch","meaningful_windows":{},"regulatory":["string"]},"semantic_hints":[{"term":"string","definition":"string"}],"calibration_bias":{"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"}}
+sample: &#123;"domain":&#123;"description":"string","entities":[&#123;"name":"string","description":"string"&#125;],"decisions":["string"]&#125;,"behavioural":&#123;"data_cadence":"batch","meaningful_windows":&#123;&#125;,"regulatory":["string"]&#125;,"semantic_hints":[&#123;"term":"string","definition":"string"&#125;],"calibration_bias":&#123;"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"&#125;&#125;
 custom_edit_url: null
 ---
 
@@ -14,9 +14,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"CreateContextRequest"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"CreateContextRequest"&#125;
 >
 </Heading>
 
@@ -28,7 +28,7 @@ bias_direction inside calibration_bias (if supplied) is ignored —
 it is always auto-derived by CalibrationBias.model_validator.
 
 <Schema
-  {...require("./createcontextrequest.Schema.json")}
+  &#123;...require("./createcontextrequest.Schema.json")&#125;
 >
   
 </Schema>

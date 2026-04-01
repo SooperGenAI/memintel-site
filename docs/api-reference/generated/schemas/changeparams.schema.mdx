@@ -6,7 +6,7 @@ sidebar_label: "ChangeParams"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"direction":"increase","value":0,"window":"1d"}
+sample: &#123;"direction":"increase","value":0,"window":"1d"&#125;
 custom_edit_url: null
 ---
 
@@ -14,9 +14,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"ChangeParams"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"ChangeParams"&#125;
 >
 </Heading>
 
@@ -31,7 +31,7 @@ window:    lookback duration string (default '1d')
 Note: parameter key is 'value' (not 'threshold' or 'cutoff').
 
 <Schema
-  {...require("./changeparams.Schema.json")}
+  &#123;...require("./changeparams.Schema.json")&#125;
 >
   
 </Schema>

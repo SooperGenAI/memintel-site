@@ -6,7 +6,7 @@ sidebar_label: "DefinitionResponse"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"definition_id":"string","version":"string","definition_type":"string","namespace":"personal","meaning_hash":"string","ir_hash":"string","deprecated":false,"deprecated_at":"2024-07-29T15:51:28.071Z","replacement_version":"string","created_at":"2024-07-29T15:51:28.071Z","updated_at":"2024-07-29T15:51:28.071Z"}
+sample: &#123;"definition_id":"string","version":"string","definition_type":"string","namespace":"personal","meaning_hash":"string","ir_hash":"string","deprecated":false,"deprecated_at":"2024-07-29T15:51:28.071Z","replacement_version":"string","created_at":"2024-07-29T15:51:28.071Z","updated_at":"2024-07-29T15:51:28.071Z"&#125;
 custom_edit_url: null
 ---
 
@@ -14,9 +14,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"DefinitionResponse"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"DefinitionResponse"&#125;
 >
 </Heading>
 
@@ -24,8 +24,8 @@ import Heading from "@theme/Heading";
 
 Response returned by all definition write operations:
   POST /registry/definitions  (register)
-  POST /registry/definitions/\{id\}/deprecate
-  POST /registry/definitions/\{id\}/promote
+  POST /registry/definitions/\&#123;id\&#125;/deprecate
+  POST /registry/definitions/\&#123;id\&#125;/promote
   POST /definitions/concepts
   POST /definitions/conditions
   POST /definitions/primitives
@@ -38,7 +38,7 @@ ir_hash — execution graph hash (concepts only). Same definition version
   always produces the same ir_hash (compilation invariant).
 
 <Schema
-  {...require("./definitionresponse.Schema.json")}
+  &#123;...require("./definitionresponse.Schema.json")&#125;
 >
   
 </Schema>

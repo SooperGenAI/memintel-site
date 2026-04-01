@@ -1,12 +1,12 @@
 ---
 id: actionresult
 title: "ActionResult"
-description: "Response from POST /actions/{id}/trigger."
+description: "Response from POST /actions/&#123;id&#125;/trigger."
 sidebar_label: "ActionResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"action_id":"string","action_version":"string","status":"triggered","payload_sent":{},"error":{"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}}}
+sample: &#123;"action_id":"string","action_version":"string","status":"triggered","payload_sent":&#123;&#125;,"error":&#123;"error":&#123;"type":"syntax_error","message":"string","location":"string","suggestion":"string"&#125;&#125;&#125;
 custom_edit_url: null
 ---
 
@@ -14,15 +14,15 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"ActionResult"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"ActionResult"&#125;
 >
 </Heading>
 
 
 
-Response from POST /actions/\{id\}/trigger.
+Response from POST /actions/\&#123;id\&#125;/trigger.
 
 Distinct from ActionTriggered (result.py) which is nested inside
 DecisionResult and produced by the pipeline. ActionResult is the
@@ -39,7 +39,7 @@ payload_sent is the actual payload delivered (populated when triggered).
 error is populated only when status='failed'.
 
 <Schema
-  {...require("./actionresult.Schema.json")}
+  &#123;...require("./actionresult.Schema.json")&#125;
 >
   
 </Schema>

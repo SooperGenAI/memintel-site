@@ -1,12 +1,12 @@
 ---
 id: actiontriggerrequest
 title: "ActionTriggerRequest"
-description: "Request body for POST /actions/{id}/trigger."
+description: "Request body for POST /actions/&#123;id&#125;/trigger."
 sidebar_label: "ActionTriggerRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: {"version":"string","entity":"string","timestamp":"string","dry_run":false}
+sample: &#123;"version":"string","entity":"string","timestamp":"string","dry_run":false&#125;
 custom_edit_url: null
 ---
 
@@ -14,15 +14,15 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"ActionTriggerRequest"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"ActionTriggerRequest"&#125;
 >
 </Heading>
 
 
 
-Request body for POST /actions/\{id\}/trigger.
+Request body for POST /actions/\&#123;id\&#125;/trigger.
 
 Triggers a registered action directly for a given entity, bypassing the
 full pipeline. Used for:
@@ -37,7 +37,7 @@ version is required — actions are always addressed by explicit (id, version).
 There is no 'latest' resolution.
 
 <Schema
-  {...require("./actiontriggerrequest.Schema.json")}
+  &#123;...require("./actiontriggerrequest.Schema.json")&#125;
 >
   
 </Schema>

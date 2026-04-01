@@ -21,16 +21,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as={"h1"}
-  className={"openapi__heading"}
-  children={"Compile a concept to an execution graph"}
+  as=&#123;"h1"&#125;
+  className=&#123;"openapi__heading"&#125;
+  children=&#123;"Compile a concept to an execution graph"&#125;
 >
 </Heading>
 
 <MethodEndpoint
-  method={"post"}
-  path={"/compile"}
-  context={"endpoint"}
+  method=&#123;"post"&#125;
+  path=&#123;"/compile"&#125;
+  context=&#123;"endpoint"&#125;
 >
   
 </MethodEndpoint>
@@ -41,7 +41,7 @@ Validate, compile, and store a concept as an ExecutionGraph.
 
 Returns the stored ExecutionGraph with a stable graph_id and ir_hash.
 The graph is stored in the execution_graphs table and can be retrieved
-by graph_id via GET /compile/graphs/\{graph_id\} or executed via
+by graph_id via GET /compile/graphs/\&#123;graph_id\&#125; or executed via
 POST /execute/graph.
 
 Graph replacement invariant:
@@ -54,27 +54,27 @@ HTTP 409 — ir_hash mismatch on recompile (CompilerInvariantError).
 HTTP 422 — type errors detected by type checker.
 
 <Heading
-  id={"request"}
-  as={"h2"}
-  className={"openapi-tabs__heading"}
+  id=&#123;"request"&#125;
+  as=&#123;"h2"&#125;
+  className=&#123;"openapi-tabs__heading"&#125;
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  {...require("./compile-concept-compile-post.ParamsDetails.json")}
+  &#123;...require("./compile-concept-compile-post.ParamsDetails.json")&#125;
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  {...require("./compile-concept-compile-post.RequestSchema.json")}
+  &#123;...require("./compile-concept-compile-post.RequestSchema.json")&#125;
 >
   
 </RequestSchema>
 
 <StatusCodes
-  {...require("./compile-concept-compile-post.StatusCodes.json")}
+  &#123;...require("./compile-concept-compile-post.StatusCodes.json")&#125;
 >
   
 </StatusCodes>
