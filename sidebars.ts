@@ -75,6 +75,7 @@ const sidebars: SidebarsConfig = {
         'api-reference/context',
         'api-reference/guardrails',
         'api-reference/tasks',
+        'api-reference/actions',
         'api-reference/execution',
         'api-reference/conditions',
         'api-reference/decisions',
