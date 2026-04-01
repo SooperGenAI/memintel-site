@@ -13,9 +13,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"ErrorDetail"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ErrorDetail"}
 >
 </Heading>
 
@@ -24,16 +24,17 @@ import Heading from "@theme/Heading";
 The inner ``error`` object serialised inside ErrorResponse.
 
 This is the exact shape the API spec requires:
-  &#123; "type": "...", "message": "...", "location": null, "suggestion": null &#125;
+  { "type": "...", "message": "...", "location": null, "suggestion": null }
 
 Callers must branch on ``type``, never on ``message``.
 
 <Schema
-  &#123;...require("./errordetail.Schema.json")&#125;
+  {...require("./errordetail.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

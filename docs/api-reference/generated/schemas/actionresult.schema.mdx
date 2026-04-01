@@ -13,15 +13,15 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"ActionResult"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ActionResult"}
 >
 </Heading>
 
 
 
-Response from POST /actions/\&#123;id\&#125;/trigger.
+Response from POST /actions/\{id\}/trigger.
 
 Distinct from ActionTriggered (result.py) which is nested inside
 DecisionResult and produced by the pipeline. ActionResult is the
@@ -38,11 +38,12 @@ payload_sent is the actual payload delivered (populated when triggered).
 error is populated only when status='failed'.
 
 <Schema
-  &#123;...require("./actionresult.Schema.json")&#125;
+  {...require("./actionresult.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

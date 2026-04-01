@@ -13,27 +13,28 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"VersionSummary"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"VersionSummary"}
 >
 </Heading>
 
 
 
 Summary of a single version of a definition, returned by
-GET /registry/definitions/\&#123;id\&#125;/versions.
+GET /registry/definitions/\{id\}/versions.
 
 Versions are returned newest-first (by created_at DESC). The created_at
 field is the ordering key — version strings are NOT lexicographically
 sorted (they may be semver, date-stamped, or arbitrary strings).
 
 <Schema
-  &#123;...require("./versionsummary.Schema.json")&#125;
+  {...require("./versionsummary.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

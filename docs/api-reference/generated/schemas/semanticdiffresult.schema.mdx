@@ -13,16 +13,16 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"SemanticDiffResult"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"SemanticDiffResult"}
 >
 </Heading>
 
 
 
 Result of comparing two versions of a definition, returned by
-GET /registry/definitions/\&#123;id\&#125;/semantic-diff.
+GET /registry/definitions/\{id\}/semantic-diff.
 
 equivalence_status values:
   equivalent — same semantic_hash; meaning is identical; safe to promote.
@@ -35,11 +35,12 @@ The caller should block on 'breaking' status before promoting to a higher
 namespace. See py-instructions.md for the governance pattern.
 
 <Schema
-  &#123;...require("./semanticdiffresult.Schema.json")&#125;
+  {...require("./semanticdiffresult.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

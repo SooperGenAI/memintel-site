@@ -13,25 +13,26 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"LineageResult"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"LineageResult"}
 >
 </Heading>
 
 
 
-Definition lineage, returned by GET /registry/definitions/\&#123;id\&#125;/lineage.
+Definition lineage, returned by GET /registry/definitions/\{id\}/lineage.
 
 Traces the version history and namespace promotion path of a definition.
 Each entry in the chain is a (version, namespace) pair in creation order.
 
 <Schema
-  &#123;...require("./lineageresult.Schema.json")&#125;
+  {...require("./lineageresult.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

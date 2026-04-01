@@ -13,26 +13,27 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"JobResult"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"JobResult"}
 >
 </Heading>
 
 
 
-Response shape for GET /jobs/\&#123;id\&#125; and DELETE /jobs/\&#123;id\&#125;.
+Response shape for GET /jobs/\{id\} and DELETE /jobs/\{id\}.
 
 result is populated (from result_body) only when status=completed.
 error  is populated (from error_body)  only when status=failed.
 Both are None for all other statuses.
 
 <Schema
-  &#123;...require("./jobresult.Schema.json")&#125;
+  {...require("./jobresult.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

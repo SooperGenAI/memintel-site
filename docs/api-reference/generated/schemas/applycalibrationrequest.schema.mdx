@@ -13,23 +13,24 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"ApplyCalibrationRequest"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ApplyCalibrationRequest"}
 >
 </Heading>
 
 
 
-Applies a calibration recommendation as a new immutable condition version. rebind_tasks is NOT a field on this request — rebinding is always a separate explicit caller action via PATCH /tasks/\&#123;id\&#125;. threshold is NOT a field — use calibration_token from the calibrate response; params are resolved server-side from the token.
+Applies a calibration recommendation as a new immutable condition version. rebind_tasks is NOT a field on this request — rebinding is always a separate explicit caller action via PATCH /tasks/\{id\}. threshold is NOT a field — use calibration_token from the calibrate response; params are resolved server-side from the token.
 
 
 <Schema
-  &#123;...require("./applycalibrationrequest.Schema.json")&#125;
+  {...require("./applycalibrationrequest.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

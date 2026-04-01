@@ -13,15 +13,15 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"ActionTriggerRequest"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ActionTriggerRequest"}
 >
 </Heading>
 
 
 
-Request body for POST /actions/\&#123;id\&#125;/trigger.
+Request body for POST /actions/\{id\}/trigger.
 
 Triggers a registered action directly for a given entity, bypassing the
 full pipeline. Used for:
@@ -36,11 +36,12 @@ version is required — actions are always addressed by explicit (id, version).
 There is no 'latest' resolution.
 
 <Schema
-  &#123;...require("./actiontriggerrequest.Schema.json")&#125;
+  {...require("./actiontriggerrequest.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

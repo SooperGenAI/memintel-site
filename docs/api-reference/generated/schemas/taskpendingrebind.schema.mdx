@@ -13,9 +13,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"TaskPendingRebind"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"TaskPendingRebind"}
 >
 </Heading>
 
@@ -24,14 +24,15 @@ import Heading from "@theme/Heading";
 A task still bound to the superseded condition version.
 
 Returned inside ApplyCalibrationResult.tasks_pending_rebind.
-Informational only — callers must rebind explicitly via PATCH /tasks/\&#123;id\&#125;.
+Informational only — callers must rebind explicitly via PATCH /tasks/\{id\}.
 
 <Schema
-  &#123;...require("./taskpendingrebind.Schema.json")&#125;
+  {...require("./taskpendingrebind.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

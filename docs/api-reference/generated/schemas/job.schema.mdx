@@ -13,18 +13,18 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Job"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Job"}
 >
 </Heading>
 
 
 
-Async job record. Returned by POST /execute/async and GET /jobs/\&#123;id\&#125;.
+Async job record. Returned by POST /execute/async and GET /jobs/\{id\}.
 
 poll_interval_seconds — caller should wait this many seconds between
-  GET /jobs/\&#123;id\&#125; polls. The DB column is poll_interval_s; the store
+  GET /jobs/\{id\} polls. The DB column is poll_interval_s; the store
   maps between them.
 
 Internal DB fields (excluded from API serialisation):
@@ -32,11 +32,12 @@ Internal DB fields (excluded from API serialisation):
   request_body — the original ExecuteRequest stored for audit / retry.
 
 <Schema
-  &#123;...require("./job.Schema.json")&#125;
+  {...require("./job.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 

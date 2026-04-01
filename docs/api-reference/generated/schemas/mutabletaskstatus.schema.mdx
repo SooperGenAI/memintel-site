@@ -13,9 +13,9 @@ import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"MutableTaskStatus"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MutableTaskStatus"}
 >
 </Heading>
 
@@ -27,11 +27,12 @@ Deletion is a dedicated DELETE endpoint, not a status update.
 preview cannot be set via PATCH — it is only produced by dry_run.
 
 <Schema
-  &#123;...require("./mutabletaskstatus.Schema.json")&#125;
+  {...require("./mutabletaskstatus.Schema.json")}
 >
   
 </Schema>
             
+
 
 
 
