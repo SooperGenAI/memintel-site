@@ -1,0 +1,39 @@
+---
+id: executegraphrequest
+title: "ExecuteGraphRequest"
+description: "Request body for POST /execute/graph."
+sidebar_label: "ExecuteGraphRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"graph_id":"string","entity":"string","ir_hash":"string","timestamp":"string","explain":false,"explain_mode":"full","cache":true,"missing_data_policy":"null"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExecuteGraphRequest"}
+>
+</Heading>
+
+
+
+Request body for POST /execute/graph.
+
+Executes a pre-compiled graph directly, bypassing the compilation step.
+Use the hot path: compile once at startup → cache graph_id → call this
+endpoint on every evaluation.
+
+ir_hash, if provided, is verified against the stored graph before execution.
+Mismatch → HTTP 409 (audit trail mechanism; signals stale graph_id in caller).
+
+<Schema
+  {...require("./executegraphrequest.Schema.json")}
+>
+  
+</Schema>
+            

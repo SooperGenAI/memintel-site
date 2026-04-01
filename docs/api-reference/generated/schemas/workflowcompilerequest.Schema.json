@@ -1,0 +1,1 @@
+{"schema":{"properties":{"description":{"type":"string","title":"Description"},"namespace":{"type":"string","title":"Namespace","default":"private"}},"type":"object","required":["description"],"title":"WorkflowCompileRequest"},"schemaType":"response"}

@@ -1,0 +1,42 @@
+---
+id: compositeparams
+title: "CompositeParams"
+description: "composite strategy parameters."
+sidebar_label: "CompositeParams"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"operator":"AND","operands":["string"]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CompositeParams"}
+>
+</Heading>
+
+
+
+composite strategy parameters.
+
+operator: 'AND' | 'OR'
+operands: list of condition_ids to evaluate (minimum 2)
+
+Compiler enforcement rules (checked at compile time, not here):
+  - all operands must produce decision<boolean&gt; — equals is excluded
+  - composite cannot be nested inside another composite's operands
+  - all operand condition_ids must exist in the registry
+
+Minimum 2 operands is enforced here at model construction time.
+
+<Schema
+  {...require("./compositeparams.Schema.json")}
+>
+  
+</Schema>
+            

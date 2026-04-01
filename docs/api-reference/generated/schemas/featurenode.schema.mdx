@@ -1,0 +1,45 @@
+---
+id: featurenode
+title: "FeatureNode"
+description: "A single authored operator node in a concept's feature DAG."
+sidebar_label: "FeatureNode"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"op":"string","inputs":{},"params":{}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"FeatureNode"}
+>
+</Heading>
+
+
+
+A single authored operator node in a concept's feature DAG.
+
+This is the *authored* representation — it mirrors the YAML format used
+in concept definitions. The `inputs` dict maps each operator input slot
+name to either a primitive name (e.g. 'user.activity_count') or another
+feature name in this concept (e.g. 'activity_drop').
+
+The compiler resolves symbolic names to upstream node_ids when producing
+GraphNode. output_type is NOT set by the author — it is inferred by the
+type checker during compilation.
+
+params carries operator-specific parameters (e.g. \{'window': '30d'\} for
+pct_change or moving_average). Duration values must follow the format:
+positive integer + suffix (h/d/w/m/y). E.g. '30d', '4w'.
+
+<Schema
+  {...require("./featurenode.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,36 @@
+---
+id: graphedge
+title: "GraphEdge"
+description: "A directed edge in the compiled execution DAG."
+sidebar_label: "GraphEdge"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"from_node_id":"string","to_node_id":"string","input_slot":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GraphEdge"}
+>
+</Heading>
+
+
+
+A directed edge in the compiled execution DAG.
+
+from_node_id → to_node_id, feeding the named input slot.
+The edge list fully describes the DAG topology and is the input to the
+topological sort that produces the deterministic execution order.
+
+<Schema
+  {...require("./graphedge.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,80 @@
+---
+id: register-definition-registry-definitions-post
+title: "Register a definition"
+description: "Register (create or update) a definition in the registry."
+sidebar_label: "Register a definition"
+hide_title: true
+hide_table_of_contents: true
+api: eJztWM1uGzcQfpUBTxKwlt00l+qWHxcx2jSBYwcFbMEY7Y4kJlxyQ3JlL4QFeuoDFH3CPEkx5P7JkpXATU+NL16Tw+HMN38fvREel05Mr8Q5LaXzthJJ/zlLREYutbLw0mgxbXbIwii1hJ7AWCiLDD2NASGjhdSSRUFq8CsC22iaXOtr/bLbdoCWQOZ56XGuCIxOCYpyrqRbUTaBswWMemU3MktgTdZJo8fXGpUlzCqgO+m8g1vpVyAz0l6mqGBusioJd4d9qZdgKTU2A+nAki+tpmxyrc8WIP2WDoRMLhZkSfugBT7/+Re8urh4C09PfoJRY61U0lewlkYh2zYOnv1sLKTsROFdAjmhlnp5s0K3AtQZSNt8W4LU5EXpKQP0LTpBEXiZU1B2Tp9KackBKVoji36kCka/H502fx/9QhWsCDOy46GRP4JcAM4daR8Udcuf//h7W1kunWNkjAWp16gkI9K5yuKDUO7DexupiUiEKSg6cpaJqbBNntwMotjmwmDN3RTGeZGIAi3m5MlyKm6ExpzEVNwdtVYffSROTMk5GD0XibARqExMF6gcJcKlK8pRTDcCdfVmEVT5qmBVzlupl6JOuhVdKiXqWSK89IoXtgEWNe/xFeT8c5NVrLa/0duSEpEa7Un7cGNRKJkGBI4/OC6WzcCewjI+XpLjv7ZSmxe2jexN6isGzjJRJ6KpgkNn3jcidTK8J0p/1U0XLFInIQiuwPTgud86oToR8wamRtjMP1DqB8IBxrpOdgR6XK/ugdO7vOvO0MTm8kE421bVe3Yegynqmm2w5AqjXYzIk5OTGJhhs3tXpik5tygVnDfC4v8cc9JlzhEqyDqjUbEqwpyL3/L+Upk5qmEMtrJj2BYfW6Ovow54xTrqRDSd9bHqzmynKaPCUsrVP3B9bowi1FuYdWIBayyVb/rPlpIb9IeMSsTC2JxlBA/PI27+By3t74VnXoT0LRSmlJP2N4MMeQwK570qGGRSnPDf3JMXUW3jRiQP3/ySy6g2XPKf9JvZvjIadIn7tCludAQE5hWgUsMxe2sl86l2jLrptQZ4++bdBRy3k/N4MDkBRu2QHR+WPN7IrD7uUvNrhAtrcjMUHUq0ROfB3Sx+7t8vrMyll2tyTFEuHWWwMPYeGAFvWKMqyU1bZpVApzsBTOPvTl1gPFvMi2mMoxyZGEJYGbWmg9GqGk/gXaSfbEAriUpVbDlnyBoV10R3ytISbabIOTALwNKvDKcnOG/L1JeWjWi5XuBcd5SWIbhLi8XqISMwp2EiNAnIRqC6xcpBYU1WpuQCrXUs3t4yYjopIxUNVM5K1H48aWbc0ydPdsfae+Z78cSptcb+m5nmUSr+kp5ytyugTLq1+xXdSWpPS7KinvV1i9ZiNWjCv5poYJgqbnloxr0m53AZ5s+XxmEAo5mEX+gZ7Fe8upEbtIMe3ojuw268jPDtu6wVYU6+ozDGNie/Msy1OwrtV2Iq9la1SATH8rxns6d3mBeK9jCTHphurPRLO+yi3xpQh36xYYRsr9QLE+DvIpNzrBU8x/Qj6QyevT3buvSHycnkhOFjB3MMmdg8DLpn6PDNeb/rbvq0/v5u/f5ufeDd2qSxpzt/XCiUoamUNnS1WFJXwvb/GhkW1SwRK6696ZXYbObo6NKquublTyXZSkyvZokILXnOGX/FHa15vHILzKTjjf75+mD2PmQmP4r3vJLD3ORj3FajzIuo6+gi8phWYqfZ9yeepZwVB2VngybEg76vd5GbjM9YvOXOibfRCVNE4PglzWsboVAvS+7PUxF18s8//UmPzg==
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Register a definition"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/registry/definitions"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Register (create or update) a definition in the registry.
+
+Definitions are immutable once published. If (definition_id, version)
+already exists with identical body, the existing record is returned.
+If it exists with a different body → HTTP 409 (immutability violation).
+
+For concepts, meaning_hash and ir_hash are computed at registration time.
+
+Requires elevated key (X-Elevated-Key header) → HTTP 403 if absent.
+
+HTTP 403 — elevated key missing or invalid.
+HTTP 409 — definition already exists with different body.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./register-definition-registry-definitions-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./register-definition-registry-definitions-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./register-definition-registry-definitions-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

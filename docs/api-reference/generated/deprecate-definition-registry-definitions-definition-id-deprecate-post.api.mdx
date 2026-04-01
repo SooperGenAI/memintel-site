@@ -1,0 +1,77 @@
+---
+id: deprecate-definition-registry-definitions-definition-id-deprecate-post
+title: "Deprecate a definition version"
+description: "Mark a definition version as deprecated."
+sidebar_label: "Deprecate a definition version"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV0tuGzkQvQpRKxvoyJ4gK+2SOEAMTCaB42RjG0apWZIYs8kOybYtCA3MIeaEc5JBkf2hbEkREmQ33rhF1v/zqriGgAsP0yu4oIXywa2gGD9vCpDkS6fqoKyBKXxAdydQSJoro/hM3JPz/B+9kFQ7KjGQnFyba3PW/eRb5YVyjiLxTNNEnA20mTAvSjTGBjEjMbONkUKZa2PoQQT0d74QsyYIelQ+KLMQM2WkMgsvSmuCMg2JYMW8MSWLihY4qjWWVJEJt72dRzb6gvpY/Pv3PwKFoQdygxvBCkdzcmRKEsqIsKRrIzNPjA2qpCj+/eXlJ/Hq9FUUlIXEjuLYmTl7MoECbE0uCjmXMIUhWrcj663rIp+d+ducQEn+2XPW1gcooEaHFQVynMg1GKwoKsi4oADFCawxLKEAR98b5UjCNLiGCvDlkiqE6RrCqmZmH5wyCyggqKD54Gz071xC2xaDns7XXsP3hmIRHa5is8S+jpkYHM3s6K6hPYivvUmGkA9vrFyxdq4WMoE/sa61Snk9+eZZyjozU9IcG82EbQG14+wFRZ6vthRWlGdWH+cxBZsucrC6E9NoHa3q/bkYRYnBt7bo6e3sG5VhIw+dbxfJLWhbJnfka2t8Mu/l6WlyII/P56Ysyft5o8VFRwzF4dHYDMBmbR1eNgVk4drFs5HiQU+iPkjTJZO0RSxQX2O5lY9MUzHu1eQ84wGLIqy4Tx3fL7SdoYYsVX8N4toCKkKjzOJ2iX75s7n/kGSI9yyjLUC5XxJ37gZJIxRnrs+s1YRmWzHJ2IZdvc9Re9oQcothn1EFzK2rmAYkBnoRVEV7Lc3Q/3WAWL6/t6EKKB39Dk/eJrGdG00tf4eSL0lsVLIFGkakvXoG+iM4P22lvD1utrVRhhKbSNJfCEehcYakmK0Eap3PwAenAolh4vnptRHi08fPl+Kkn3En+eAXR+mY3PF+ypO1ku3JUJqHENfOVjYnzSlKa0qqg995K9Pn9vvaqUoFdU+eF4IvnqSYW/ckGDHe4h51Q34qOoWFGGQXAsv0fxAX94scYuKO4alCE1Qp4slRb7qwRq+OJ+JzwJmmaEBPiVqv2HKukHvU3BMDl6MFOqnJe2HnApuwtFyewgfXlKFxbESHSFE7PVLZxOQuHNbLXUZgRVv2QzYC9QOuvKidlU1Jnncr4Zm813JU2qpWulsZzT06hSYcT7oZ9+rly+dj7StqJRPHO+es+5WZFlBp/lKBKv+cQNty4/YAdFIm0IIctDdj36JzuMpA+E+bDIxTxS/2zbgP5D0u4vz50TiMwegm4Q8wg/1Kqju6DA7G8Kbo7nbjLIVv3+7CC/MzgSm3FYWl5bV4WGnDEqawo6s3UC5DAyiAs3wxbnzvHrGqNe1c2sacgTJzGyM6BLvi9GnxBss7MlK8/nSeIeoU/picTk6Zk22uMBZXtxMPA27rY+kpomZL6f8vrF95YXWFF+gxnNQaVeypxsWmThV1BW5852ZxgQKmT2fnWFY3BSy5LqdXsF7P0NMXp9uWj9NrhzFAKs/wK7v9aU+Kjy665jsWux472/y4o9XGaysOFJhCXBUiVs64bn/WlF1q+3Y3q1xnb85mzCLMLQkluWhIonmb1L24TGtHL+MZNjNuJo7XJc+UvbQ3GWbwXIYCZt0Lr7KSeRw+MNDhQ7I3VWV6vvHZGjSaRcNwOoUkk//+AziIDJw=
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Deprecate a definition version"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/registry/definitions/{definition_id}/deprecate"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Mark a definition version as deprecated.
+
+Deprecation is irreversible. Deprecated definitions cannot be bound in
+new tasks, but existing bindings continue to function.
+
+replacement_version (optional) — a newer version to reference in the
+deprecation notice.
+
+HTTP 404 — definition or version not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./deprecate-definition-registry-definitions-definition-id-deprecate-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./deprecate-definition-registry-definitions-definition-id-deprecate-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./deprecate-definition-registry-definitions-definition-id-deprecate-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

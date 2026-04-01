@@ -1,0 +1,1 @@
+{"schema":{"properties":{"condition_id":{"type":"string","title":"Condition Id"},"condition_version":{"type":"string","title":"Condition Version"},"timestamp":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Timestamp"}},"type":"object","required":["condition_id","condition_version"],"title":"ExplainConditionRequest"},"schemaType":"response"}

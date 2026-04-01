@@ -1,0 +1,73 @@
+---
+id: get-lineage-registry-definitions-definition-id-lineage-get
+title: "Get lineage for a definition"
+description: "Return the version chain and namespace promotion history of a definition."
+sidebar_label: "Get lineage for a definition"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVsFu2zgQ/ZXBnBKAtbNBTr5lkyAN0G6DxNtLYhhjcSSxkUiVpNMKhoD9iH7hfsmClGzJdu0U6GlPtumZN8OZN2+4Qk+Zw8kTPnCmnLc1iv7rTKBkl1hVeWU0TvCB/dJq8DnDK1unjIYkJ6WBtARNJbuKEobKmtIEF8iV88bWYFIgkJwqrcL56Fk/69aK5dwbKKlyG0jnrdKZA29ipB7X51zDN7brCCzBm4j1fjq9h4uzC/j3nx+DOKCNh9QstRyhQFOxpXB8J3GCGft5oTRTxnPb3Xjeu7r54MdcyfnGOGOPAiuyVLJnG6q3wpAkTnDLBQWqULWKfI4CLX9dKssSJ94uWaBLci4JJyv0dRWc23ujQK98EQ6u+4vcSWyaWQBxldGOXfA7PzsLH9s9elwmCTuXLgt46IxRYGK0Z+2DOVVVoZJYiPEXF3xWg1wqG8rkVRth+z6/nqrAyIvgoTyXbh+5a/YxzM+dSUCzTIEq1N5A15/SWPZd19TYMtigJM/vvCoZG7Ex08uiwFDFdYSrFhYufQgiubKchINBVgtjCia9ddWNWfBJaVl4nKRUOG4Elkxa6Wyek8uP5XosrY8tBrwPGI1AZX8L7s52SI1Y25jFF078FimfNi2Z7bXgcVmWFLVhl2vxvB1vp3RW9MKwM/ICbBQPlrCon/XtzRTG67EbD8ZuvFKyGXcgLg53l4QDstyjaP7Gzr9LlXUeThY19ByB65vHq9MRTHMenD7rVHEhQbkoK8ZKDqWDF66jbOzKT4j216cpFPxdJSazVOUqoaKon7UzNtDmJApSSTUsGByXr2wFROY5T2XFUoCxQHahvA1l6pBPR9h3gqylesCuqzg3jcCBPMbGSxkLRMX91hzt0mCvw2vg+7VkTs2bTNiVsXaYB7z40GrhA7tA/l1aDMSgE82t7sMbze98Yu+nlhJ2WxtnvVMO7Zwgtz9ZODeU5MDa2xpUu8La1aUcEJx04KJHPIWKlA22kUKR0oEyI2yaUL+L8/N98f1MhZKt8Y21xv6O8npSxREBLUyy9e8vKIPSnjO22MwO8++DaRMMVCpddkyfP7JzlHFPusOmsRgwDf++xb1wrzZ0ZzeUo0152+oevsZ1W76fBVubhDfDHmDb25J9brpHQtz1PscJHqDs1rBs2BuXfxpHt69XGTpQwJ+UvLCWcHl/h6LfhPjH6Gx0FmffOF9S5Ef3sLhlv54lSIOoDMi9O3+rnnP/8xdb1zrP3/24KjphXNo4Fm1TntD2D9dBW1DgZFfF1p2ZCcyN88F5tVqQ479t0TTh+OuSbY2Tp5nAV7KKFqFvTyuUyoXvslvzR+p98tBR+RQO5b9mrA4pv1KxDL9Q4AvXey/IOKk5k2QbE2ltLpOEKz/w3hOWsP43JL69mWLT/Afd2zJW
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get lineage for a definition"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/registry/definitions/{definition_id}/lineage"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return the version chain and namespace promotion history of a definition.
+
+promoted_to maps version strings to the namespace they were promoted to.
+
+HTTP 404 — definition not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-lineage-registry-definitions-definition-id-lineage-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-lineage-registry-definitions-definition-id-lineage-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-lineage-registry-definitions-definition-id-lineage-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

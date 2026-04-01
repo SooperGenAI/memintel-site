@@ -1,0 +1,39 @@
+---
+id: missingdatapolicy
+title: "MissingDataPolicy"
+description: "Policy applied when a primitive fetch returns no data for an entity."
+sidebar_label: "MissingDataPolicy"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "null"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MissingDataPolicy"}
+>
+</Heading>
+
+
+
+Policy applied when a primitive fetch returns no data for an entity.
+
+null          — return null (T?); downstream operators must handle nullable
+zero          — substitute 0; forces non-nullable output
+forward_fill  — use last known value (non-nullable)
+backward_fill — use next known value (non-nullable)
+
+Specified per-request to override per-primitive defaults.
+
+<Schema
+  {...require("./missingdatapolicy.Schema.json")}
+>
+  
+</Schema>
+            

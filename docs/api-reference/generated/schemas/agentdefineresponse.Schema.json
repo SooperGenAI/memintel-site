@@ -1,0 +1,1 @@
+{"schema":{"properties":{"draft":{"type":"object","title":"Draft"},"validation_notes":{"items":{"type":"string"},"type":"array","title":"Validation Notes"},"requires_review":{"type":"boolean","title":"Requires Review"}},"type":"object","required":["draft","validation_notes","requires_review"],"title":"AgentDefineResponse"},"schemaType":"response"}

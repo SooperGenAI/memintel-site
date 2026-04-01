@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["webhook","notification","email","workflow"],"title":"DeliveryType"},"schemaType":"response"}

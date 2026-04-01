@@ -1,0 +1,42 @@
+---
+id: graphnode
+title: "GraphNode"
+description: "A node in the compiled execution graph (DAG)."
+sidebar_label: "GraphNode"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"node_id":"string","op":"string","inputs":{},"params":{},"output_type":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GraphNode"}
+>
+</Heading>
+
+
+
+A node in the compiled execution graph (DAG).
+
+Produced by the compiler from FeatureNode. Unlike FeatureNode (which uses
+symbolic names), GraphNode uses resolved node_ids for all inputs.
+
+output_type is set by the TypeChecker — it is the inferred type of this
+node's output, validated against the downstream node's input requirements.
+
+The node_id is a stable, deterministic identifier derived from the node's
+position in the DAG (e.g. SHA-256 of the canonical serialisation of op +
+inputs + params). Stable node_ids ensure ir_hash stability across machines.
+
+<Schema
+  {...require("./graphnode.Schema.json")}
+>
+  
+</Schema>
+            

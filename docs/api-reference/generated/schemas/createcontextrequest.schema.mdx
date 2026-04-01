@@ -1,0 +1,35 @@
+---
+id: createcontextrequest
+title: "CreateContextRequest"
+description: "Request body for POST /context."
+sidebar_label: "CreateContextRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"domain":{"description":"string","entities":[{"name":"string","description":"string"}],"decisions":["string"]},"behavioural":{"data_cadence":"batch","meaningful_windows":{},"regulatory":["string"]},"semantic_hints":[{"term":"string","definition":"string"}],"calibration_bias":{"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CreateContextRequest"}
+>
+</Heading>
+
+
+
+Request body for POST /context.
+
+bias_direction inside calibration_bias (if supplied) is ignored —
+it is always auto-derived by CalibrationBias.model_validator.
+
+<Schema
+  {...require("./createcontextrequest.Schema.json")}
+>
+  
+</Schema>
+            

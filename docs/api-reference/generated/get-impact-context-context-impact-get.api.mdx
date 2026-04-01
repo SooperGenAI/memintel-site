@@ -1,0 +1,67 @@
+---
+id: get-impact-context-context-impact-get
+title: "Get context impact on tasks"
+description: "Return task distribution across context versions."
+sidebar_label: "Get context impact on tasks"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVcFuEzEQ/ZXRnEDapoXj3gqqSg5QVAKXJIoce5J147Vd25s2RCvxEXwhX4LsdTdJaYOEeiSX3Uxmnp9n3ptsMbClx3KM740OdB+w6N+mBQry3EkbpNFY4jWFxmkIzK9ASB+cnDfxJ2DcGe+Bd4WwJuel0X4w0RNtlCA3y6FZrJ1J4UFJH3yCinW1lYoENFqQAwbW0Vqa5g/EiX5lHGjTx1kAptTrAYwq8pTharaBOWlayAALZ2pwdMIdsUS1OyJUNNG8cY506MGCASv5ChoLjRUskABhaiY1rLS5UySWlG70idbkwDHpycOvHz/Bpb74SOXkO7lIr9HBw11Fep8t3cdLD7BAY8klPkOBJS4pzGRtGQ+znNo/c3hJcTCOvDXak8dyi2/PzuLjcEJfGs7J+0Wj4DonY4EJTIeYzqxVkqejT298rNmi5xXVLL5ZF4kF2Z0QTGAqTaz7urGEJUodaEkOCwwyqBgZxTwYpby2wFQwM3qW+/sw++MYaXJXGt7noXzLRfuAB1L6C6cHvKtY84CW+D0tyIgmA9X7sFHhepkodAHmHNvsnXIAnjoAQ+Gx3VWY+Q3xbna3jXQkotX2G3ukX8/f/NlLTHfcsouHSUDX5BsVaRzK5YO5y55hjnaWJnHU0d0aIAHzDVxejOA0Z512Yn0x1090roenXZ+8F5Lxj1l+onvPw79YHtv4KbCmUJlsVyzQslBhif3lD5uABUq9MElMeSAfqY46VfCO8RVpAeefh1hg7w58MzgbnEW1WeNDzZJhNKtj7SXtOHcHgOkWsX881O3O7v8X9ost7GznNGGrmEyLqXEqbc2khDHy/h9095bVMC2wMj7ErO12zjx9daptY/i2IbfBcjwtcM2cZPOolfG0LbAiJshhOd7iijZY4jnnZCPomqkmraPHy7yd7sn08mKEbfsbAB7gYA==
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get context impact on tasks"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/context/context/impact"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return task distribution across context versions.
+
+older_version_task_ids lists tasks compiled under a previous context version
+(or no context at all). These tasks may benefit from re-creation under the
+current context to pick up updated domain knowledge.
+
+Never raises — returns all-zero counts when no context exists.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-impact-context-context-impact-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-impact-context-context-impact-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

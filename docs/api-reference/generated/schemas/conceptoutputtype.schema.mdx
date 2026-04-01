@@ -1,0 +1,37 @@
+---
+id: conceptoutputtype
+title: "ConceptOutputType"
+description: "Declared output type of a concept. Matches the ConceptResult.type wire values."
+sidebar_label: "ConceptOutputType"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "float"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ConceptOutputType"}
+>
+</Heading>
+
+
+
+Declared output type of a concept. Matches the ConceptResult.type wire values.
+
+Determines which Python type result.value carries:
+  float       → float
+  boolean     → bool
+  categorical → str  (a label from the declared label set)
+
+<Schema
+  {...require("./conceptoutputtype.Schema.json")}
+>
+  
+</Schema>
+            

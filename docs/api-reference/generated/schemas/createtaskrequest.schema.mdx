@@ -1,0 +1,37 @@
+---
+id: createtaskrequest
+title: "CreateTaskRequest"
+description: "Request body for POST /tasks."
+sidebar_label: "CreateTaskRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"intent":"string","entity_scope":"string","delivery":{"type":"webhook","endpoint":"string","channel":"string","workflow_id":"string"},"constraints":{"sensitivity":"low","namespace":"personal"},"dry_run":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CreateTaskRequest"}
+>
+</Heading>
+
+
+
+Request body for POST /tasks.
+
+intent, entity_scope, and delivery are required.
+constraints is optional — when absent, the LLM uses guardrail defaults.
+dry_run=True returns a DryRunResult (see models/result.py) without
+persisting the task.
+
+<Schema
+  {...require("./createtaskrequest.Schema.json")}
+>
+  
+</Schema>
+            

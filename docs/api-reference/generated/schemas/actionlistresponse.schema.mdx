@@ -1,0 +1,32 @@
+---
+id: actionlistresponse
+title: "ActionListResponse"
+description: "Response body for GET /actions."
+sidebar_label: "ActionListResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"actions":[{"action_id":"string","version":"string","config":{"type":"webhook","endpoint":"string","method":"POST","headers":{},"payload_template":{}},"trigger":{"fire_on":"true","condition_id":"string","condition_version":"string"},"namespace":"personal","created_at":"2024-07-29T15:51:28.071Z","deprecated":false}],"total":0,"limit":0,"offset":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ActionListResponse"}
+>
+</Heading>
+
+
+
+Response body for GET /actions.
+
+<Schema
+  {...require("./actionlistresponse.Schema.json")}
+>
+  
+</Schema>
+            

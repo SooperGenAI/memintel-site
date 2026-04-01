@@ -1,0 +1,39 @@
+---
+id: feedbackvalue
+title: "FeedbackValue"
+description: "Valid feedback values for a decision."
+sidebar_label: "FeedbackValue"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "false_positive"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"FeedbackValue"}
+>
+</Heading>
+
+
+
+Valid feedback values for a decision.
+
+false_positive — condition fired but should not have → tighten
+false_negative — condition did not fire but should have → relax
+correct        — expected behaviour → no calibration adjustment
+
+Invalid aliases that must be rejected:
+  'useful', 'not_useful' — these are NOT valid values.
+
+<Schema
+  {...require("./feedbackvalue.Schema.json")}
+>
+  
+</Schema>
+            

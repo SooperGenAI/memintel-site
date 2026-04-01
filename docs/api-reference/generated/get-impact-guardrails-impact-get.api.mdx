@@ -1,0 +1,67 @@
+---
+id: get-impact-guardrails-impact-get
+title: "Get guardrails impact on tasks"
+description: "Return task distribution across guardrails versions."
+sidebar_label: "Get guardrails impact on tasks"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVcFuEzEQ/ZXRnEDaJoXj3gqqSg5QVAKXJIoc7yTrZtd2x3baEK3ER/CFfAmyd2k2oS0gwY1ckvXOvBm/efOyQy9WDvMJXgTBBQtVOcz6D7MMC3KSlfXKaMzxinxgDV64NRTKeVaLEF+BkGycg9V9LmyInTLaDaZ6qk1VEM+7o3lMn6vCQaWcdwnNgTS1VRUVEHRBDAIs00aZ0Aed6g4CnhkGbR6oB8KDqKrnAxiX5KgDr8UWFqRpqTws2dRTzXQimURqvq3oSwIZmEn7Pq40eqlWgVNousw72hADC+XIwbcvX4ETKy7WPflMbECaoL2D25L0I13SXbz6ADM0llrsUYE5rsjPVW2F9PN91v0JecyQyVmjHTnMd/jy9DR+HU7pQ5CSnFuGCq66YMxQGu1J+xgurK2UTFWH1y7m7NDJkmoRf1mOPXnVVvDGiyqNrH3cWsIclfa0IsYMvfJVPBnHOBinuCbDlDA3et5R+mP4T2OkYV1qeN3N4VOX1AdstdRj54+QL2M27DXeL/GwSiOu8lT3rx+Vr1eprfZAMIttr15bpsNOrMCocNjsM8zimmQ7z5ugmIq4iH2yn+Dwd9h49DqzfZd7GkZJYVfkQhV7OtTTG3Pb7ZFg2u89Fb9a+9YuqIDFFi7OxzDcBw5bTf9TdziyhLSrPrnCsR9Azw6m+kk/8AaskmsIFoItRGTh0CKwiZ8Ma/Kl6XYaM7TCl5jjzxRghkovTVJXN5e3VEcJV/BKyDXpAs7ejzDDe6Hji8Hp4DTKzxrna5G0r0WdZkoH7bY1wLSm7Y5nu9vbwn9z//vm3u26pzs/tJVQyWYCV8lmkyAmuOr/+XaSmGVYGufj691uIRx95Kpp4vFNIN5iPplluBGsxCIKZjJrMixJFMSYT3a4pi3meCYl2SivjahCMqlj229mPZlenI+xab4DnJD27A==
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get guardrails impact on tasks"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/guardrails/impact"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return task distribution across guardrails versions.
+
+older_version_task_ids lists tasks compiled under a previous guardrails
+version (or no guardrails version at all). These tasks may benefit from
+re-creation under the current guardrails configuration.
+
+Never raises — returns all-zero counts when no guardrails version exists.
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-impact-guardrails-impact-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-impact-guardrails-impact-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

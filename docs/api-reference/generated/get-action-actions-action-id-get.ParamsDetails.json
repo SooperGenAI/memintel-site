@@ -1,0 +1,1 @@
+{"parameters":[{"name":"action_id","in":"path","required":true,"schema":{"type":"string","title":"Action Id"}},{"name":"version","in":"query","required":true,"schema":{"type":"string","description":"Action version to retrieve (required)","title":"Version"},"description":"Action version to retrieve (required)"}]}

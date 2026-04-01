@@ -1,0 +1,35 @@
+---
+id: decisiontype
+title: "DecisionType"
+description: "Output type of a condition evaluation."
+sidebar_label: "DecisionType"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "boolean"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DecisionType"}
+>
+</Heading>
+
+
+
+Output type of a condition evaluation.
+
+boolean     — produced by threshold, percentile, z_score, change, composite
+categorical — produced by equals only
+
+<Schema
+  {...require("./decisiontype.Schema.json")}
+>
+  
+</Schema>
+            

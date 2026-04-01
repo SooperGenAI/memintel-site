@@ -1,0 +1,1 @@
+{"schema":{"properties":{"term":{"type":"string","title":"Term"},"definition":{"type":"string","title":"Definition"}},"type":"object","required":["term","definition"],"title":"SemanticHint","description":"Domain-specific vocabulary entry injected into LLM prompts."},"schemaType":"response"}

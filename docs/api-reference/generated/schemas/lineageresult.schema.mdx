@@ -1,0 +1,35 @@
+---
+id: lineageresult
+title: "LineageResult"
+description: "Definition lineage, returned by GET /registry/definitions/{id}/lineage."
+sidebar_label: "LineageResult"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"definition_id":"string","chain":[{"version":"string","created_at":"2024-07-29T15:51:28.071Z","deprecated":false,"meaning_hash":"string","ir_hash":"string"}],"promoted_to":{}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"LineageResult"}
+>
+</Heading>
+
+
+
+Definition lineage, returned by GET /registry/definitions/\{id\}/lineage.
+
+Traces the version history and namespace promotion path of a definition.
+Each entry in the chain is a (version, namespace) pair in creation order.
+
+<Schema
+  {...require("./lineageresult.Schema.json")}
+>
+  
+</Schema>
+            

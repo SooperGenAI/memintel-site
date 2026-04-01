@@ -1,0 +1,75 @@
+---
+id: semantic-refine-agents-semantic-refine-post
+title: "Refine an existing definition using a natural language instruction"
+description: "Apply a natural language refinement instruction to an existing definition."
+sidebar_label: "Refine an existing definition using a natural language instruction"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1u4zYQfhVizrSTBjkJ6CHZDdBgWyRw3EUBxwjG0ljihiK1JJXEMAT0IfqE+yTFiJIlJ7G32L02J2c4nJ/vm/nELQTMPSQLuMjJBA+y/7GUkJFPnaqCsgYSuKgqvREoDIbaoRYaTV5jTsLRWhkqyQShjA+uTvmGCFagEfSifFAmFxl7KT6Z3pt7M6NQO+NFKEhYp3JlUEtROVtZT5kUaDKBQisfhF2LtECTkxfPKhTCEXpr/PTerBzhozL5r3NXk1AmUykGikHjFYHrNaUhmjyVaIJKHwr0hfj29z/cDT3fmydynkv2ha11JlYkUkcYKBMOQ0FOhAKNqKsM21aUEZXGlNpGfpvPb8X56Xkbb2hSGBvE2tYmm4IEW5FDNl9nkMCujojcA7aIP7w2V9YHkFChw5ICOaZpCwZLggReJqTpiWucPNIGJCjmqCDMyIEER19r5SiDZI3akwSfFlQiJFtAs7lZt6HCpuJQPjhlcmjkzmJqraFZSggqaDb8Nbnqs32iDTR8xinIh0ubbTjskDG4miSk1gQyoc1YVZqZUdacfPE8TNtRPcw5uaDI838Dgg8qY8N+kUNJHweorzNoJHQkHrvzuXNpGK7dpB67cT1yaxrZ+9nVF0rDHs6LV6UPBe0nG6F61xE+a/meRTyhaTiRI19Z4yMoZ6enEZvxPt7VaUrer2stZp0z/DDs/QqOsNj12Jd70/s0EvpFPeZ/2/s0EroFZncVqPRv7w3gonO4GcX50N1tJPQLP7q+slYTmpH/Ze/0PcJ2TY/6GUodZTvCWQd8JO387OwtT59Rq6xlQVw5Z92Pk5RRQKX3MNx30DbdO/0Pq65MoJwcNMvDBPxuY4HMQOnzY/vyB3mPOQ1sHnZtwRBzPv0eUdxXTN35jQgZ4I3oHm7jY4TvvWS9C4v5m4CR25JCYVm9d7IcCkjgJIr3SS/ekyjeIIHZnA0aefWCZaXpHY0boNlJ2GDa06mBP1BmbVt0d8CXTKUWl5g+ksnExe31XsRfpqfT03Z1rQ8ltoPWfUviLB/4Wovas+Gd7/64tFePhe0w4v+/G37i3dDNaaCXcFJpVO0K1q7VgDiAC8D+4fZ6BJcSCp7VZAHb7Qo9/el007D5a01uA8liKeEJncIVj9CCFaB7QLBkZMrzwfCEOMjwoUL5YfLOS+UJdc3OrQxFnw8x1qRVg8HjjTgONy7SlKpw1Hc5Wtrbm7s5K3r3WCltxnccPrPS4HNswra9tcrZ2rbQzyokEGPy379+0/Bg
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Refine an existing definition using a natural language instruction"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/agents/semantic-refine"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Apply a natural language refinement instruction to an existing definition.
+
+Returns the original, proposed, and a list of changes with reasons.
+breaking=True indicates the change affects the semantic_hash — a new
+version should be created rather than updating in place.
+
+HTTP 404 — definition not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./semantic-refine-agents-semantic-refine-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./semantic-refine-agents-semantic-refine-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./semantic-refine-agents-semantic-refine-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

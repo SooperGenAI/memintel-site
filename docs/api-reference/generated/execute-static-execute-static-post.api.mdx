@@ -1,0 +1,78 @@
+---
+id: execute-static-execute-static-post
+title: "Evaluate a condition with inline data (test-only)"
+description: "Evaluate a registered condition using caller-supplied primitive values."
+sidebar_label: "Evaluate a condition with inline data (test-only)"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1OJDcQfpVSnRKpGQjKqW+7C1KIkgUB4TKMkLFrZry47V67GmiNWspD7BPmSaKyG3r4WXb3GClcaNv1+1XVV7NBVquE9RwP70l3bIPHaut7UaGhpKNt87HGw1vlOsUECiKtbGKKZEAHb6xIQJesX4FWzlHcSV3bOksG2mgby/aWQNQpzS79pf8YIJJyYBQrseBJc4gJQoSGGuuZ3JUOfmlXs141DshztJRARQJPZMjMLv2H0LTWUQJeEzjrb0o0mlqG4PPt0vUV0Bh3AstwZ3mdn9oYbq0hc+lzEMZqruTBQ+x8sTmlljgqplWfgz9f2wTkTRusZ7AJliGCC1o5YEosIATvevjn7y/i0QRK4ANDpM+djQSq4zUoby79dd+qlMYM2hhMp7O7HFFrW3LWkyRvI7ni/JS4i2N8B6RtssFfCLCgEij4/ez4I4TrT6R5hhWGlqISk0cGa6RcW7pKrNjqq2fHNiTGCiVKSvw+mB7rDergmTzLp5KK6mxu91OSlthg0mtqlHy1UZyxpTSqFeiurJEz9y1hjYmj9SuskC07ufjwCPGRwaHa0rulmGxx8m3li1F4qFDQ4v4ttcMiMVQoOG9JFty2JA/kfRiqFwJjKY1Mz5NUX8vgMabR4WJycJahLzNHpwV5HMTj5IFjR/kitcGnAu/+3p78ezqfZ53WlNKyc3A6Cpd4vq+AXwPhwRaMYUIJ+vnxJJTQhwp/3d9/Gd2FctZk33AYY4g/EtrT3jLEyjr5skxNeinggn7yqnx/vMR6/rwlhurxRihnRRGHxVRtFaPqt4D4I5QApXOatHqrxf6klNSK8NHYG90oYMC5vH6r0ySv4nqU2+qkCd6C7tfTOCjwvebsQeS38/OTFwZLbRvidRAyGemiVbzGGndHMtktZIIVShVPJy45vFdN6+glN0yIvDL70+PDWE834/BKUNYvQ8b4Ef6yQ+C90jfkDbw7OcIKJ7O/zPZme4KRZNGo3G5eNfR0y038n7eG9ZmOMzn/JEy/IzT/Mz7bk1uc+f/K/O+tzHEmmO55t3XK5nHvYuab0uzzh0WKFY7tvqhwLfNQz3GzuVaJ/opuGOT6c0exx3q+qPBWRauupUHnwjJrUoZipqUb6ss6k7bZyVwg4q7L8/ucGoW2isY7LZV7U3axNbInx2fnWOH1uNqbYEQnqjvhGXWHNeafDKKdeTPfbdApv+qEzWosNuXvX2vWo5E=
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Evaluate a condition with inline data (test-only)"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/execute/static"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Evaluate a registered condition using caller-supplied primitive values.
+
+No real data connectors or memintel_config.yaml entries are needed.
+Compiles the linked concept on the fly, evaluates it with the provided
+data dict, then runs the condition strategy.
+
+This endpoint is for local testing only — it does not require auth and
+bypasses the production data pipeline entirely.
+
+Returns the DecisionValue as a JSON object.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./execute-static-execute-static-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./execute-static-execute-static-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

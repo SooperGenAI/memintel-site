@@ -1,0 +1,1 @@
+{"schema":{"properties":{"results":{"items":{"type":"object"},"type":"array","title":"Results"},"query":{"type":"string","title":"Query"},"total_count":{"type":"integer","title":"Total Count"}},"type":"object","required":["results","query","total_count"],"title":"AgentQueryResponse"},"schemaType":"response"}

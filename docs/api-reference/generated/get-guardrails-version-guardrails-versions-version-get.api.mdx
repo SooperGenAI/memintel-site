@@ -1,0 +1,71 @@
+---
+id: get-guardrails-version-guardrails-versions-version-get
+title: "Get a specific guardrails version"
+description: "Return the guardrails version for the given version string (e.g. 'v1', 'v2')."
+sidebar_label: "Get a specific guardrails version"
+hide_title: true
+hide_table_of_contents: true
+api: eJzFV81u2zgQfpUBTy2gOGnQk29pU3QDbHeNJO2lDoyxOJLYUKRKUk4NQ0Afos+wD9YnWYz+ZTtpdrHAnmxRM9/MfPyGHO1EwNSL+WfxvkQnHSrtRTR+uIuEJB87VQRljZiLawqlMxAygrQ3gw05r6yBxLrmldqQ6Vd9cMqk8IJm6QyWYvNqKSL+PV+Kl7OlWZrfbm8X8PrsNfz8/qP3MjZAYksjZyIStiCHnMKVFHORUlgN0Vetx5Elv+pfrlIKIhIFOswpkOOyd8JgTmIuWiMRCcVFFhgyEQlHX0vlSIp5cCVFwscZ5SjmOxG2Bbs1hYlIBBU0L3xqcarqjt19YY0nzx7nZ2f8MyXzpoxj8j4pNVy3xiISsTWBTGBzLAqt4rrw0y+efXajLArHtATVRBhVr+RTSQ7bC1dSVFFf/TMKYzkkWOrApL1i5yHsYUo+OAyUbleOUuWD2/KiCpT7w1hV1C2gc7gdxb5pUeC6Q2ltVz1+jkVNl5SKuUK9mOTxzJDDs11/oTiMcrjdFgR9Ih+wYONeS6vCKev8UylMgZ+ItOhAYdGAVpFYK/QrV2p6ToiD4g5CvFHo4bqGY6vMkc+sliupHMWM/N+Eue2A4XIAZsVou0a9Khwl5BzJfhufFG3tBIvOqd+MiSQLcjGZoDSNArWv/0mYy8bleJCeMFEdqX44ND4f0f8x4R4R0mTL74617iUlytT7I/aP6AvwKi+0ShTJCC4WVyc5GkwJ15pgo+gBbLJ/gMfWJCotmzO2PpMPcgetfPC1I5+anlFQa/tAElpjRX62NAcVQo6Fh8KpXAW1IWCDFiNYBlQONqjVHs4+Kw2MV6lBDVeXtbOnDTkVtieaNqShNgSp4sAAA4eNKz/Dg3Vy4gqNayOFOv8jDXEsdm8Hvd0I5VGVg2pI7J85LZIQ7AM6CQ8Z8d0HmTIB6BtzPqDtS7nDSlDrNcb3A6hNQKMP4MhbF2bcDnGGJqWVsYHq/jbbP5P6Etzv6H7FlFqLaqS/tzUE/MEQjOgIA8kVhmM9lViX8xshMdBJUDmNGu1t4woX9WGo/Apj1sYIZ22tJjQjnysPF43VqB35aq4i4W3pYjqWBpky52bEQnFSfDaMKrpp/Mb9zYa/6ux0MiIdtuf4vpz2ZnvZctMYLHxmw7PacXK787ZjGexJSobnIpKAgZ18cGUjRKZ7tjTdMNU5oGcNk4T1FoZsb4J1BC+mo1kEP7//xfPZsMvQktT1LcSlc2QCfLx920Xst5Jj3rqS+qEwt7Ue+YDWW2hROz5mS9NsIQSH8b3nPggZsafy8IAetEVJEhJn8xruYnEF1jXPvKszUVW8ba/Pzw8nrU98vNRswjvnrPv3Y5akgEpPpoqpgbbx5O0z+kyZQCk5Ud09PgX9bpsEuV1ynz51iX0g7zGl4W5+3LQmA3i6+aXkua4mdGs3Ev5Ab8Pu42VcNvQdC9aZ8NfAAWCztzmFzLZfAPW9GTIxF6dDc5x2g//prv1X1UN9YmsWeoJyplzDG4zvyUjWkhjNweLV7Gx2Vo941occa0G0nwrvKQCCLyhWiYqPfATt9/xuUNr/9fXUMh3oWzgtNKpaRKWrVdxwODnReib477wr6y4SmfWBbXe7NXr66HRV8fLXkni0/3wXiQ06xXNGrXepPP+XYp6g9vQELy+uW6G9hMfS7fRkWE0b1CU/iUjc03b0AVd3UEYoydUpNG8v4piKMPI7aHi+5HpxvX93K6rqb0IuWd4=
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get a specific guardrails version"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/guardrails/versions/{version}"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return the guardrails version for the given version string (e.g. "v1", "v2").
+
+HTTP 404 — version not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-guardrails-version-guardrails-versions-version-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-guardrails-version-guardrails-versions-version-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-guardrails-version-guardrails-versions-version-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

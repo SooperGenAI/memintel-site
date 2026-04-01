@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["top","bottom"],"title":"PercentileDirection","description":"top / bottom — NOT above / below (a common source of bugs)."},"schemaType":"response"}

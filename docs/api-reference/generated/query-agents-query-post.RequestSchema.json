@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"properties":{"query":{"type":"string","title":"Query"},"definition_type":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Definition Type"},"limit":{"type":"integer","title":"Limit","default":10}},"type":"object","required":["query"],"title":"AgentQueryRequest"}}},"required":true}}

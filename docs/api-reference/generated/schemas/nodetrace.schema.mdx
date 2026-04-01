@@ -1,0 +1,36 @@
+---
+id: nodetrace
+title: "NodeTrace"
+description: "Computation record for a single graph node, in topological execution order."
+sidebar_label: "NodeTrace"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"node_id":"string","op":"string","inputs":{},"params":{},"output_value":0,"output_type":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"NodeTrace"}
+>
+</Heading>
+
+
+
+Computation record for a single graph node, in topological execution order.
+
+Populated only when explain=True. inputs and params are raw dicts because
+their structure varies by operator — the explain route serialises them
+faithfully rather than imposing a schema.
+
+<Schema
+  {...require("./nodetrace.Schema.json")}
+>
+  
+</Schema>
+            

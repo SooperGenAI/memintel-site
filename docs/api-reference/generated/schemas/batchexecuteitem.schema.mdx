@@ -1,0 +1,36 @@
+---
+id: batchexecuteitem
+title: "BatchExecuteItem"
+description: "Result for a single entity in a batch execution request."
+sidebar_label: "BatchExecuteItem"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"entity":"string","result":{"value":0,"type":"float","entity":"string","version":"string","deterministic":true,"timestamp":"string","explanation":{"output":0,"contributions":{},"nodes":[{"node_id":"string","op":"string","inputs":{},"params":{},"output_value":0,"output_type":"string"}],"trace":[{}]}},"error":{"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"BatchExecuteItem"}
+>
+</Heading>
+
+
+
+Result for a single entity in a batch execution request.
+
+result is populated on success; error is populated on per-entity failure.
+A batch call returns HTTP 200 even if some individual entities fail —
+inspect each item's error field for per-entity status.
+
+<Schema
+  {...require("./batchexecuteitem.Schema.json")}
+>
+  
+</Schema>
+            

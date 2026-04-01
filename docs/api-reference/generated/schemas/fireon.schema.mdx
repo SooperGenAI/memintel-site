@@ -1,0 +1,39 @@
+---
+id: fireon
+title: "FireOn"
+description: "Controls when a bound action fires relative to the condition decision."
+sidebar_label: "FireOn"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "true"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"FireOn"}
+>
+</Heading>
+
+
+
+Controls when a bound action fires relative to the condition decision.
+
+TRUE  — fires when decision.value is True (or the matched label for equals)
+FALSE — fires when decision.value is False
+ANY   — fires on every evaluation, regardless of decision value
+
+Wire values are lowercase strings: 'true', 'false', 'any'.
+These are NOT Python booleans — do not compare with `is True` / `is False`.
+
+<Schema
+  {...require("./fireon.Schema.json")}
+>
+  
+</Schema>
+            

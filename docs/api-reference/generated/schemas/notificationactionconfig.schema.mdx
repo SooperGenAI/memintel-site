@@ -1,0 +1,37 @@
+---
+id: notificationactionconfig
+title: "NotificationActionConfig"
+description: "Config for push notification actions."
+sidebar_label: "NotificationActionConfig"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"type":"notification","channel":"string","message_template":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"NotificationActionConfig"}
+>
+</Heading>
+
+
+
+Config for push notification actions.
+
+channel is the named notification channel (e.g. 'slack-alerts', 'pagerduty').
+message_template is an optional format string; the executor interpolates
+entity, decision_value, and condition_id. When absent, a default message
+containing the decision summary is used.
+
+<Schema
+  {...require("./notificationactionconfig.Schema.json")}
+>
+  
+</Schema>
+            

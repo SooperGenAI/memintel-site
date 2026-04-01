@@ -1,0 +1,77 @@
+---
+id: get-semantic-diff-registry-definitions-definition-id-semantic-diff-get
+title: "Get semantic diff between two versions"
+description: "Compare two versions of a definition and return the semantic diff."
+sidebar_label: "Get semantic diff between two versions"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV81u20YQfpXBXpIAjOQaPsmnJHZdAy0a2GoutiGMuENyI3KX2R1aFQQCeYg+YZ+k2CUlkvqLkQbopbpIXM7s/Oy33zdaC8bUicmDuKNUObYrEXU/nyIhycVWlayMFhPxwRQlWgJeGngm65TRDkwCCJISpZU3A9QSLHFlNXBG4KhAzSoGqZJk9KgfNX2p1DPmpGOaOUau3ORRA2yXGf7++hc4LAgKQq10OsvQZZegJPmdMIfYFGXF6ONdgsOEgA2U1hSGaeQ38wbIap5T2KzdB+IMdUoS5hXDHOPFEq1829kG17klXHhjCK7SLLVjS1j0inRQ4ArmBEo/Y64kMsngXOmFNksNrbP3Y0C33TQ04Jfp9CNcnF00+3edMxZIcUZ201zQhiExlZYjEQlTkg0l30oxESnxbNPbme/tzLbnNuvlOes9zJSc7bikxCISJVosiMl6JKyFxoLERAwcRSSUR0CJnIlIWH9YlqSYsK0oEi7OqEAxWQteld7ZsVU6FZFgxblfuOrKvJWirqNtnLbWWWJNsQnzpaIAxZfHGQL1PTraNvG1ySXZN71kPrVvfvYh6xc5H0iYzY9Kd4o2Je5ialoeTnhq9tM94lw/+XxcabQj51M4PzvzX0Pn+yqOybmkyuGuNRaRiI1m0uzNsSxzFQfYjT8777PulVVaD0pWTYQhYl4OhmiIgROOuwfXO4oXeDXd26efU77XnTXcN9Z1JFxVFGhXpxzvW5M6Eg3rhDCKqejHM/PPFLM3ahfQWlz1tvnQ+tadSevTh9vD3m3duVUDzB7oQFfSU6+EliuuVJLckaty3kNus+w1ILCo78FJdYhaafAcvHrUN9dTGG94a9zjrfFayXq8Iau3J7QDnjGv6LiEbAmv0ZCNEijXycmPlJBLsPSsaAmWYlMUpGWrDMdlJTZatlVjfExdLiE1z2Q16pgeg770PhsgwJwSY6ktQxl9SJNiU+UyKIv0nF8oTZdHhGqaEcSY52TBZcFtnpt4AUbDq43hK2jPYRjb48AAQqbSjOyj9tzpSoxpBPdEUK7eKl9/1RQ8KiQkxoaBoasTSmQmq0eirj3+L87P9xnsU9Mhf7+vrTX239AXo8oHt3RokJt48Bb16vckSOaQBLxWtCtKM6VkRf10/Ir/apoEPQsULj1FKr+Rc5hSxxcniMs3A6b+7be4w9fVhG7tehzQtbfp7vEyrpr2HQq2MfGDz96GzdkWxJlp55owknAmJuIINwzIbocmgiYnjR5su1b4c8jhPcYL0hLefbztOFFMxE+js9GZL600jgsMKGnF/oZ4OMLCnHhJpAc0t8uL6w6D/w/N/+nQ3EKR6U8elzmqcMsqG655A7IHYbv/Pr1sRSQmu6o6RNpTJDLj2G+xXs/R0R82r2u/3AyEnhmkcjjP/T1LMHd0Aiev79or+QaOja+HalnQan+IDpooJiJQ0XelcHwk/XYSYcjoUnjyD1b5HL6/Jccib8hIr/oxNxkNzy+QcEYoyYZEGpt3cUwl97z3NMNXsOWnm+upqOt/AJqwabA=
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get semantic diff between two versions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/registry/definitions/{definition_id}/semantic-diff"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Compare two versions of a definition and return the semantic diff.
+
+equivalence_status:
+  equivalent — same meaning_hash; identical computation; safe to promote.
+  compatible — meaning changed but backward-compatible.
+  breaking   — downstream definitions may be invalidated.
+  unknown    — treat as breaking.
+
+HTTP 404 — definition or either version not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-semantic-diff-registry-definitions-definition-id-semantic-diff-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-semantic-diff-registry-definitions-definition-id-semantic-diff-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-semantic-diff-registry-definitions-definition-id-semantic-diff-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

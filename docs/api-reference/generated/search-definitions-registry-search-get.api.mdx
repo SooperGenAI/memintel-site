@@ -1,0 +1,71 @@
+---
+id: search-definitions-registry-search-get
+title: "Search definitions by keyword"
+description: "Search definitions by keyword across id, namespace, and metadata."
+sidebar_label: "Search definitions by keyword"
+hide_title: true
+hide_table_of_contents: true
+api: eJzNWNtuGzcQ/ZUBn2xgIztGnxYoitRJEwO5uI6TF9sQxrsjLRMuuSG5tgVhgXxEv7BfUgz3bmkVx2mKPkki584zN62Fx6UT8YU4o6V03q5E1H+9ikRKLrGy8NJoEYv3hDbJIKWF1JLPHFyv4DOtbo1NARNrnAOZRqAxJ1dgQhGgTiEnjyl6nF3qS31GvrTaAUKBS6nRUwq14DNypfJwK30GSWmdsU+u0VHaEkqjZyISpiAbfpykIhYusM4HNs1t48C8uVuSF5Eo0GJOniz7uxZsoojFFxEJyb59KSl4b+lLKS2lIva2pEi4JKMcRbwWflUwh/NW6qWYiE0QAx2Nl14x05+ieghDFXWG9Q7Ng+JJMxeo3MhO1Kt3i+Dj2GIW3pzoUilRbbzvH1J5svymvXZgFthLjE6o8BEkRqfhIgJM6s/Cylx6eUP7A4+f9xLOWemG/z+ubBAtxYffEaMmDlJ7WpIVkcjxTuZlLuKnh4eRyKVufrHVCyyVF/HRYe/d66CvGlhQA/Y/eabTLh2g09oadlwfbER7k4flWnKF0Y4cG3R0eMgf91BaJgk5tygVnDXEIhKJ0Z60D24UhZJJkHzwyTHPeuBkYTlbvaw1SE/5+Mv4foB5mW5LuS3gOknZ2RuyTtbKp3g+NiQhNOPcepimFsZdcdvGR5phcyEKss5oVCyKMOeyZfl+qcw1Ki6trYa3nbgqEjmhlno5z9Bl3wuSVuCbWga8YhlVJKT9IXEntpOUUmEp4Yo9cP3aGEWoRzHryAbpExJgJGSOfpdRkVgYmzONSNHTEy9z2mlprxeeebbXUqEwoZy0nw8Q8pgonPWiYICkxNLP8OS4Ftu4URbpz1DyoRYblFRRS2auP1HiR6Xr4l5i9um2mUrD9LjalkaDKjKuNO0F2DAgUMqtAZUatodbKz1BNwC4+FIDnL57fw4HbdM/GE4nsFcfk93fTXmwlml10EHzIcSFNbkZkg4pmg7mJm/rtjZx3/U4xwPTBx6BFsbeC0aIN9ygKsnF8KCWGeavYYmBv7/+BY5y1F4mEE7a5uvAaLXan8F7j9eKggEtJSq1YssZITeoOCc6LktLtKki58AsAEufGYYnTzhl4kvLRjQVKWinO0rK8LhLi0U2ZQTmNARCA0A2AtUtrhwU1qRlQg58RuCYvNWyl5i8kKpuflLfoJWo/f5M9KBHa3E1qGAnoT9VkcjQzXNjaWe9e4UO3jARNwe68/Omwz6y1LylOw99H/fGo5onpqz77cbk0rKdMx0cB7pv5XPdfwfujdUMjBlO5hspe9oN8Eo6z+89QHE0SuSXLyaS6VLzhjC+ruf2gNbj7XtADINAg6xfXaHzMCpV4Ij07FKfonOADn6rGX4FHjUzCkKAA0POz0RVcdx+OTraHIM+opJpjaAX1oaJ65EzUEoepdoxBCmTjG4fAKEWDNXVNKRfm9rAMGW45a6Z5w05h0vq82OaNASjmYy+gTn2q1bd0A1Q1oe3ju60G8/r8G1T1qXj+fnphsD6bXPymeGtsV0JfSZicR94YYhfmOB3F5Kcg6zgd0w+k07h2enJoA/G4unscHbIdhfG+RwDBJrNYOfWfD+n1j2u/ifrdhNmT3f+oFAoA4JKGyBcB/BC2P7fgyaEV5HIjPN8uV6z2A9WVRUf16sR4zmVjltLvxxNRmLvrAHSPkzs2duM/EyrZsMPXVLEIiTNw9X+K/vwtGWbs9NuO2uudtV9pE9bl8dpGzuaXt0V/7CS9Yn4gktORpiSDW9acz1LODgDro0KyVK6bHz54lxU1T/Jjn8J
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Search definitions by keyword"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/registry/search"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Search definitions by keyword across id, namespace, and metadata.
+
+Returns a paginated SearchResult with cursor-based pagination.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./search-definitions-registry-search-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./search-definitions-registry-search-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./search-definitions-registry-search-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

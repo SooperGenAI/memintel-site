@@ -1,0 +1,38 @@
+---
+id: workflowactionconfig
+title: "WorkflowActionConfig"
+description: "Config for workflow trigger actions."
+sidebar_label: "WorkflowActionConfig"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"type":"workflow","workflow_id":"string","input_mapping":{}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"WorkflowActionConfig"}
+>
+</Heading>
+
+
+
+Config for workflow trigger actions.
+
+workflow_id references a registered workflow in the connected workflow engine.
+input_mapping maps workflow input parameter names to decision fields:
+  key   — workflow engine input name
+  value — source field from the decision payload (e.g. 'entity', 'value')
+When empty, the executor forwards the full decision payload as-is.
+
+<Schema
+  {...require("./workflowactionconfig.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,74 @@
+---
+id: compile-workflow-agents-workflows-compile-post
+title: "Compile a multi-step workflow from a natural language description"
+description: "Compile a multi-step workflow description into an ExecutionPlan."
+sidebar_label: "Compile a multi-step workflow from a natural language description"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVk1z2zYQ/Ss7e6Yl19MTb47jtp5RYtVxks5IGg0ErkjEIMAAoGxVo/+eWZCUKMkfTc7liQT3A3j79mE3GETuMZ3gZU4meEy6l1mCGXnpVBWUNZjilS0rpQkElLUO6swHquDRuoelto/QswVlggVh4PqJZM0rYy3MYGqm5r6gY5cFeRDg6XtNRhLYJUhrJFUBaCV0LdjfgzAZr2eKP6dGFiQf/AA43mj0ARx5q1fkwdGSHAfKujBHvh6WzpYQCpoaR7nywa2jReVsVkvezNHG4VGFAqhbmluXkWOXqamEE1qTVv+KhaZ57mxd+QEmaCtycec3GaYoG+Tm3cnnIkK8+/bzzqKyPmCCjtHw4Z3N1phuUFoTyAR+FVWllYyhh98812WDXhZUCn6rHCcOijx/HZRvg2FdEabog1MmxwSDCpoX3vfMtgkaUZKvhKTXfD7ujJglS1HrgClWTq1EINxuk87TLr6R7I6kHGVMtf7GZvugX1s4WqLdNSDglsPt3YOrKS74yhrfnPTi/PzkwPiplpK8X9Ya7lpjTH4Vy5ZMc5W9BstVy9ybjJFckfNvYP+lNWHcbUZzaetmb62DMoFycn3kbUZwFc22CR6xkj1VoNKf5tyXRDgn1r2IO7LDbYyxTfBZXh8E/49ZXs46PkgBfzYpOLdTpQpqRfMlBVnQz6Trhe+iwB9tlG2C0qmgpNDzSoRirsnkoXgV7KvWAcYiFDBqHN5id48qew4c1Pe0bi9B/hwcL5xj9kxFWb7wWMdZM+mp0kIZqFjfWuXLYLGG8e2nexi2cjRszc6qvn5/+nsE1/+MR5c3H4GPvRKaTICldSD22r0jVe5EVQzgjkLtjG+Ed/93J6ZwCAA0AETttXUAVxujTM7ubUTezmdPsKClddQlNHlvE8FCbTJyPgiTpVMDcAZfCyUL2KHKGbSGBUEDb9a34pJ5kMJw+hi1do5M0OvGitEINggdLSEWt7ltOt5wgVjAtgn+fnFxqlFfhFZZVCC4ds66XxeojIJQ+qBXDg20lQd/hVnfLjGdnPbUSUNsZy832sg2G+T+Kn3+mth9IO9FTvuufdk0ggH3/PetduNzNalbu14j7OFt0H35GO8b+J5L1pn8dX8/PgnY1LakUFi+6dv7O5Y9xWFzzw9393zXWJgg1/Nuf81fP4my0nTKkB00vXt5f9EmqMzSRiR3IJdcNg3vhHwgk8Hl+KanQyn+NjgfnEehtT6UIpKKY7854cW5SYARoXZCgxYmr0VO/cnvWGt6o8v/4+NPjI8tBQM9hWFUYK5X7WJ7N9yaoOjm9R27ong0/JolWDAV0wluNgvh6bPT2y0vf6/JrTGdzBJcCac4MX9tEyxIxBFissEHWjfTDNfuLLYhm+s6ts6xKrFiNB6XkiF71XbW6xa+bDDBRTvmljZjHyceucXFI6YYR+mIOxvEtQ12zMMUm5j8/AATbY1A
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Compile a multi-step workflow from a natural language description"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/agents/workflows/compile"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Compile a multi-step workflow description into an ExecutionPlan.
+
+The workflow describes a sequence of concept evaluations and condition
+checks. The LLM resolves referenced concepts and conditions from the
+registry and produces an ExecutionPlan with execution_order and
+parallelizable_groups.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./compile-workflow-agents-workflows-compile-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./compile-workflow-agents-workflows-compile-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

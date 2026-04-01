@@ -1,0 +1,77 @@
+---
+id: register-definitions-batch-registry-definitions-batch-post
+title: "Register multiple definitions in a single request"
+description: "Register a batch of definitions atomically."
+sidebar_label: "Register multiple definitions in a single request"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1uGzcQfhViTi2wllQ3J93i1kGN/sSwlSCALBij3ZHEiEtuSK7shbBAT32Aok+YJwmGXO2uLEtOc+ipOmnJ4XDm+2Y+zhY8Lh2Mp3BDS+m8rSDp/s4SyMilVhZeGg3jZoesQDFHn66EWYiMFlJLNnACvcllikpVgzt9py8xXfX2hXSisCYl5ygTUmdUkM5Ie1UNxBuUqrTkxMJY3pMbmZWo7vSef0sixcKXNjgQfkWCrDXWCSWdF6gzkRmhjRdzZdJ1MLDk/J02i/ARwh6ISVwvjHYkUD1g5YQlX1rtxC+TybU4H41CCjf0qZQcFinaoKdMrKkS3304u2y+z36lSqwIM7Lfi89//R2Pvxr9KORC4NyR9sFRu/z5z3/2neXSOamXIuS9QSWzASRgCrLIWV9lMAbbAH/fQ+M+5HJvG7ae2SqM85BAgRZz8mSZ6C1ozAnG8Hi2i+JsTUy7ZIZjJpCAjYlnMF6gcpSAS1eUI4y3gLp6uwiufFWwK+et1Euok3ZFl0pBPUvAS694YR8wqHmPryDnL0xWsdvuRm9LSiA12pP24caiUDINcAw/Oi7FbS+ewjJYXpLjrx4M/Ck95e6U1b3MeGE/lS7wn7vyvcqgTmBD1skYwrEz7xuTOunfE62/6qYJm9RJoMoVmJ4890drVCcwb8BsjM38I6W+ZxzAruvkwKBDf/oEnC7lw3T6ITaX90jfyUWX2U2kHLoA0FqsnkXB/Ys4Xf/anosL7oP20pod7to+lMH5aBSroa9yt2XKGrUolbhpjOGby3HXudSvMqk9LUObPYWKQo25tSyKF07cNjZ1AguU6gXrN9GkTiDq5V5r7GN8nJvLePQlWnopd6m0UbYRnGTMlWpH2Kvz80OO3rNOBgZEiOrbCcrIo1QnpEKZdG/3K+Rvh389Ow7mbyYGyHjnbnmqw38n53BJHTPHTQMYjX68QBPnFa9u7HqEdPBGdE/1a4Dvuct2Jvz0HTiM3ObkV4YfuPap8isYw3D3qA17LT4MjxokwIzedG/H5SPmhaID7Z8eqHwHVyvi3dKBUndbPRnuFhulrQPHUi9MoKVlLOcaUOIC0zXpTLy+vtq79ofBaDBiWDnxHEOFNg9zO2TlpfKyULQ3YkktUPC8oHiCicL2ZEzbdq3w/8T2301sTdV4evTDQqEMnV3aIC2xrnfSGKbsfq0mEGt7lsCKG2E8he12jo7eWVXXvPypJFvBeDpLYINW4pzLbMql10xsodyl441uZjtaFsfC5UnwmdFwg6pk46Bx0ean6OtsEseAncWB8nYnXqcpFf6k7aynCNdvbyddm0FuMj5j8YFlDB9iEqZoB72wtgWFelmyWI4h+uTfF+ZMhNU=
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Register multiple definitions in a single request"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/registry/definitions/batch"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Register a batch of definitions atomically.
+
+Each definition is processed independently. Failures for individual
+definitions are captured in the errors list and do not block the rest
+of the batch. The response always returns HTTP 200.
+
+Requires elevated key (X-Elevated-Key header) → HTTP 403 if absent.
+
+HTTP 403 — elevated key missing or invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./register-definitions-batch-registry-definitions-batch-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./register-definitions-batch-registry-definitions-batch-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./register-definitions-batch-registry-definitions-batch-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

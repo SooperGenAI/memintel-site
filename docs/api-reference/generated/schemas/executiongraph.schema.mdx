@@ -1,0 +1,54 @@
+---
+id: executiongraph
+title: "ExecutionGraph"
+description: "The compiled execution graph for a concept. Stored in the execution_graphs"
+sidebar_label: "ExecutionGraph"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"graph_id":"string","concept_id":"string","version":"string","ir_hash":"string","nodes":[{"node_id":"string","op":"string","inputs":{},"params":{},"output_type":"string"}],"edges":[{"from_node_id":"string","to_node_id":"string","input_slot":"string"}],"topological_order":["string"],"parallelizable_groups":["string"],"output_node_id":"string","output_type":"string","created_at":"2024-07-29T15:51:28.071Z"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExecutionGraph"}
+>
+</Heading>
+
+
+
+The compiled execution graph for a concept. Stored in the execution_graphs
+table (graph_body JSONB column).
+
+graph_id — UUID generated at compile time. Stable: recompiling the same
+  (concept_id, version) always produces the same graph_id because it is
+  derived from the concept_id + version (not from graph content).
+
+ir_hash — SHA-256 of the canonical graph JSON (sorted keys, stable field
+  order). Must be deterministic: same definition → same hash, always, on
+  any machine. Used for audit verification at execution time.
+
+Graph replacement invariant (from persistence-schema.md §3.5):
+  Recompiling an unchanged definition MUST produce the same ir_hash.
+  If the existing graph has a different ir_hash → CompilerInvariantError.
+  GraphStore.store() enforces this check before any overwrite.
+
+topological_order — node_ids in the deterministic execution order produced
+  by the topological sort. Fixed at compile time; the runtime must follow
+  this order and must not reorder nodes based on data availability.
+
+parallelizable_groups — groups of node_ids that can execute concurrently
+  (they have no dependency relationship within their group). Also fixed at
+  compile time. The runtime may parallelize within a group.
+
+<Schema
+  {...require("./executiongraph.Schema.json")}
+>
+  
+</Schema>
+            

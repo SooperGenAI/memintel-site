@@ -1,0 +1,38 @@
+---
+id: changeparams
+title: "ChangeParams"
+description: "change strategy parameters."
+sidebar_label: "ChangeParams"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"direction":"increase","value":0,"window":"1d"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ChangeParams"}
+>
+</Heading>
+
+
+
+change strategy parameters.
+
+direction: 'increase' | 'decrease' | 'any'
+value:     percentage change threshold (must be >= 0)
+window:    lookback duration string (default '1d')
+
+Note: parameter key is 'value' (not 'threshold' or 'cutoff').
+
+<Schema
+  {...require("./changeparams.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,72 @@
+---
+id: list-definitions-registry-definitions-get
+title: "List definitions"
+description: "Return a paginated list of definitions."
+sidebar_label: "List definitions"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVWNtuGzcQ/RWCTzGwkRSjTwsUhZu4iQEnMWwnL7YhjLkjiQmX3JBcx4KwQD+iX9gvKYZ741paxXGbAH2StDucOTOcyxltuIel4+kVP8eldN6uedJ/vUl4hk5YWXhpNE/5OfrSagasgKXU4DFjSjrPzIJluJBakpybXOtr/YdUHi27XUdv5n5dIAOdTY1lGnJ0BQicsJeldcY+vwWHWataGs3+/vOva12Ac0zjvZ+LIMYW1uTMr5AVFu+kKR2z6AqjHTJwrBEyOojQOWbxS4nOT3jCTYE26D7JeMoJ+zwCPreN54OHS/Q84QVYyNGjpWhtOKHnKX/gG0+4pDh9KTFEkixLixlPF6AcJtyJFebA0w0HvX6/CKrCwZQ7b6Ve8irpnuhSKV5tXUIf2RDOZ8JogYVPmDA6C1gSBqL+LKzMpZd3eMAT7qVXpPdVB5pdkqXqP7JA0Ju4dJf7kyMS223dfdc92+OojoQ6LxS59h0eNCil9rhEyxOew73My5ynL2azhOdSN78IxwJK5Xl6OOuRngZ7VYSgzuafEsSzvu46qy2wukC347d9hvS25egI0OFsRh/DcxelEOjcolTsvBHmCRdGe9Q+uFEUSoqgefrJ0ZlN5GRhqY69rC1Ij/nwy/B9VKMyi66piczOujjJyNk7tE7WxsfOfGxEQmiGveBxltoK7BNwxznUlDZXvEDrjAZFqhByamiW3i+VuQVF/Xpn0ucIWurlfAVu9b1J0ip8W+tgb0hHlXBp/5W6E9tpyrCwKGiYRK7fGqMQ9CBmnVhUPqEABkrm4PeBSvjC2JxkeAYen3uZ416kvV125AmvxUKBwBy1n0cZ8pQonPeqWJRJwuKP8ORlrbZxoyyyH2HkQ602GKmSVszcfkLhB63r6kFh9uW2XUpxedzsKqOoizxkLA01sIG6YEbNHpSKWAn7aqVH1lEDl15rxs7eX1yyaUsIphEhYOxZ/RjtwX7J6UZm1bRLzccIF9bkJhaNJZo57Ebf1sN55H03qR3xsw/EtRbGPghGTdHuQJXoUvaowR/oXtxiiLcxhzloLwULT1oK4ZjRan0wYRcebhUGAK0kKLUm5JQhd6CoJrpTFpdgM4XOEdeE0q8MpSdz3pbCl5ZANB0pWMd7FGW43KWFYjUGAnKME6FJQAIB6iusHSusyUqBLpBJR+KtlWfC5IVU9fCT+g6sBO0PJrxPerAW1lEHOwnzqUr4Ctw8Nxb39rs34NhbEqLh0NPfp7aad8SE+znujQc1F6as5+0Wc2mPXZIcexnkvlXP9fyN3BuaicBcIFixOkdHPXyEVOzeLZJBIb8+Himmaw06e/DaBaMhW0cWjnSwZ8j61hU4zwatijlEPbnWZ7SZgGO/1Qd+3b10VBXF7ZfDw20a9BGUzOoMOrY2MK4ncqAMPUi1hwQpIwZvH5FCbTJUN+MpfWpqgIFluOU+zvMWnYMl9vUxLhqC0TCjb+Qc+VWbbuSiLOvDW0d33I1Xdfh2GevK8fLybEthfbc5+pWhfbLdFP2Kp3xnXgYmvzDB+S4uOUVasd9BfEadsaOzk2gYpvzFZDaZEfjCOJ9DyINmPTiVg9x0D2tp0+fT/393b27G472fFgpkSLrShqyvY37Fbf8vRhyWm4SvjPMksdkQ1A9WVRU9rlcqqoNMOhpJ/VI1GsmnL+C7PPiM651/JIQZzFMeSvIp4Aa78LjlWGy/zVq+XYqfiG/nmjmOrpPpzd3QDyvJHk+vqDmtEDK04RbrU0eCLiQ6tdVLSUtXt6+PL3lV/QMIibF+
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List definitions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/registry/definitions"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return a paginated list of definitions.
+
+Filter by definition_type and/or namespace. Cursor-based pagination —
+pass next_cursor from the previous response as cursor on the next request.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./list-definitions-registry-definitions-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./list-definitions-registry-definitions-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./list-definitions-registry-definitions-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

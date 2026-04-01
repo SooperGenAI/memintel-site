@@ -1,0 +1,1 @@
+{"parameters":[{"name":"condition_id","in":"path","required":true,"schema":{"type":"string","title":"Condition Id"}},{"name":"version","in":"query","required":true,"schema":{"type":"string","description":"Condition version to retrieve (required)","title":"Version"},"description":"Condition version to retrieve (required)"}]}

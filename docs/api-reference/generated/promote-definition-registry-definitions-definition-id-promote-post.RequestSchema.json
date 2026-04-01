@@ -1,0 +1,1 @@
+{"title":"Body","body":{"content":{"application/json":{"schema":{"default":{"target_namespace":"org"},"properties":{"target_namespace":{"type":"string","title":"Target Namespace"}},"type":"object","required":["target_namespace"],"title":"PromoteRequest"}}}}}

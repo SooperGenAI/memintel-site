@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["above","below"],"title":"ThresholdDirection"},"schemaType":"response"}

@@ -1,0 +1,76 @@
+---
+id: promote-definition-registry-definitions-definition-id-promote-post
+title: "Promote a definition to a higher namespace"
+description: "Promote a definition version to a higher namespace."
+sidebar_label: "Promote a definition to a higher namespace"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV81u2zgQfhViTgmgOtmgJ926bYEG2G4DN+0lMYyxNJbYUqQ6pJwahoE97QMs9gn7JAuS+nNiu0aL3jYXK+THmY/zzw04LCykdzClQlrHa0iGz1kCOdmMZe2k0ZDCDZvKOBIoclpKLf2yWBFb/+uMQFHKoiQWGiuyNWY0udf3+s/uP+EYtQ3HrEAm0WiZS6bMr6ASZzXLFToS3/7+Rxguwm/dLJTMzif3+hVVJqiUVmjjhG3q2rCjfCKmtJL0IFxJwlKF2slM5HK5FAtaGiZRB+ZSF/caxYIJP0tdiKxEXUSOb25vb8Tzy+fi21//jm9nuL+gV7k0jc4nHfzqKsD1nvt5jlKvUMl8AgmYmhj9+nUOKUQ2NB/0zLk1+mjNzscAmc/n3bnaWAcJ1MhYkSP2HtyApwEp7JyBBKT3XI2uhASYvjSSKYfUcUMJ2KykCiHdgFvX/rB1LHUBCTjplF94NZjiOoftNun1tGbpNHxpKETP6Sp2Y+vjEEbtNUcs2k3YnnBqO4skyLrfTb72mjOjHWnnP7GulcyCKy4+WS9jM6KY0xIbFYAOuSA3730LKRguPIOavTedJLsfd9iYtwEr+nzw9uzAZvGJMrdjwLunwmeDsDYZp/GqsN16YUy2NtpGaleXl/FSY4u9b7KMrF02SkxbMCSnW2j38ruxdnoYJX30HDmz4/ReT0SfpOnWQ7YJHPUN6abypq6JrS9CXhRh5XOW/X6hzALV2PAj9yVQEWqpi3mJtgzW0+t3y5COu4p84rQrulEqRGkn8G2UId54GdsEJP+UuGvuJeVUM2XoaOychTGKUO/YrIclQw4sUVnaETJHd4xUAkvDlcdAjo6eOVnRUaaDXvHCQQjfWmFGFWk3H0XIj1hhOogSo0jKmH7FTV5Gse01mjr/FUo+RLFByXcKx+MmMBTrx6k0To/ZvjQaVYndStJtCCbXsKZcLNYClRq3zweWjkTf/Wx6r4W4eff+Vlx0He9i1PGEOIvLxOfHkRcbmW8v+tA8Bdw2iAE6RmRGZ1Q7e3A3j5/792uWlXRyRdbPEh8s5WJp+JExgr3FClVDNhWtwkT0shOBWfztxYXRZFxiwrzRTzhh5ayjLoxW6/OJeO9woSgQ6JCo1Noz9xGyQuVzoj/FVCDniqwVZimwcaXx4Sms4yZzDXsSbUUK2ukrZU1wbsFYl4dIYEV7pkRPAtUDrq3v13mTkY1Dm4d3Ws4yU9VSYZyj9ApZonbnk7bHPb+6etrWPvpJK554zWz4Z3qaQ6n8l3RU2acAZbKd3ROqk9SOCmLYzoa8RWZcj4rwHyYSDF3FFsd63FuyFovQf77XDoMx2k74nZrh7xVVt7hRORjMG617+Bqvovn2Kesgfnh+IjD6tiJXmjAidyOuKyGFA1m9U+X6BIcEvI+nwwz4+itWtaIDY13vLpB6aQKot3PlPafE75h9Jp2LFzfXo2Kawm+Ty8llmAmNdRWGuGrH471vpb1vpMeFdTSv/v/i+uEXVxt8jr66i1qhDHnVcEjsGFV3wMOjdxRXkED6uH92oTVLoPSRmd7BZrNASx9Ybbd+Ob5/fBXIpfUFOG8nqCPePZu26Xcu9j9/9t3hM613Xl+hoUAKYVQItXLhg/dHiRxS26W7Xo91dnR27RXKXEmYEwciEfMyqnt2G8eOTsaT2uzrZjzxIvM95Sh2NqoZvi9DAov21VeZ3J9hfPCFDh8iX1NHJ6ebuLYBhbpofDlNIcr0f/8BKCkO3A==
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Promote a definition to a higher namespace"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/registry/definitions/{definition_id}/promote"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Promote a definition version to a higher namespace.
+
+Namespace transitions are unidirectional (private → org → public).
+Demotion is not supported. Review the semantic diff before promoting
+a breaking change.
+
+HTTP 404 — definition or version not found.
+HTTP 422 — namespace transition is invalid.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./promote-definition-registry-definitions-definition-id-promote-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./promote-definition-registry-definitions-definition-id-promote-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./promote-definition-registry-definitions-definition-id-promote-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

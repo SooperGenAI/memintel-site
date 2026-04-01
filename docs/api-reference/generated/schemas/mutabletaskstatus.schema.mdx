@@ -1,0 +1,35 @@
+---
+id: mutabletaskstatus
+title: "MutableTaskStatus"
+description: "Subset of TaskStatus that a PATCH request is allowed to set."
+sidebar_label: "MutableTaskStatus"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "active"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"MutableTaskStatus"}
+>
+</Heading>
+
+
+
+Subset of TaskStatus that a PATCH request is allowed to set.
+
+Deletion is a dedicated DELETE endpoint, not a status update.
+preview cannot be set via PATCH — it is only produced by dry_run.
+
+<Schema
+  {...require("./mutabletaskstatus.Schema.json")}
+>
+  
+</Schema>
+            

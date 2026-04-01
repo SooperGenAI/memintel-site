@@ -1,0 +1,37 @@
+---
+id: errordetail
+title: "ErrorDetail"
+description: "The inner ``error`` object serialised inside ErrorResponse."
+sidebar_label: "ErrorDetail"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"type":"syntax_error","message":"string","location":"string","suggestion":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ErrorDetail"}
+>
+</Heading>
+
+
+
+The inner ``error`` object serialised inside ErrorResponse.
+
+This is the exact shape the API spec requires:
+  { "type": "...", "message": "...", "location": null, "suggestion": null }
+
+Callers must branch on ``type``, never on ``message``.
+
+<Schema
+  {...require("./errordetail.Schema.json")}
+>
+  
+</Schema>
+            

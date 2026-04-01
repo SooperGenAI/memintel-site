@@ -1,0 +1,1 @@
+{"parameters":[{"name":"definition_id","in":"path","required":true,"schema":{"type":"string","title":"Definition Id"}},{"name":"version","in":"query","required":true,"schema":{"type":"string","description":"Version to deprecate","title":"Version"},"description":"Version to deprecate"}]}

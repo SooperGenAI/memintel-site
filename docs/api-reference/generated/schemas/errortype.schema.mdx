@@ -1,0 +1,38 @@
+---
+id: errortype
+title: "ErrorType"
+description: "Canonical error type identifiers. The string value is the wire value."
+sidebar_label: "ErrorType"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "syntax_error"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ErrorType"}
+>
+</Heading>
+
+
+
+Canonical error type identifiers. The string value is the wire value.
+
+Rules (from API spec):
+  - Callers must branch on .type, never on .message.
+  - Message text is for humans; type is for machines.
+  - The enum spelling is the ground truth for YAML, HTTP, and Python alike.
+    In particular: z_score (not zscore), not_found (not 404), conflict (not 409).
+
+<Schema
+  {...require("./errortype.Schema.json")}
+>
+  
+</Schema>
+            

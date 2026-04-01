@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["boolean","categorical"],"title":"DecisionType","description":"Output type of a condition evaluation.\n\nboolean     — produced by threshold, percentile, z_score, change, composite\ncategorical — produced by equals only"},"schemaType":"response"}

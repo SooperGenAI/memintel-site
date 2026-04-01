@@ -1,0 +1,37 @@
+---
+id: calibrationimpact
+title: "CalibrationImpact"
+description: "Estimated impact of applying the recommended parameter change."
+sidebar_label: "CalibrationImpact"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"delta_alerts":0,"direction":"increase"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CalibrationImpact"}
+>
+</Heading>
+
+
+
+Estimated impact of applying the recommended parameter change.
+
+delta_alerts — estimated change in daily alert volume.
+  Positive = more alerts (relax); negative = fewer alerts (tighten).
+
+direction — qualitative direction of the impact.
+
+<Schema
+  {...require("./calibrationimpact.Schema.json")}
+>
+  
+</Schema>
+            

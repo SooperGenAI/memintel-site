@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["float","boolean","categorical"],"title":"ConceptOutputType","description":"Declared output type of a concept. Matches the ConceptResult.type wire values.\n\nDetermines which Python type result.value carries:\n  float       → float\n  boolean     → bool\n  categorical → str  (a label from the declared label set)"},"schemaType":"response"}

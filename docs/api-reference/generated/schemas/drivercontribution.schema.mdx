@@ -1,0 +1,35 @@
+---
+id: drivercontribution
+title: "DriverContribution"
+description: "Attribution of a single input signal to a concept value in a decision."
+sidebar_label: "DriverContribution"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"signal":"string","contribution":0,"value":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DriverContribution"}
+>
+</Heading>
+
+
+
+Attribution of a single input signal to a concept value in a decision.
+
+Used inside DecisionExplanation.drivers to break down how each primitive
+contributed to the concept output that was evaluated by the condition.
+
+<Schema
+  {...require("./drivercontribution.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,35 @@
+---
+id: calibrationstatus
+title: "CalibrationStatus"
+description: "Outcome of a calibration request."
+sidebar_label: "CalibrationStatus"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "recommendation_available"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CalibrationStatus"}
+>
+</Heading>
+
+
+
+Outcome of a calibration request.
+
+recommendation_available — adjusted params computed; calibration_token populated.
+no_recommendation        — no adjustment possible; no_recommendation_reason populated.
+
+<Schema
+  {...require("./calibrationstatus.Schema.json")}
+>
+  
+</Schema>
+            

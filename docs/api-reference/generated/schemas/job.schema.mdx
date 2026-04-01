@@ -1,0 +1,40 @@
+---
+id: job
+title: "Job"
+description: "Async job record. Returned by POST /execute/async and GET /jobs/{id}."
+sidebar_label: "Job"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"job_id":"string","job_type":"execute","status":"queued","poll_interval_seconds":2}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Job"}
+>
+</Heading>
+
+
+
+Async job record. Returned by POST /execute/async and GET /jobs/\{id\}.
+
+poll_interval_seconds — caller should wait this many seconds between
+  GET /jobs/\{id\} polls. The DB column is poll_interval_s; the store
+  maps between them.
+
+Internal DB fields (excluded from API serialisation):
+  enqueued_at, started_at, completed_at, updated_at — managed by JobStore.
+  request_body — the original ExecuteRequest stored for audit / retry.
+
+<Schema
+  {...require("./job.Schema.json")}
+>
+  
+</Schema>
+            

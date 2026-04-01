@@ -1,0 +1,1 @@
+{"schema":{"properties":{"registered":{"type":"integer","title":"Registered"},"skipped":{"type":"integer","title":"Skipped"},"failed":{"type":"integer","title":"Failed"},"errors":{"items":{"type":"object"},"type":"array","title":"Errors"}},"type":"object","required":["registered","skipped","failed","errors"],"title":"DefinitionsBatchResult"},"schemaType":"response"}

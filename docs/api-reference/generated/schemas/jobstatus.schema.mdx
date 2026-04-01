@@ -1,0 +1,40 @@
+---
+id: jobstatus
+title: "JobStatus"
+description: "Async job lifecycle status."
+sidebar_label: "JobStatus"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "queued"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"JobStatus"}
+>
+</Heading>
+
+
+
+Async job lifecycle status.
+
+Transitions (enforced in JobStore.update_status()):
+  queued → running
+  queued → cancelled
+  running → completed
+  running → failed
+  running → cancelled
+  completed / failed / cancelled → (terminal — no further transitions)
+
+<Schema
+  {...require("./jobstatus.Schema.json")}
+>
+  
+</Schema>
+            

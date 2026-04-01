@@ -1,0 +1,74 @@
+---
+id: find-similar-registry-definitions-similar-post
+title: "Find semantically similar definitions"
+description: "Return definitions that are semantically similar to the given (id, version)."
+sidebar_label: "Find semantically similar definitions"
+hide_title: true
+hide_table_of_contents: true
+api: eJztV9tuGzcQ/ZUBn2xgLTtBnhYoitzaGEhSw5bzYhvCaDmSmHDJDcm1LQgL9CP6hf2SYsiVlnJkJXAR9KV+8Yo8nBvPXLgSAedelFfinObKB7cUxfB5UwhJvnKqCcoaUYpzCq0zIGmmjOI1D2GBAdAReKrRBFWh1kvwqlYaHQQLYUEwV7dk4EDJAm7JeWXN4ejaXJuLBFNhCcpDZeumDSRh5mwdz61lThboFyCVD2gqGsGlp1mrYWbdtZEUqArKzMEQuiPZNlpVGMjDlGbWEbjoDjmGIBi6y+yPVrwbj8/gxckL+PvPv8Db1lWUQcDYADPbGjkShbANOeTlUylKMVNGTnpfJ64P2yQLz2azsT6IQjj62pIPr6xcinIlKmsCmcCf2CS7lTXHnz1HeyV8taAa+atxrDgo8vxrUDBRkhfCsiFRCh/YSVGIoILmhTeDF6dSdIXoo7/vzKce0hVCq1qFDKtMoDm5DPw+IpgmM2x1EOWzk64r1ng7/UzV2m3lSDLRto0fTLoZpP6mjOypcZ4CJjoWO4gJrqW44BtrfIrK85OTFJycsRdtVZH3zJbzHiyKp8ZdBaq3P/6be8n0JPQPaRozpCuEwZp8g9XOc2Tamm+pIeetQc2iCGtmvuP9ubZT1PllfdyI6wpRExpl5jFfY3TN8o+ZKK8eKuqKzYpptRZdJvBDkgHvWEZXCOX+lbhTt5EkqXHEtSG/nKm1mtBsxWwDy5g9Q+1pS8gEwz6jCjGzrmaMkBjoKKia9lo66IWXQUR6NxorqsmEScaQp0ThfBAFGZMqRz/Dk9dJbO9G28ifoeQyiY1Knlhzvk2lPD1udqVRVkUe9sa0AS42SZIwXQJqnbeSO6cCwaaH+PLaAJz9cTGG43X3OM6bKxysm9fhfuTxSsnueEPNHwE3ztY2h+aIypqKmuAf3ZXpc/d+47gtqFvy3F4vPbd06x4EI8YbblG35EvoFRawkV0AVun/Rlzs1nmJSR27HxIgrhysTQdr9PJwBBcBp5qiAfmIwpYzQ25Rc05sTjmao5OavAc7A2zDwsbJwQfXVqF1bERfkaJ2uqeqjZc7d9gsHjMC662ZoicgG4H6DpceGmdlW5FPcw/D11oOeC5SOjIGlLlFp9CEw5EYSI/O4TKrYKexP3WFWKCf1NbR3nr3Dj18YBA3B7oPk6p13rqnlpqPdB/gdRLBJtqAelLZ1uwfJcaMg9cR9718Tv03c29bTWbMBaGrFufkuYY/TNkznCsTa4hWPvB9ZywuthL597ePJNO1QSMfbPuoNLI1xeFoipwETdKnrCkhCzTPvnzrGn2ArVIFnohn1DP0HtDDr+nAL2BNPMFCoJ8pRzwjdYV48fz5t2PQJ9RKJga9dc66p89AkgIqvWcI0rba2v0BCq3J0N08Tun3NhkYpww/3zfzfCDvcU5DfjwOjcHoJ6PvcI79Sqp7XMayIbwpuo+78SaFb5eyTTqOx2ffCEx3W1NYWH549M+JBsNClGJ3le+fHqIQfKfnw8vj7T3WjaYdE+sQoM24MSz1r4FnJzyTmZmNcd2EvOZL1PAKqy9kJLw8O92S8mx0MjrhuLDlNUaKcaftp/3dr8fMm4e5m72d/n+VrqkU6D4cNxpVzJLWxTRNHLkSbnjgb8d1zZObQiyYVuWVWK24YF063XW8/LUltxTl1U0hYveZ8p1fcbIuCCW5mN1faMmTX7qVo3EapmJ75zR4WGE4+9OJlxV3yr3Ym4z5PG2IQkz7F3RtJZ9xeMfpineiFPGVnpwrV2ltJTSaectFoRRJJv/9A1PwALA=
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Find semantically similar definitions"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/registry/definitions/similar"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return definitions that are semantically similar to the given (id, version).
+
+Similarity is computed from the semantic_hash distance. Useful for
+detecting near-duplicates before registering a new definition.
+
+HTTP 404 — source definition not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./find-similar-registry-definitions-similar-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./find-similar-registry-definitions-similar-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

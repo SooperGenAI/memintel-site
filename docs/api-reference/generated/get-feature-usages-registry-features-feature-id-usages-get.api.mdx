@@ -1,0 +1,74 @@
+---
+id: get-feature-usages-registry-features-feature-id-usages-get
+title: "Get usages of a feature"
+description: "Return all definitions that depend on the given feature."
+sidebar_label: "Get usages of a feature"
+hide_title: true
+hide_table_of_contents: true
+api: eJzdVctu00AU/ZXRXYE0SkLVlXcFSqkEogopmzSKpva1Pa09485cV0SWJT6CL+RL0PUjtpumIJas4ozPfZ1z57gCUomHYA1LTLQntwM5PG4kROhDpwvS1kAAS6TSGaGyTEQYa6P53AtKFYkICzSRsEZQiiLRj2hEjIpKh7Mbc2POVZiK0qsEBRpyOxFaQ0obP0q11ZEUj+i8tkYKZaLxO9oVeGNs3OQPrfFlrk0yQjRlPq5WV+J0cSp+/fjZ1xfGkohtaaIZSLAFOsX4ywgCSJC2HWzbdOe3rpu/P/fbPUJH2x6VIIGEQjmVI6FjEiswKkcIYICDBM3MFYpSkODwodQOIwjIlSjBhynmCoIKeDoIwJPTJgEJpCnjgw/dCJcR1PWGM/jCGo+eg04WC/6ZivS1DEP0Pi4zsezAIIHZRkMMV0WR6bChYH7nOaYaNVI4Joh0W2E0yV82KaEliPGaMPejQHt7hyExpjtQzqndKNF1G8oASyrbhrZse+7w2hAm6EYRK8aJdw2uHhJ3lcaMr6eydF1OK22etLJEX2acmFOfnpwcsv1NZTpquBTnzln371RHSEpnE9qmgMyGk7fK7L7EzdpNdanlAV/15jjnn2zbILOe++QlnT+jZ1YGAY9DGzLEit/+SRaeqy3d4UYqDPS27B4f431L33PFegh7w0HCVtscKbWdHzTXmlIIYN5bwby3gnk1LFE93++QNrFt2NgTlTP1mXirwnu2xbOrS5DQWRsE8Ga2mC14msJ6ylWzGJ15XCC1PumFjYXqTQyemHE17Nn/4cudaoTfaV5kSjcLWbrmRrR6rMENX6leEZAQPHexNxJS64mjqupWebx2WV3z8UOJbgfBeiPhUTmtblmydQWR9vwcQRCrzOMLfL9aduv7WhxrvN9Sw70+qqzkfyDhHnfTD0RzNVNUEbqmixZwFoZY0Cj0wEn4Y7Df2ovzFdT1b96huZQ=
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get usages of a feature"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/registry/features/{feature_id}/usages"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return all definitions that depend on the given feature.
+
+Each usage entry contains definition_id, version, and definition_type
+of the consuming definition.
+
+HTTP 404 — feature not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-feature-usages-registry-features-feature-id-usages-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-feature-usages-registry-features-feature-id-usages-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-feature-usages-registry-features-feature-id-usages-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

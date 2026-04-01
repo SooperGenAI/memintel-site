@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["low","medium","high"],"title":"Sensitivity","description":"Hint to the LLM for threshold prior selection (used in ConstraintsConfig)."},"schemaType":"response"}

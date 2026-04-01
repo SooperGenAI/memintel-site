@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["increase","decrease","no_change"],"title":"ImpactDirection","description":"Direction of estimated alert volume change after calibration."},"schemaType":"response"}

@@ -1,0 +1,46 @@
+---
+id: actionresult
+title: "ActionResult"
+description: "Response from POST /actions/{id}/trigger."
+sidebar_label: "ActionResult"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"action_id":"string","action_version":"string","status":"triggered","payload_sent":{},"error":{"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}}}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ActionResult"}
+>
+</Heading>
+
+
+
+Response from POST /actions/\{id\}/trigger.
+
+Distinct from ActionTriggered (result.py) which is nested inside
+DecisionResult and produced by the pipeline. ActionResult is the
+top-level response for the direct-trigger endpoint.
+
+status mirrors ActionTriggeredStatus:
+  triggered    — invoked and delivery succeeded
+  skipped      — fire_on rule not met (only possible if a decision value
+                 is provided and does not match fire_on)
+  failed       — invoked but delivery raised an error
+  would_trigger — dry_run=True; action was not invoked
+
+payload_sent is the actual payload delivered (populated when triggered).
+error is populated only when status='failed'.
+
+<Schema
+  {...require("./actionresult.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,44 @@
+---
+id: semanticgraph
+title: "SemanticGraph"
+description: "The semantic view of a concept, produced by POST /compile/semantic."
+sidebar_label: "SemanticGraph"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"concept_id":"string","version":"string","semantic_hash":"string","features":["string"],"input_primitives":["string"],"equivalences":["string"]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"SemanticGraph"}
+>
+</Heading>
+
+
+
+The semantic view of a concept, produced by POST /compile/semantic.
+
+semantic_hash is stable for semantically equivalent concepts: the same
+underlying computation always produces the same hash regardless of the
+authoring structure (canonical reduction is applied before hashing).
+
+Two concepts with the same semantic_hash are semantically equivalent —
+they compute the same function, even if their DAG structures differ.
+
+Used for:
+  - Deduplication in the feature registry
+  - Equivalence detection before promotion
+  - Detecting breaking vs non-breaking version changes
+
+<Schema
+  {...require("./semanticgraph.Schema.json")}
+>
+  
+</Schema>
+            

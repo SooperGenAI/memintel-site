@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["recommendation_available","no_recommendation"],"title":"CalibrationStatus","description":"Outcome of a calibration request.\n\nrecommendation_available — adjusted params computed; calibration_token populated.\nno_recommendation        — no adjustment possible; no_recommendation_reason populated."},"schemaType":"response"}

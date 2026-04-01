@@ -1,0 +1,42 @@
+---
+id: conceptexplanation
+title: "ConceptExplanation"
+description: "Node-level explanation of a concept execution result."
+sidebar_label: "ConceptExplanation"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"output":0,"contributions":{},"nodes":[{"node_id":"string","op":"string","inputs":{},"params":{},"output_value":0,"output_type":"string"}],"trace":[{}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ConceptExplanation"}
+>
+</Heading>
+
+
+
+Node-level explanation of a concept execution result.
+
+Populated when ExecuteRequest.explain=True. Null on responses where
+explain was False or omitted.
+
+output       — final computed value; matches ConceptResult.value.
+contributions — per-signal attribution: signal_name → contribution_amount.
+               Values are dimensionless; their sum equals 1.0 for normalised
+               concepts, or is unbounded for raw aggregations.
+nodes        — per-node computation records in topological execution order.
+trace        — step-by-step trace with intermediate values (debug mode only).
+
+<Schema
+  {...require("./conceptexplanation.Schema.json")}
+>
+  
+</Schema>
+            

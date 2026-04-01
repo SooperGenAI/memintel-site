@@ -1,0 +1,37 @@
+---
+id: actiontriggeredstatus
+title: "ActionTriggeredStatus"
+description: "Delivery status of a single action after a decision fires."
+sidebar_label: "ActionTriggeredStatus"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "triggered"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ActionTriggeredStatus"}
+>
+</Heading>
+
+
+
+Delivery status of a single action after a decision fires.
+
+triggered    — action was invoked and delivery succeeded
+skipped      — fire_on rule not met (e.g. fire_on='true' but decision=False)
+failed       — action was attempted but delivery raised an error
+would_trigger — dry_run mode; action would have fired but was not invoked
+
+<Schema
+  {...require("./actiontriggeredstatus.Schema.json")}
+>
+  
+</Schema>
+            

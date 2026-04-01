@@ -1,0 +1,1 @@
+{"schema":{"properties":{"feature_id":{"type":"string","title":"Feature Id"},"usages":{"items":{"type":"object"},"type":"array","title":"Usages"},"total_count":{"type":"integer","title":"Total Count"}},"type":"object","required":["feature_id","usages","total_count"],"title":"UsageResult"},"schemaType":"response"}

@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["active","paused"],"title":"MutableTaskStatus","description":"Subset of TaskStatus that a PATCH request is allowed to set.\n\nDeletion is a dedicated DELETE endpoint, not a status update.\npreview cannot be set via PATCH — it is only produced by dry_run."},"schemaType":"response"}

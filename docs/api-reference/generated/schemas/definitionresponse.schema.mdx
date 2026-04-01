@@ -1,0 +1,45 @@
+---
+id: definitionresponse
+title: "DefinitionResponse"
+description: "Response returned by all definition write operations:"
+sidebar_label: "DefinitionResponse"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"definition_id":"string","version":"string","definition_type":"string","namespace":"personal","meaning_hash":"string","ir_hash":"string","deprecated":false,"deprecated_at":"2024-07-29T15:51:28.071Z","replacement_version":"string","created_at":"2024-07-29T15:51:28.071Z","updated_at":"2024-07-29T15:51:28.071Z"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"DefinitionResponse"}
+>
+</Heading>
+
+
+
+Response returned by all definition write operations:
+  POST /registry/definitions  (register)
+  POST /registry/definitions/\{id\}/deprecate
+  POST /registry/definitions/\{id\}/promote
+  POST /definitions/concepts
+  POST /definitions/conditions
+  POST /definitions/primitives
+
+Used for all definition_type values: concept, condition, action, primitive.
+
+meaning_hash — semantic hash (concepts only). Stable for semantically
+  equivalent concepts regardless of authoring structure.
+ir_hash — execution graph hash (concepts only). Same definition version
+  always produces the same ir_hash (compilation invariant).
+
+<Schema
+  {...require("./definitionresponse.Schema.json")}
+>
+  
+</Schema>
+            

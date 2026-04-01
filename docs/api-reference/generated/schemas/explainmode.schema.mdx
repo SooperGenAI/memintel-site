@@ -1,0 +1,36 @@
+---
+id: explainmode
+title: "ExplainMode"
+description: "Verbosity level for concept execution explanations."
+sidebar_label: "ExplainMode"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "summary"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExplainMode"}
+>
+</Heading>
+
+
+
+Verbosity level for concept execution explanations.
+
+summary — final output + top contributions only
+full    — contributions + per-node trace (default)
+debug   — full trace + raw intermediate values
+
+<Schema
+  {...require("./explainmode.Schema.json")}
+>
+  
+</Schema>
+            

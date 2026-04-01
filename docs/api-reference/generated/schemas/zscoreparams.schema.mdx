@@ -1,0 +1,40 @@
+---
+id: zscoreparams
+title: "ZScoreParams"
+description: "z_score strategy parameters."
+sidebar_label: "ZScoreParams"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"threshold":0,"direction":"above","window":"30d"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ZScoreParams"}
+>
+</Heading>
+
+
+
+z_score strategy parameters.
+
+threshold: number of standard deviations required to trigger (must be > 0)
+direction: 'above' | 'below' | 'any'
+window:    lookback duration string (default '30d')
+
+Note: parameter key is 'threshold', NOT 'value' or 'cutoff'.
+This is different from every other strategy — z_score is the only one
+where the sensitivity param is called 'threshold'.
+
+<Schema
+  {...require("./zscoreparams.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["summary","full","debug"],"title":"ExplainMode","description":"Verbosity level for concept execution explanations.\n\nsummary — final output + top contributions only\nfull    — contributions + per-node trace (default)\ndebug   — full trace + raw intermediate values"},"schemaType":"response"}

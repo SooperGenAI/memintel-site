@@ -1,0 +1,40 @@
+---
+id: executionplan
+title: "ExecutionPlan"
+description: "The explain plan produced by POST /compile/explain-plan."
+sidebar_label: "ExecutionPlan"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"concept_id":"string","version":"string","node_count":0,"execution_order":["string"],"parallelizable_groups":["string"],"primitive_fetches":["string"],"critical_path_length":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExecutionPlan"}
+>
+</Heading>
+
+
+
+The explain plan produced by POST /compile/explain-plan.
+
+The SQL EXPLAIN equivalent for a concept execution graph. Returns the
+execution order and parallelizable groups without running the graph.
+
+Use before executing a concept to understand:
+  - Which primitives will be fetched
+  - Which nodes can run concurrently
+  - The total node count and critical path
+
+<Schema
+  {...require("./executionplan.Schema.json")}
+>
+  
+</Schema>
+            

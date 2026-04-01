@@ -1,0 +1,1 @@
+{"schema":{"properties":{"definition_id":{"type":"string","title":"Definition Id"},"version":{"type":"string","title":"Version"},"limit":{"type":"integer","title":"Limit","default":10}},"type":"object","required":["definition_id","version"],"title":"FindSimilarRequest"},"schemaType":"response"}

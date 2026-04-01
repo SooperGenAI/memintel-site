@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["AND","OR"],"title":"CompositeOperator"},"schemaType":"response"}

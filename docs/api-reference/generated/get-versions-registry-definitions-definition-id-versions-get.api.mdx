@@ -1,0 +1,73 @@
+---
+id: get-versions-registry-definitions-definition-id-versions-get
+title: "Get version history for a definition"
+description: "Return all versions of a definition, newest-first (created_at DESC)."
+sidebar_label: "Get version history for a definition"
+hide_title: true
+hide_table_of_contents: true
+api: eJzVVs1u4zYQfpXBnBKAG6dBTr6lmyAboNtdJG4uiWHQ4kjihiK15ChdwRDQh+gT9kkKUpJlx01221tPluj54zffN6MNsiwCzh/wlgod2LcopselQEUh87pm7SzO8Za48RakMfBMPmhnA7gcJCjKtdXRSoCl3ynwu1z7wHCUeZJMaiUZLq/u3h+fPNpHe2Mz0ygKoKj2lMnoCIElN0FARdJqW6xKGUoB0irQPr1ATX7Mm8J8WCw+w/npOfz1x587JYB1DLlrrDpBga4mnxLcKJxjQbwaS1/54aKryTesdl5WWq0m64IYBdbSy4qYfERtg1ZWhHPc80GBOqJVSy5RoKevjfakcM6+IYEhK6mSON8gt3V0Duy1LVAgazbx4HK6yo3CrlvGIKF2NlCIfmenp/Fnvzd3TZZRCHlj4HYwRoGZs0yWo7msa6N7rGdfQvTZHNYivZeRA5qpSrlqHwFk3WcewHir+PvBpBM49T7lt+2nPIH20jV3voo2qCTTO9YVYSe2ZrYxBiMGY4b3fVi44JhkpFAEeOuzds6QtHuYbs2iTy4bwzjPpQnUCdzl3Fu1vlXWxz4GfIgxOoEDa/9ruBs/ROrEaOPWXyjjPUo9bFuyPGjBXVNVMin6JVPSea/coG1haJTVoZp9kjwpWLeP9vpqAbNRNbMd1cw2WnWzUSpJnPfjgJCepij7w2HdwsF8gEVJO6ePNtdkFOgAXBI4ryhCB0/UJtmPhfeI9tl+/bQAQ9905gov61Jn0pj20QbnI22OuKQWKtnCmiBQ9UxeQGJeYFnVpAQ4D9KvNfsI0xD5+CQ2dYR4lBhcE8P2quPkhEnBAWBPzjBZXxNj18X+np+dHQr6Xhqt+tF45b3z/0bN+6pVxFKb+PSKrI3L9v79Ab5qy1SQx2458XMcHiNIv7i+wAhcFYq3psZHCkEWhNtgr5smMGAR//2eNuK9+tSD3a5ItvD26L5+jcsevn9KNprETXQQsO9tRVy6YfWk/cElzvEVFe3tkUlQaaPkLqGyBayKLTDws8yeyCq4+HyDYhrQ+NPJ6clpvFXtAlcyEWTYVpGzo25KHdj5FvLI+R3lv5wam4l8/8vPgKFzTN94VhupEykbn1TR9+QB/fQNtNMVFDh/ud+3jVkKLF3g6L3ZrGWg37zpunj8tSHf4vxhKfBZei3XsW0PG1Q6xGc1LJ83YD66Hah8DK9dYGSsjTU/S9PENxT4RO3BV0lSaklSkU+F9DYXWUY173gfDJa4lLYkvr5aYNf9DQajlWI=
+sidebar_class_name: "get api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get version history for a definition"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"get"}
+  path={"/registry/definitions/{definition_id}/versions"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Return all versions of a definition, newest-first (created_at DESC).
+
+Includes deprecation status, meaning_hash, and ir_hash per version.
+
+HTTP 404 — definition not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./get-versions-registry-definitions-definition-id-versions-get.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./get-versions-registry-definitions-definition-id-versions-get.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./get-versions-registry-definitions-definition-id-versions-get.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

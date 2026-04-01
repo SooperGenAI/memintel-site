@@ -1,0 +1,46 @@
+---
+id: primitiveref
+title: "PrimitiveRef"
+description: "A primitive data source referenced within a concept definition."
+sidebar_label: "PrimitiveRef"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"type":"string","missing_data_policy":"null","labels":["string"]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"PrimitiveRef"}
+>
+</Heading>
+
+
+
+A primitive data source referenced within a concept definition.
+
+Specifies the expected Memintel type of the primitive and how to handle
+missing data. The actual source configuration (connector, SQL query, etc.)
+lives in the registered primitive config (memintel.config.md / PrimitiveConfig)
+— this ref only declares the contract the concept author expects.
+
+missing_data_policy resolves output nullability at compile time:
+  None / 'null'   → T?  (null propagates)
+  'zero'          → T   (null replaced with 0)
+  'forward_fill'  → T   (null replaced with last known value)
+  'backward_fill' → T   (null replaced with next known value)
+
+labels must be declared when type is 'categorical'. The compiler validates
+that all execution paths produce only the declared labels (§5 of type spec).
+
+<Schema
+  {...require("./primitiveref.Schema.json")}
+>
+  
+</Schema>
+            

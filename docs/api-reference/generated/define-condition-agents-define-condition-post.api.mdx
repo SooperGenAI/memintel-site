@@ -1,0 +1,74 @@
+---
+id: define-condition-agents-define-condition-post
+title: "Define a condition from a natural language description"
+description: "Produce a ConditionDefinition draft from a natural language description."
+sidebar_label: "Define a condition from a natural language description"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1u2zgQfhViTi3AJt4gJ93SpsAGSNvAyfbiGMaYHNlsJVIhqaReQ8A+RJ9wn2QxlCzLVZIG22t9okfzw/m+4UduIeIqQDaDsxXZGEDuFnMJmoLyporGWcjgyjtdKxIo3jmrDVvPKTc2rYT2mEeRe1cKFBZj7bEQBdpVjSsSg0xHt/bWXkePkVYbEagglRK8imtPYe0KLUVFXpGNpiAp/l4E5TxJQXc1FkEKiurotTDh1lbkc+dL0mK5EXFN4vLyg1hiIC2cTYZBXYFWJ5tyVlEVhatjVUcRNxWlPf15c3MlTien4t9/vgtPOXmyinTv/6pbLIyWO+Pinnwwzr4W1kWRu9rqI5DgKvLIRS80ZKAZJVqoHWoLTAgvRvbKhQgSPN3VFOJbpzeQbUE5G8lGXmJVFUalzMdfArOyhaDWVCKvKs91o6HA/w7I2wK3CRmE6I1dgYRoYsGG84FbI2Hf43NB7zpILvQwpsPiJYGfO9dGgsWSQoWKnov72DvxVOZYFxEyqLy5x0jQNHIX6ZZfSO1ANJ40j/YQioMWx3uf72umc5AmnPqBn7bUQMMl9yWirykZQuVsaPE/mUxGNMB1rRSFkNeFmHbO7Sb+F8N85Aao9b333CaHRsI9FkanpAvrYhttIpVhjPkeSvQeN4Nsn/sk4mNKsocgLDzdG3oYpFs6VxDaQfy08xXT1venrKXdP7L5cdnHWesRbhJdpycnY0IGTb333vlfYIMimuIA2UOHwqmDr2g3n3LIZmMGeouxkVbkoZk/TculazfIdJRh9dwp+kAh4Ir2HD/tmsAQN/z1ZzxxX23pzm/+2My06D7dxnkL32PFdi4s0KOELbclxbVjre0ktMK4hgyOW6U9bpX2Ta+0IIHpnO6F9v03LKuCxgPSIzNUxrG11779p4Gw7ZVKgrG5S8j3pJRMcyHeovpKVouzqwue+j7hH0eTowlHcm8lpiHk3Ak07kug6Dt7yQ0M8sfLoR/535f8yy/5bkwjfYvHVYEmncDaJwlo528GuHtUjSZwLmHNs5rNYLvldv7yRdOw+a4mv4FsNmfp8waXPCYzVoA1oSafJOMrbdrrlHl7k85pUso6na0fZYslpY04U9zRs77zwXG6+nR9AxKW3VOkdJpjPD6wBuADZJBeOxydNC3ZtrAbCcigzcm//wCg/6uB
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Define a condition from a natural language description"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/agents/define-condition"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Produce a ConditionDefinition draft from a natural language description.
+
+Strategy selection (threshold, percentile, z_score, equals, etc.) is
+performed by the LLM based on the description and the concept output type.
+
+HTTP 404 — referenced concept (concept_id, concept_version) not found.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./define-condition-agents-define-condition-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./define-condition-agents-define-condition-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

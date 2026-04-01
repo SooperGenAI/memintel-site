@@ -1,0 +1,73 @@
+---
+id: define-agents-define-post
+title: "Define a concept from a natural language description"
+description: "Produce a ConceptDefinition draft from a natural language description."
+sidebar_label: "Define a concept from a natural language description"
+hide_title: true
+hide_table_of_contents: true
+api: eJzlVsFu2zAM/RWBZy/pip0M7NCtBVaga4s02yUNCkamHXWy5EpyuyAwsI/YF+5LBkpO4i5tN2zH5SRLJEW+90hlDQErD/kMjioywUO2WcwzKMhLp5qgrIEcLp0tWkkCxXtrJDXhmEplFJ+KwmEZROlsLVAYDK1DLTSaqsWKxCDO6Npcm+mShCPf6iCUFygaZxvrUYsf376Le9SqwEBCBXGvUFxeXE3FWNq6UZrGnmo0QUmxoNI6ujaOKuUDOWWqkXB01ypH/sbRvaKHt1PXklCmUBIDeRGWJM7OPgppTakKMpL4fm0frg2aQizbGo1IrnzgSNq6JlNQMYIMbEMOuYbTAnIouHi6wQjWTf/VWB8gA06DfHhnixXka5DWBDKBl9g0mpNR1oxvPcO6Bi+XVCOvGAdyQZHnr0foryGsGoIcfOBSIYOgguaN44FZl4HBmnyDkl7yOd8aMckltjpADo1T9xgIui7beNrFLclNScpRwUoZJjbfBY26iZqgSQIAOg61cw2upbjhG2t8qvLw4GCvWLhqpSTvy1aLSW8M2V/jyNocoLGtaYtgNOgy6KWnrLkxNiRvFaj2+1juIELncDWI9nkbRJzHIDsINrochFtYqwnNwH/S24pJsv0tGzH7J5Lfv/Y5snqEu0jXm8PDfUIGRZ04Z90/sEEBlX6E7GMDbeWjUzSrixLy2T4D2x1lAlXkoJs/T8uZTQkyHbWvXuqOj+Q9VrTj+HnTCIaY8unveOK60tW93fwpzSR0ny/jOMH31GUbkw/T6eVewMRtTWFpeXr1g6rBsIQcxmmKjdMUgwyYxMluiJ18xbrRtC+LLR6DqbMbIxkoU9oI3xbZmrnS4h3KL2QKcXR5ytIl51PA16OD0QF7coI1RiVx7Fg5JyeQpze/Pn/y2kD26xTdqva/f856+QT6GsaNRhU7o3WxNZMuZoCb/wS9MuYZLFk5+QzW6wV6+uR01/H2XUtuBflszoPIKVww3zPuxyVhQS428BdaQQ7vEwWvYtfEudVGpf86RLjBk8eRZH5etJ0PxM0QQwaL/vmtbcE+Dh+4I/EBcoivOXvHCRP31rDhF3JIMfn3EyyNNhk=
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Define a concept from a natural language description"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/agents/define"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Produce a ConceptDefinition draft from a natural language description.
+
+The result is a proposal — validate it via POST /compile/semantic before
+registering. requires_review=True indicates the LLM confidence is low
+and human review is recommended.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  parameters={undefined}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./define-agents-define-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./define-agents-define-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

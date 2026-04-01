@@ -1,0 +1,46 @@
+---
+id: conceptdefinition
+title: "ConceptDefinition"
+description: "The authored concept body. Stored as JSONB in the definitions table with"
+sidebar_label: "ConceptDefinition"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"concept_id":"string","version":"string","namespace":"personal","output_type":"string","labels":["string"],"description":"string","primitives":{},"features":{},"output_feature":"string","created_at":"2024-07-29T15:51:28.071Z","deprecated":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ConceptDefinition"}
+>
+</Heading>
+
+
+
+The authored concept body. Stored as JSONB in the definitions table with
+definition_type='concept'.
+
+Primitives declare the data sources the concept depends on (names and
+expected types). Features define the DAG of operators that transform
+primitive data into the concept's output value.
+
+output_feature names the terminal FeatureNode in the DAG — the node whose
+inferred output type must match output_type. The compiler validates this.
+
+For categorical concepts, labels declares the closed label set. The type
+checker enforces that all execution paths produce only declared labels.
+
+Immutability: once registered under (concept_id, version), the body is
+frozen. Semantic changes require a new version.
+
+<Schema
+  {...require("./conceptdefinition.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,39 @@
+---
+id: calibrationbias
+title: "CalibrationBias"
+description: "Cost asymmetry between false negatives and false positives."
+sidebar_label: "CalibrationBias"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"CalibrationBias"}
+>
+</Heading>
+
+
+
+Cost asymmetry between false negatives and false positives.
+
+bias_direction is always auto-derived — never set by the caller:
+  false_negative_cost > false_positive_cost  → recall
+    (missing a real event is more costly; prefer sensitivity)
+  false_positive_cost > false_negative_cost  → precision
+    (spurious alerts are more costly; prefer specificity)
+  equal costs                                → balanced
+
+<Schema
+  {...require("./calibrationbias.Schema.json")}
+>
+  
+</Schema>
+            

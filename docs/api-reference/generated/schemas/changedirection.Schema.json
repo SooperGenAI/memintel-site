@@ -1,0 +1,1 @@
+{"schema":{"type":"string","enum":["increase","decrease","any"],"title":"ChangeDirection"},"schemaType":"response"}

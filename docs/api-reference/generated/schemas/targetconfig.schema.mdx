@@ -1,0 +1,37 @@
+---
+id: targetconfig
+title: "TargetConfig"
+description: "Optional alert volume target for calibration."
+sidebar_label: "TargetConfig"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"alerts_per_day":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"TargetConfig"}
+>
+</Heading>
+
+
+
+Optional alert volume target for calibration.
+
+When provided, CalibrationService.adjust_params() targets this alert
+rate rather than applying a fixed step in the feedback direction.
+
+alerts_per_day is per-entity (not total across all entities).
+
+<Schema
+  {...require("./targetconfig.Schema.json")}
+>
+  
+</Schema>
+            

@@ -1,0 +1,1 @@
+{"schema":{"properties":{"replacement_version":{"anyOf":[{"type":"string"},{"type":"null"}],"title":"Replacement Version"}},"type":"object","title":"DeprecateRequest"},"schemaType":"response"}

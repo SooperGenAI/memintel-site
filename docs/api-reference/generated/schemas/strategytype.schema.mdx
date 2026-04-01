@@ -1,0 +1,35 @@
+---
+id: strategytype
+title: "StrategyType"
+description: "Canonical strategy type identifiers. String values are the wire values."
+sidebar_label: "StrategyType"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "threshold"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"StrategyType"}
+>
+</Heading>
+
+
+
+Canonical strategy type identifiers. String values are the wire values.
+
+Critical spellings (from py-instructions.md — these are non-obvious):
+  Z_SCORE  = 'z_score'   NOT 'zscore' — used everywhere: API, YAML, guardrails
+
+<Schema
+  {...require("./strategytype.Schema.json")}
+>
+  
+</Schema>
+            

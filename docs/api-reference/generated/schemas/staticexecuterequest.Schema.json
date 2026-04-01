@@ -1,0 +1,1 @@
+{"schema":{"properties":{"condition_id":{"type":"string","title":"Condition Id"},"condition_version":{"type":"string","title":"Condition Version"},"entity":{"type":"string","title":"Entity"},"data":{"type":"object","title":"Data"}},"type":"object","required":["condition_id","condition_version","entity","data"],"title":"StaticExecuteRequest"},"schemaType":"response"}

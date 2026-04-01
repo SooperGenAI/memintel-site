@@ -1,0 +1,44 @@
+---
+id: triggerconfig
+title: "TriggerConfig"
+description: "Firing rule + condition binding for a registered action."
+sidebar_label: "TriggerConfig"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"fire_on":"true","condition_id":"string","condition_version":"string"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"TriggerConfig"}
+>
+</Heading>
+
+
+
+Firing rule + condition binding for a registered action.
+
+fire_on determines when the action fires relative to the decision value:
+  'true'  → fires when decision=True (or matched label for equals strategy)
+  'false' → fires when decision=False
+  'any'   → fires on every evaluation regardless of decision value
+
+condition_id + condition_version pin this action to a specific, immutable
+condition version. Bound at action registration time; never resolved at
+execution time (no dynamic action resolution).
+
+The executor evaluates _should_fire(trigger.fire_on, decision.value)
+before invoking the action config.
+
+<Schema
+  {...require("./triggerconfig.Schema.json")}
+>
+  
+</Schema>
+            

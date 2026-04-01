@@ -1,0 +1,45 @@
+---
+id: actiondefinition
+title: "ActionDefinition"
+description: "A registered, versioned action definition. The α layer record."
+sidebar_label: "ActionDefinition"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"action_id":"string","version":"string","config":{"type":"webhook","endpoint":"string","method":"POST","headers":{},"payload_template":{}},"trigger":{"fire_on":"true","condition_id":"string","condition_version":"string"},"namespace":"personal","created_at":"2024-07-29T15:51:28.071Z","deprecated":false}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ActionDefinition"}
+>
+</Heading>
+
+
+
+A registered, versioned action definition. The α layer record.
+
+Stored in the `definitions` table with definition_type='action'.
+The body JSONB column holds the serialisation of this model.
+
+Immutability: once registered, an (action_id, version) pair is permanent.
+Updates require a new version. The registry enforces this at the DB level.
+
+The execution type and all delivery parameters are inside config.
+Access config.type for dispatch: WebhookActionConfig, NotificationActionConfig,
+WorkflowActionConfig, or RegisterActionConfig.
+
+Actions are pre-bound at task creation time. There is no runtime action
+resolution — the executor fires only the pre-bound action for this record.
+
+<Schema
+  {...require("./actiondefinition.Schema.json")}
+>
+  
+</Schema>
+            

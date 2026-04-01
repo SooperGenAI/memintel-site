@@ -1,0 +1,37 @@
+---
+id: taskstatus
+title: "TaskStatus"
+description: "Full set of task statuses."
+sidebar_label: "TaskStatus"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "active"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"TaskStatus"}
+>
+</Heading>
+
+
+
+Full set of task statuses.
+
+active  — evaluated by the application on its own schedule.
+paused  — skipped; no evaluation or alerts until resumed.
+deleted — soft-deleted; retained for audit, no evaluation. Irreversible via API.
+preview — dry_run result only; MUST NEVER be persisted to the DB.
+
+<Schema
+  {...require("./taskstatus.Schema.json")}
+>
+  
+</Schema>
+            

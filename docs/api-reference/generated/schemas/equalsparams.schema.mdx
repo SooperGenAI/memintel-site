@@ -1,0 +1,42 @@
+---
+id: equalsparams
+title: "EqualsParams"
+description: "equals strategy parameters."
+sidebar_label: "EqualsParams"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"value":"string","labels":["string"]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"EqualsParams"}
+>
+</Heading>
+
+
+
+equals strategy parameters.
+
+value:  the label to match
+labels: optional closed set of valid labels (subset of the categorical
+        type's declared label set). When provided, 'value' must be a
+        member of this list. Validated at compile time against the
+        concept's declared categorical labels.
+
+Calibration note: equals has no numeric parameter to adjust.
+POST /conditions/calibrate always returns no_recommendation with
+reason='not_applicable_strategy' for conditions using this strategy.
+
+<Schema
+  {...require("./equalsparams.Schema.json")}
+>
+  
+</Schema>
+            

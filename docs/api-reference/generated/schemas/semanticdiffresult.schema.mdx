@@ -1,0 +1,43 @@
+---
+id: semanticdiffresult
+title: "SemanticDiffResult"
+description: "Result of comparing two versions of a definition, returned by"
+sidebar_label: "SemanticDiffResult"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"definition_id":"string","version_from":"string","version_to":"string","equivalence_status":"string","summary":"string","changes":[{}]}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"SemanticDiffResult"}
+>
+</Heading>
+
+
+
+Result of comparing two versions of a definition, returned by
+GET /registry/definitions/\{id\}/semantic-diff.
+
+equivalence_status values:
+  equivalent — same semantic_hash; meaning is identical; safe to promote.
+  compatible — meaning changed but backward-compatible; review recommended.
+  breaking   — downstream conditions/actions may be invalidated; governance
+               required before promotion.
+  unknown    — could not determine; treat as breaking.
+
+The caller should block on 'breaking' status before promoting to a higher
+namespace. See py-instructions.md for the governance pattern.
+
+<Schema
+  {...require("./semanticdiffresult.Schema.json")}
+>
+  
+</Schema>
+            

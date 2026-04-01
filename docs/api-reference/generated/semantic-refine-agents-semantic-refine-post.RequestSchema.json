@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"properties":{"definition_id":{"type":"string","title":"Definition Id"},"version":{"type":"string","title":"Version"},"instruction":{"type":"string","title":"Instruction"}},"type":"object","required":["definition_id","version","instruction"],"title":"SemanticRefineRequest"}}}}}

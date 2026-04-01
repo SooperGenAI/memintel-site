@@ -1,0 +1,36 @@
+---
+id: norecommendationreason
+title: "NoRecommendationReason"
+description: "Reason why CalibrationService returned no recommendation."
+sidebar_label: "NoRecommendationReason"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: "bounds_exceeded"
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"NoRecommendationReason"}
+>
+</Heading>
+
+
+
+Reason why CalibrationService returned no recommendation.
+
+bounds_exceeded          — adjustment would violate guardrail bounds (on_bounds_exceeded='reject')
+not_applicable_strategy  — equals strategy has no numeric parameter to adjust
+insufficient_data        — fewer than MIN_FEEDBACK_THRESHOLD feedback records
+
+<Schema
+  {...require("./norecommendationreason.Schema.json")}
+>
+  
+</Schema>
+            

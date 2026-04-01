@@ -1,0 +1,39 @@
+---
+id: thresholdparams
+title: "ThresholdParams"
+description: "threshold strategy parameters."
+sidebar_label: "ThresholdParams"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"direction":"above","value":0}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ThresholdParams"}
+>
+</Heading>
+
+
+
+threshold strategy parameters.
+
+direction: 'above' | 'below'
+value:     the fixed cutoff (any float — no global bounds)
+
+Note: parameter key is 'value', NOT 'cutoff'.
+Fires when: direction='above' → concept_value > value
+            direction='below' → concept_value &lt; value
+
+<Schema
+  {...require("./thresholdparams.Schema.json")}
+>
+  
+</Schema>
+            

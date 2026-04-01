@@ -1,0 +1,1 @@
+{"title":"Body","body":{"required":true,"content":{"application/json":{"schema":{"properties":{"feature_id":{"type":"string","title":"Feature Id"},"version":{"type":"string","title":"Version"},"body":{"type":"object","title":"Body"}},"type":"object","required":["feature_id","version","body"],"title":"RegisterFeatureRequest"}}}}}

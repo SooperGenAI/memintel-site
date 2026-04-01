@@ -1,0 +1,40 @@
+---
+id: executerequest
+title: "ExecuteRequest"
+description: "Request body for POST /execute."
+sidebar_label: "ExecuteRequest"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"id":"string","version":"string","entity":"string","timestamp":"string","explain":false,"explain_mode":"full","cache":true,"missing_data_policy":"null"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"ExecuteRequest"}
+>
+</Heading>
+
+
+
+Request body for POST /execute.
+
+timestamp presence controls execution mode:
+  present → deterministic mode; result.deterministic=True; result is cached.
+  absent  → snapshot mode; result.deterministic=False; result must NOT be cached
+            beyond the current request (SNAPSHOT cache key rule).
+
+explain=True populates ConceptResult.explanation. The explain_mode controls
+verbosity. 'full' is the default and returns contributions + node trace.
+
+<Schema
+  {...require("./executerequest.Schema.json")}
+>
+  
+</Schema>
+            

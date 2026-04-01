@@ -1,0 +1,75 @@
+---
+id: register-feature-registry-features-post
+title: "Register a feature"
+description: "Register a new feature in the feature registry."
+sidebar_label: "Register a feature"
+hide_title: true
+hide_table_of_contents: true
+api: eJztVs1u2zgQfhViTruokrhBLytgD/1J0aC7aOB4iwKOEYzFscWWolSSciIYAvYh9gn3SRYjUaIcN9mipz2sL5bI4Tcz3zcz1B48bh2kS5jTVjlvG0ji4yoBSS6zqvKqNJCGHbIChaE7sSH0tSWhjPA5ja82nD+9MTfmmgo0XmVCkqwrrTJkLKGcwKrSimQq1EagEfS1VjvUZPwIhNoSyubG0L1y3omfHBYkXEC8zdHlPycTYJK/LmxNDG7J19aQFGgkBxcwlNkO6LdKsmFlyZHdkeyifbdYXIkXs1/E33/+NTV8JnZkHQceYhIhpDvlcyHVZkOWI1+XsjmFBMqKbJfopYQUbKDtdkAcGBoW3G1VOg8JVGixIE+WNdmDwYIghfsT0rTj/E6+ECukWIycUJKFBCxTZ0lCukHtKAGX5VQgpHtA03zYdFC+qRjKeavMFtpkXDG11tCuEvDKa174dHIxeHtPDbS8xy7I+VelbBg2evS2pgSy0ngyvvNYjSKffXZcNftJPJVlZrwix2+RYH47jDDG8zZUw6WENoGgw1MHPgaTNoF1CDiYluvPlPmJaZdQ2yZHBjHD5TTM6D9gT3gbmiPEO+8pg7ZlfEuuKo3r8z6fzfjvsLeu6ywj5za1FvNgDP9hZg+68Kkz4wB4x4Ytj5TYr5OD67LUhGZy8s3U8AdFOgzzgfPVERVh9HUkz8nVetDvxfn5sWQfUSvZz7MLa0v743pJ8qg0PylPhTs20GV2sPsdja2Mpy1ZaFeROrQWmwnFv5V9gKxL4bZP6fg7OYdbghHscdOODLHg3X+TjfPqXQe7iSaR3p7dx9N409P3LWeDCU/2I8Be24J8XvKcHoewzyGFs2FKnw1TGhJgIedxGF7cY1FpethykZKxqeJSmEnsWZlN2RE5clywalq8wuwLGSleXl0egDw/nZ3OmAgOtcCupsIlMbmbQyjw4Prex+r8/yb/3ps81JOne39WaVRdq9S269W+UJZg47fTWCqrBHIup3QJ+/0aHf1hddvy8teabAPpcpXADq3CNUu/5CYNNzp3tVSON+Kd/qiSj8XIXwrf+HTYoa7ZuJsUvc3rHuuka9hocTS/4omXWUaVf9J2Nemrqw/Xi1j4UJSSz1i842GAd30SZZdbN9y6tT1oNNuaR04KPSb//gGIWMAm
+sidebar_class_name: "post api-method"
+info_path: docs/api-reference/generated/memintel-backend-api
+custom_edit_url: null
+---
+
+import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
+import ParamsDetails from "@theme/ParamsDetails";
+import RequestSchema from "@theme/RequestSchema";
+import StatusCodes from "@theme/StatusCodes";
+import OperationTabs from "@theme/OperationTabs";
+import TabItem from "@theme/TabItem";
+import Heading from "@theme/Heading";
+import Translate from "@docusaurus/Translate";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Register a feature"}
+>
+</Heading>
+
+<MethodEndpoint
+  method={"post"}
+  path={"/registry/features"}
+  context={"endpoint"}
+>
+  
+</MethodEndpoint>
+
+
+
+Register a new feature in the feature registry.
+
+Semantic deduplication is applied: if an equivalent feature already
+exists (same semantic_hash), deduplicated=True is returned and the
+existing feature_id is preserved.
+
+HTTP 409 — feature_id + version already exists with different body.
+
+<Heading
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
+>
+  <Translate id="theme.openapi.request.title">Request</Translate>
+</Heading>
+
+<ParamsDetails
+  {...require("./register-feature-registry-features-post.ParamsDetails.json")}
+>
+  
+</ParamsDetails>
+
+<RequestSchema
+  {...require("./register-feature-registry-features-post.RequestSchema.json")}
+>
+  
+</RequestSchema>
+
+<StatusCodes
+  {...require("./register-feature-registry-features-post.StatusCodes.json")}
+>
+  
+</StatusCodes>
+
+
+      

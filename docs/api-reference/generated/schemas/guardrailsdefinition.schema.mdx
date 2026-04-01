@@ -1,0 +1,40 @@
+---
+id: guardrailsdefinition
+title: "GuardrailsDefinition"
+description: "A simplified, API-manageable view of the guardrails configuration."
+sidebar_label: "GuardrailsDefinition"
+hide_title: true
+hide_table_of_contents: true
+schema: true
+sample: {"strategy_registry":["string"],"type_strategy_map":{},"parameter_priors":{},"bias_rules":{},"threshold_directions":{},"global_preferred_strategy":"percentile","global_default_strategy":"threshold"}
+custom_edit_url: null
+---
+
+import Schema from "@theme/Schema";
+import Heading from "@theme/Heading";
+
+<Heading
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"GuardrailsDefinition"}
+>
+</Heading>
+
+
+
+A simplified, API-manageable view of the guardrails configuration.
+
+strategy_registry lists the names of allowed strategies.
+type_strategy_map maps primitive type names to their valid strategies.
+parameter_priors maps signal IDs to severity-level prior dicts.
+bias_rules maps bias words to severity level strings.
+threshold_directions maps signal IDs to threshold direction strings.
+global_preferred_strategy is the strategy biased toward when no hint exists.
+global_default_strategy is the fallback strategy of last resort.
+
+<Schema
+  {...require("./guardrailsdefinition.Schema.json")}
+>
+  
+</Schema>
+            
