@@ -17,8 +17,6 @@ When a condition evaluates a concept, Memintel creates a decision record. This r
 ```json
 {
   "decision_id": "dec_abc123",
-  "task_id": "task_ghi789",
-  "task_version": "v2",
   "condition_id": "cond_xyz456",
   "condition_version": "v1",
   "entity_id": "ent_pseudonymised_001",
@@ -30,9 +28,9 @@ When a condition evaluates a concept, Memintel creates a decision record. This r
   },
   "input_primitives": {
     "account.active_user_rate_30d": 0.29,
-    "account.days_to_renewal": 47,
-    "account.payment_failed_flag": false
+    "account.days_to_renewal": 47
   },
+  "signal_errors": [],
   "threshold_applied": 0.35,
   "strategy": "threshold",
   "direction": "below",
@@ -65,8 +63,8 @@ Query decisions by entity, task, condition, or time range:
 curl "https://api.memsdl.ai/v1/decisions?entity_id=ent_pseudonymised_001" \
   -H "X-API-Key: your-api-key"
 
-# All triggered decisions for a task in a time range
-curl "https://api.memsdl.ai/v1/decisions?task_id=task_ghi789&outcome=triggered&from=2025-11-01&to=2025-11-30" \
+# All triggered decisions for a condition in a time range
+curl "https://api.memsdl.ai/v1/decisions?condition_id=cond_xyz456&outcome=triggered&from=2025-11-01&to=2025-11-30" \
   -H "X-API-Key: your-api-key"
 
 # All decisions for a condition version

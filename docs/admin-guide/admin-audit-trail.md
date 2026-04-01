@@ -110,12 +110,12 @@ curl https://api.memsdl.ai/v1/audit/chain/cal_tok_def456 \
     {
       "event_type": "feedback.submitted",
       "occurred_at": "2025-11-01T10:00:00Z",
-      "detail": { "decision_id": "dec_001", "feedback_type": "false_positive" }
+      "detail": { "decision_id": "dec_001", "feedback": "false_positive" }
     },
     {
       "event_type": "feedback.submitted",
       "occurred_at": "2025-11-07T14:22:00Z",
-      "detail": { "decision_id": "dec_007", "feedback_type": "false_positive" }
+      "detail": { "decision_id": "dec_007", "feedback": "false_positive" }
     },
     {
       "event_type": "condition.calibrated",

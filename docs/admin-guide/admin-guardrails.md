@@ -70,7 +70,6 @@ strategy_registry:     # which evaluation methods are available
 type_strategy_map:     # which methods are valid for each signal type
   float:    [threshold, percentile, z_score, change]
   int:      [threshold, percentile, change]
-  boolean:  [equals]
 
 parameter_priors:      # what thresholds mean low/medium/high for each signal
   <signal_id>:
@@ -115,7 +114,8 @@ Declares which strategies are valid for each type of signal. Copy this block and
 type_strategy_map:
   float:                [threshold, percentile, z_score, change]
   int:                  [threshold, percentile, change]
-  boolean:              [equals]
+  categorical:          [equals]
+  # boolean has no supported strategies — use categorical with labels: ['true', 'false'] instead
   string:               [equals]
   categorical:          [equals]
   time_series<float>:   [z_score, change, percentile]
@@ -133,7 +133,6 @@ In a clinical trial context where patient populations are small, `z_score` (whic
 type_strategy_map:
   float:    [threshold, percentile]
   int:      [threshold, percentile]
-  boolean:  [equals]
 ```
 
 ---
@@ -317,7 +316,7 @@ bias_rules:
 Add this section for signals where the condition fires when the value goes **below** the threshold rather than above.
 
 ```yaml
-threshold_directions:
+threshold_directions:  # verify this field is supported in your deployment
   account.active_user_rate_30d:   below
   account.seat_utilization_rate:  below
   borrower.dscr:                  below
@@ -364,7 +363,8 @@ strategy_registry:
 type_strategy_map:
   float:                [threshold, percentile, z_score, change]
   int:                  [threshold, percentile, change]
-  boolean:              [equals]
+  categorical:          [equals]
+  # boolean has no supported strategies — use categorical with labels: ['true', 'false'] instead
   categorical:          [equals]
   time_series<float>:   [z_score, change, percentile]
   time_series<int>:     [z_score, change, percentile]
@@ -400,7 +400,7 @@ bias_rules:
   proactive:    low_severity
   approaching:  low_severity
 
-threshold_directions:
+threshold_directions:  # verify this field is supported in your deployment
   account.active_user_rate_30d:   below
   account.seat_utilization_rate:  below
 
@@ -425,7 +425,8 @@ type_strategy_map:
   float:                [threshold, percentile, z_score, change]
   int:                  [threshold, percentile, change]
   float?:               [threshold]
-  boolean:              [equals]
+  categorical:          [equals]
+  # boolean has no supported strategies — use categorical with labels: ['true', 'false'] instead
   categorical:          [equals]
   time_series<float>:   [change, z_score, percentile]
 
@@ -459,7 +460,7 @@ bias_rules:
   watch:         low_severity
   early:         low_severity
 
-threshold_directions:
+threshold_directions:  # verify this field is supported in your deployment
   borrower.dscr:              below
   borrower.current_ratio:     below
   loan.covenant_headroom_pct: below
