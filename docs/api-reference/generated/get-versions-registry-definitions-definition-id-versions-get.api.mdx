@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Get version history for a definition"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get version history for a definition"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"get"&#125;
-  path=&#123;"/registry/definitions/&#123;definition_id&#125;/versions"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"get"}
+  path={"/registry/definitions/{definition_id}/versions"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -43,32 +43,33 @@ Includes deprecation status, meaning_hash, and ir_hash per version.
 HTTP 404 — definition not found.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./get-versions-registry-definitions-definition-id-versions-get.ParamsDetails.json")&#125;
+  {...require("./get-versions-registry-definitions-definition-id-versions-get.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./get-versions-registry-definitions-definition-id-versions-get.RequestSchema.json")&#125;
+  {...require("./get-versions-registry-definitions-definition-id-versions-get.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./get-versions-registry-definitions-definition-id-versions-get.StatusCodes.json")&#125;
+  {...require("./get-versions-registry-definitions-definition-id-versions-get.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

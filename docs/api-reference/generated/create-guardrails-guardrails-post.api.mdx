@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Create a new guardrails version"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Create a new guardrails version"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"post"&#125;
-  path=&#123;"/guardrails"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"post"}
+  path={"/guardrails"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -48,32 +48,33 @@ HTTP 400 — validation error (unknown strategy, invalid severity level, etc.).
 HTTP 403 — elevated key missing or incorrect.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./create-guardrails-guardrails-post.ParamsDetails.json")&#125;
+  {...require("./create-guardrails-guardrails-post.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./create-guardrails-guardrails-post.RequestSchema.json")&#125;
+  {...require("./create-guardrails-guardrails-post.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./create-guardrails-guardrails-post.StatusCodes.json")&#125;
+  {...require("./create-guardrails-guardrails-post.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Get async job status and result"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get async job status and result"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"get"&#125;
-  path=&#123;"/jobs/&#123;job_id&#125;"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"get"}
+  path={"/jobs/{job_id}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -48,32 +48,33 @@ error  is populated only when status='failed'.
 HTTP 404 — job not found.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./get-job-jobs-job-id-get.ParamsDetails.json")&#125;
+  {...require("./get-job-jobs-job-id-get.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./get-job-jobs-job-id-get.RequestSchema.json")&#125;
+  {...require("./get-job-jobs-job-id-get.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./get-job-jobs-job-id-get.StatusCodes.json")&#125;
+  {...require("./get-job-jobs-job-id-get.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

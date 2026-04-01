@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"List action definitions"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List action definitions"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"get"&#125;
-  path=&#123;"/actions"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"get"}
+  path={"/actions"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -44,32 +44,33 @@ are excluded. Returns an empty list when no actions match — never 404.
 HTTP 422 — namespace query parameter missing.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./list-actions-actions-get.ParamsDetails.json")&#125;
+  {...require("./list-actions-actions-get.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./list-actions-actions-get.RequestSchema.json")&#125;
+  {...require("./list-actions-actions-get.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./list-actions-actions-get.StatusCodes.json")&#125;
+  {...require("./list-actions-actions-get.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

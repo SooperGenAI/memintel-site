@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Get a stored execution graph"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Get a stored execution graph"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"get"&#125;
-  path=&#123;"/compile/graphs/&#123;graph_id&#125;"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"get"}
+  path={"/compile/graphs/{graph_id}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -44,32 +44,33 @@ verification. Pass graph_id to POST /execute/graph for execution.
 HTTP 404 — graph not found.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./get-graph-compile-graphs-graph-id-get.ParamsDetails.json")&#125;
+  {...require("./get-graph-compile-graphs-graph-id-get.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./get-graph-compile-graphs-graph-id-get.RequestSchema.json")&#125;
+  {...require("./get-graph-compile-graphs-graph-id-get.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./get-graph-compile-graphs-graph-id-get.StatusCodes.json")&#125;
+  {...require("./get-graph-compile-graphs-graph-id-get.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

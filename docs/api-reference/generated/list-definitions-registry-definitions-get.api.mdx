@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"List definitions"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"List definitions"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"get"&#125;
-  path=&#123;"/registry/definitions"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"get"}
+  path={"/registry/definitions"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -42,32 +42,33 @@ Filter by definition_type and/or namespace. Cursor-based pagination —
 pass next_cursor from the previous response as cursor on the next request.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./list-definitions-registry-definitions-get.ParamsDetails.json")&#125;
+  {...require("./list-definitions-registry-definitions-get.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./list-definitions-registry-definitions-get.RequestSchema.json")&#125;
+  {...require("./list-definitions-registry-definitions-get.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./list-definitions-registry-definitions-get.StatusCodes.json")&#125;
+  {...require("./list-definitions-registry-definitions-get.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

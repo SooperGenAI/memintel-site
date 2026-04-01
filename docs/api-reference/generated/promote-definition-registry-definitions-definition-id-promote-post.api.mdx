@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Promote a definition to a higher namespace"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Promote a definition to a higher namespace"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"post"&#125;
-  path=&#123;"/registry/definitions/&#123;definition_id&#125;/promote"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"post"}
+  path={"/registry/definitions/{definition_id}/promote"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -46,32 +46,33 @@ HTTP 404 — definition or version not found.
 HTTP 422 — namespace transition is invalid.
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./promote-definition-registry-definitions-definition-id-promote-post.ParamsDetails.json")&#125;
+  {...require("./promote-definition-registry-definitions-definition-id-promote-post.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./promote-definition-registry-definitions-definition-id-promote-post.RequestSchema.json")&#125;
+  {...require("./promote-definition-registry-definitions-definition-id-promote-post.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./promote-definition-registry-definitions-definition-id-promote-post.StatusCodes.json")&#125;
+  {...require("./promote-definition-registry-definitions-definition-id-promote-post.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 

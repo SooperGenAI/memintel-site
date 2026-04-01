@@ -20,16 +20,16 @@ import Heading from "@theme/Heading";
 import Translate from "@docusaurus/Translate";
 
 <Heading
-  as=&#123;"h1"&#125;
-  className=&#123;"openapi__heading"&#125;
-  children=&#123;"Delete a task"&#125;
+  as={"h1"}
+  className={"openapi__heading"}
+  children={"Delete a task"}
 >
 </Heading>
 
 <MethodEndpoint
-  method=&#123;"delete"&#125;
-  path=&#123;"/tasks/&#123;task_id&#125;"&#125;
-  context=&#123;"endpoint"&#125;
+  method={"delete"}
+  path={"/tasks/{task_id}"}
+  context={"endpoint"}
 >
   
 </MethodEndpoint>
@@ -44,32 +44,33 @@ by default and are never evaluated. Deletion is irreversible via the API.
 HTTP 404 — task not found or already deleted (no active task at this id).
 
 <Heading
-  id=&#123;"request"&#125;
-  as=&#123;"h2"&#125;
-  className=&#123;"openapi-tabs__heading"&#125;
+  id={"request"}
+  as={"h2"}
+  className={"openapi-tabs__heading"}
 >
   <Translate id="theme.openapi.request.title">Request</Translate>
 </Heading>
 
 <ParamsDetails
-  &#123;...require("./delete-task-tasks-task-id-delete.ParamsDetails.json")&#125;
+  {...require("./delete-task-tasks-task-id-delete.ParamsDetails.json")}
 >
   
 </ParamsDetails>
 
 <RequestSchema
-  &#123;...require("./delete-task-tasks-task-id-delete.RequestSchema.json")&#125;
+  {...require("./delete-task-tasks-task-id-delete.RequestSchema.json")}
 >
   
 </RequestSchema>
 
 <StatusCodes
-  &#123;...require("./delete-task-tasks-task-id-delete.StatusCodes.json")&#125;
+  {...require("./delete-task-tasks-task-id-delete.StatusCodes.json")}
 >
   
 </StatusCodes>
 
 
       
+
 
 
