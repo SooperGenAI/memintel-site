@@ -10,6 +10,10 @@ For any decision Memintel makes, you can trace the complete chain from raw data 
 
 ---
 
+:::note Planned — Lineage API in development
+The endpoints documented on this page are planned and not yet implemented. The data they will return — primitive values, computation graphs, and DAG structures — is captured internally during evaluation. API access to this data is on the roadmap. The `input_primitives` and `signal_errors` fields in the decision record provide primitive-level lineage today via `GET /decisions/{id}`.
+:::
+
 ## The Lineage Chain
 
 Every Memintel decision flows through a fixed, deterministic pipeline:

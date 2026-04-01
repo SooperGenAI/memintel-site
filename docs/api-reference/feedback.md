@@ -35,7 +35,7 @@ Feedback is stored for all strategies. But `POST /conditions/calibrate` always r
 | `condition_id` | string | **Required** | Fully qualified condition identifier. |
 | `condition_version` | string | **Required** | Explicit condition version. |
 | `entity` | string | **Required** | Entity the Decision (Aₜ) was made for. |
-| `timestamp` | datetime | **Required** | ISO 8601 UTC timestamp of the decision being rated. |
+| `timestamp` | datetime | Optional | ISO 8601 UTC timestamp of the decision being rated. |
 | `feedback` | enum | **Required** | `false_positive` \| `false_negative` \| `correct`. |
 | `note` | string | Optional | Free-text audit note. |
 

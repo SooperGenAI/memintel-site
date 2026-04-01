@@ -4,191 +4,239 @@ title: Quickstart
 sidebar_label: Quickstart (5 min)
 ---
 
-# Quickstart — 5-Minute Agentic Integration
+# Quickstart — 5 Minutes to Your First Decision
 
-Build your first deterministic decision loop for an agentic system.
+Build your first deterministic monitoring task — from registering a primitive to executing a full decision pipeline.
 
-**Goal:** Take an LLM-driven signal → evaluate it deterministically → trigger an action.
+**Goal:** Define what to monitor → compile intent into a condition → execute deterministically → get a reproducible decision.
 
 ---
 
 ## What You're Building
 
-A simple agentic workflow:
-
 ```
-User behavior → LLM signal → Memintel decision → Action
+Primitive (signal) → Task (intent) → Condition (compiled) → Execute → Decision
 ```
 
-**Example:**
-- LLM estimates churn risk
-- Memintel evaluates: is this high risk?
-- System triggers a retention action
+**Example:** You want to alert when an account's active user rate drops below a threshold. You describe that intent in plain English. Memintel compiles it into a deterministic condition. Every evaluation is reproducible and auditable.
 
 ---
 
-## Recommended Setup Order
+## Before You Start
 
-Before creating your first task, follow this sequence to get the most accurate results from day one:
+You need a running Memintel server. See [Self-Hosting](/docs/intro/self-hosting) or [Local Setup](/docs/intro/local-setup) to get one running.
+
+You'll need:
+- Your server URL (e.g. `http://localhost:8000`)
+- Your `MEMINTEL_ELEVATED_KEY` (for registry operations)
+
+---
+
+## Step 1 — Define Application Context (Recommended)
+
+Give the LLM compiler domain knowledge before creating tasks. This produces more accurate conditions from the first request.
+
+```bash
+curl -X POST http://localhost:8000/context/context \
+  -H "Content-Type: application/json" \
+  -d '{
+    "domain": {
+      "description": "B2B SaaS platform monitoring customer health and churn risk",
+      "entities": [
+        { "name": "account", "description": "company-level subscription — the billing unit" },
+        { "name": "user", "description": "individual platform user within an account" }
+      ],
+      "decisions": ["churn_risk", "expansion_opportunity"]
+    },
+    "calibration_bias": {
+      "false_negative_cost": "high",
+      "false_positive_cost": "medium"
+    }
+  }'
+```
+
+Response: `{ "context_id": "...", "version": "v1", "is_active": true }`
 
 :::tip
-Defining application context first gives the LLM the domain knowledge it needs to generate more accurate concept and condition definitions. Without context, task creation still works but produces generic definitions that may need more calibration cycles to reach production accuracy.
+Skipping this step is valid — the system works without context. But compiled conditions will be more generic and may need more calibration cycles.
 :::
 
-| Step | Action | Endpoint |
-|---|---|---|
-| **1** (Recommended) | Define application context | `POST /context` |
-| **2** | Register primitives | `POST /definitions` (primitives) |
-| **3** | Create tasks | `POST /tasks` |
-| **4** | Execute | `POST /execute/full` |
-
-See the [Application Context](/docs/intro/application-context) page for full details on configuring context before you begin.
-
 ---
 
-## Step 1 — Minimal Setup
+## Step 2 — Register a Primitive
 
-Create a config file:
+Register the signal you want to monitor. This tells the compiler what data is available and what type it is.
 
-```yaml
-# memintel.config.yaml
-llm:
-  provider: openai
-  model: gpt-4
-  api_key: YOUR_API_KEY
-
-application_context:
-  description: "User retention system"
-  instructions:
-    - "Prioritize early churn detection"
-    - "Avoid false positives for highly active users"
+```bash
+curl -X POST http://localhost:8000/registry/definitions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "primitive_id": "account.active_user_rate_30d",
+    "type": "float",
+    "namespace": "org",
+    "missing_data_policy": "null"
+  }'
 ```
 
-Even if your agent already uses an LLM, Memintel needs this for agent-assisted definition and semantic validation. The `application_context` guides how definitions are interpreted — without affecting deterministic execution.
+Response: `{ "primitive_id": "account.active_user_rate_30d", "type": "float", ... }`
+
+This primitive represents the ratio of active users to total licensed seats over the last 30 days (0–1). Your data engineer connects it to the actual data source in `memintel_config.yaml`.
 
 ---
 
-## Step 2 — Define a Primitive
+## Step 3 — Register an Action
 
-In agentic systems, primitives often come from logs, embeddings, LLM outputs, or user events.
+Define what happens when a condition fires.
 
-```python
-define_primitive({
-    "id": "user_activity_score",
-    "source": "app",
-    "type": "number"
-})
+```bash
+curl -X POST http://localhost:8000/actions \
+  -H "X-Elevated-Key: your-elevated-key" \
+  -H "Content-Type: application/json" \
+  -d '{
+    "action_id": "slack_cs_alert",
+    "version": "v1",
+    "config": {
+      "type": "notification",
+      "channel": "slack-customer-success"
+    },
+    "trigger": {
+      "fire_on": "true",
+      "condition_id": "cond_churn_risk",
+      "condition_version": "v1"
+    },
+    "namespace": "org"
+  }'
 ```
 
-This represents a signal your agent already has.
-
 ---
 
-## Step 3 — Define a Concept
+## Step 4 — Create a Task
 
-Here's the key shift: even if an LLM produces a signal, Memintel reifies it as a deterministic concept.
+Describe your monitoring intent in plain English. The LLM compiler — constrained by your guardrails and context — compiles this into a deterministic condition.
 
-```python
-define_concept({
-    "id": "churn_risk",
-    "inputs": ["user_activity_score"],
-    "compute": "normalize(activity_score)"
-})
-```
-
-In more advanced cases, a concept can combine LLM output with system data, or be derived entirely from structured inputs.
-
----
-
-## Step 4 — Define a Condition
-
-This is where Memintel solves indeterminacy. **No LLM here.**
-
-```python
-define_condition({
-    "id": "high_churn_risk",
-    "concept": "churn_risk",
-    "strategy": {
-        "type": "threshold",
-        "params": {
-            "value": 0.8
-        }
+```bash
+curl -X POST http://localhost:8000/tasks \
+  -H "Content-Type: application/json" \
+  -d '{
+    "intent": "Alert me when churn risk is high — active user rate drops below 35%",
+    "entity_scope": "account",
+    "delivery": {
+      "type": "webhook",
+      "endpoint": "https://myapp.com/hooks/alert"
     }
-})
+  }'
 ```
 
-This is deterministic, reproducible, and auditable. Strategies ensure that decision logic is explicit and consistently applied.
+Response includes the compiled condition:
+
+```json
+{
+  "task_id": "task_abc123",
+  "condition_id": "cond_churn_risk",
+  "condition_version": "v1",
+  "context_version": "v1",
+  "context_warning": null
+}
+```
+
+The `context_warning: null` confirms the task was compiled with active domain context. The condition is now immutable — its strategy, parameters, and logic are fixed.
+
+:::note How compilation works
+You expressed intent in natural language. The LLM resolved it within your guardrails constraints into a deterministic threshold condition: `account.active_user_rate_30d < 0.35`. No LLM is involved in any subsequent evaluation — only the compiled condition.
+:::
 
 ---
 
-## Step 5 — Define an Action
+## Step 5 — Execute the Full Pipeline
 
-Actions connect Memintel to your agent system.
+Run the complete ψ → φ → α pipeline for an entity. Provide a timestamp to make the result deterministic and cacheable.
 
-```python
-define_action({
-    "id": "trigger_retention_agent",
-    "type": "webhook",
-    "endpoint": "/agents/retention"
-})
+```bash
+curl -X POST http://localhost:8000/evaluate/full \
+  -H "Content-Type: application/json" \
+  -d '{
+    "concept_id": "<concept_id from task response>",
+    "concept_version": "<concept_version from task response>",
+    "condition_id": "cond_churn_risk",
+    "condition_version": "v1",
+    "entity": "account_xyz789",
+    "timestamp": "2025-11-14T09:00:00Z"
+  }'
 ```
 
-This could call another agent, trigger a workflow, or send a message. Actions are triggered based on evaluated decisions — not raw signals.
+Response:
+
+```json
+{
+  "result": {
+    "value": 0.29,
+    "deterministic": true
+  },
+  "decision": {
+    "value": true,
+    "strategy": "threshold",
+    "threshold_applied": 0.35,
+    "direction": "below"
+  },
+  "actions_triggered": [
+    { "action_id": "slack_cs_alert", "status": "triggered" }
+  ]
+}
+```
+
+`result.deterministic: true` confirms this evaluation is cached and reproducible — run the same call again with the same parameters and you get the identical result.
 
 ---
 
-## Step 6 — Execute the Full Decision Loop
+## Step 6 — Verify Determinism
 
-```python
-result = evaluateFull({
-    "concept": "churn_risk",
-    "condition": "high_churn_risk",
-    "entity": "user_123"
-})
+Run the same call three times. All three must return identical `result.value` and `decision.value`:
+
+```bash
+for i in 1 2 3; do
+  curl -s -X POST http://localhost:8000/evaluate/full \
+    -H "Content-Type: application/json" \
+    -d '{ ...same payload... }' | jq '.result.value'
+done
+# 0.29
+# 0.29
+# 0.29
 ```
 
-### Output
-
-```python
-result.value     # e.g. 0.87 — computed signal
-result.decision  # True — deterministic evaluation
-result.actions   # ["trigger_retention_agent"]
-```
+This is the core property: same inputs, same guardrails, same decision — every time.
 
 ---
 
 ## What Just Happened
 
-You created a hybrid system:
-
 ```
-LLM       → Meaning     (flexible)
-Memintel  → Decision    (deterministic)
-Agent     → Execution
+You described intent → LLM compiled (once) → Condition locked
+         ↓
+Primitive value fetched → Concept computed → Condition evaluated → Action fired
+         ↓
+Deterministic, auditable, reproducible decision
 ```
 
 **Without Memintel:**
 ```python
-# LLM decides directly — non-deterministic
-if "user seems at risk":
-    trigger_agent()
+# LLM decides at runtime — non-deterministic, not auditable
+if llm.assess("is this account at risk?"):
+    trigger_alert()
 ```
-Problems: inconsistent decisions, no auditability, no reproducibility.
 
 **With Memintel:**
 ```
-LLM (optional) → Concept → Condition → Action
+Plain English intent → Compiled once by LLM → Evaluated deterministically forever
 ```
-Meaning can evolve. Decisions remain stable. Interpretation is encoded through structured strategies and parameters — not embedded in prompts.
+
+The LLM is used exactly once, at task creation, within guardrails constraints. Every subsequent evaluation is pure computation — no LLM, no drift, full reproducibility.
 
 ---
 
-## Key Takeaway
+## Next Steps
 
-:::note
-LLMs generate signals. Memintel decides what those signals mean operationally.
-
-Decision logic is **explicit**, **deterministic**, and **reusable**.
-:::
-
-In under 5 minutes, you've built a deterministic decision layer for your agent — a system that separates reasoning, decision-making, and execution.
+- [Application Context](/docs/intro/application-context) — improve compilation accuracy with domain knowledge
+- [Admin Guide](/docs/admin-guide/admin-overview) — configure guardrails, primitives, and actions
+- [API Reference](/docs/api-reference/overview) — full endpoint documentation
+- [Case Studies](/docs/tutorials/deal-intelligence) — domain-specific examples

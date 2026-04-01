@@ -129,6 +129,10 @@ curl https://api.memsdl.ai/v1/context?version=2 \
 
 ## Comparing Versions
 
+:::note Planned — not yet implemented
+The diff endpoint is planned. Use the version list to compare parameters manually for now.
+:::
+
 To understand what changed between two versions of a condition:
 
 ```bash
@@ -156,6 +160,10 @@ curl "https://api.memsdl.ai/v1/conditions/cond_xyz456/diff?from=v1&to=v2" \
 ---
 
 ## Immutability Attestation
+
+:::note Planned — not yet implemented
+The attestation endpoint is planned. The `ir_hash` field in the decision record already provides tamper evidence — store it alongside your compliance documentation.
+:::
 
 For regulated environments, you may need to produce a formal attestation that a specific condition version was unchanged during a given period.
 
@@ -196,7 +204,7 @@ Tasks in Memintel are version-pinned to specific condition versions at the time 
 ```json
 {
   "task_id": "task_ghi789",
-  "task_version": "v2",
+  
   "condition_id": "cond_xyz456",
   "condition_version": "v1",
   "pinned_at": "2025-09-15T11:00:00Z"

@@ -15,7 +15,7 @@ A complete walkthrough from context configuration to calibration, showing how en
 Define domain context before creating primitives or tasks. This gives the LLM the domain knowledge it needs to compile accurate, domain-aware definitions from user intent.
 
 ```typescript
-// POST /context
+// POST /context/context
 const context = await client.context.create({
   domain: {
     description: "B2B SaaS churn detection for mid-market software companies.",

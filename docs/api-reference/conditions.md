@@ -136,7 +136,6 @@ Recommendations are validated against guardrails `threshold_bounds`. If exceeded
 |---|---|---|---|
 | `condition_id` | string | **Required** | Fully qualified condition identifier. |
 | `condition_version` | string | **Required** | Version to calibrate. |
-| `target.alerts_per_day` | number | Optional | Target alert frequency. |
 | `feedback_direction` | enum | Optional | `tighten` \| `relax`. Overrides direction derived from stored feedback. |
 
 ### Response — CalibrationResult
@@ -149,20 +148,18 @@ Recommendations are validated against guardrails `threshold_bounds`. If exceeded
 | `impact.delta_alerts` | number | Conditional | Estimated change in daily alert volume. |
 | `current_params` | object | Always | Current parameters for comparison. |
 | `no_recommendation_reason` | string | Conditional | `bounds_exceeded` \| `not_applicable_strategy` \| `insufficient_data`. |
-| `statistically_optimal` | float | Conditional | The raw statistically optimal parameter value based on feedback data alone, before any context bias adjustment. |
-| `context_adjusted` | float \| null | Conditional | The bias-adjusted value after applying `calibration_bias` from application context. `null` if no context or no `calibration_bias` defined. |
-| `recommended` | float | Conditional | The final recommended value. Equals `context_adjusted` if bias was applied, otherwise equals `statistically_optimal`. |
-| `adjustment_explanation` | string \| null | Conditional | Human-readable explanation of any bias adjustment applied. `null` if no adjustment was made. |
+| `recommended` | float | Conditional | The recommended parameter value based on accumulated feedback. |
 
-**Bias adjustment logic:**
+:::note
+The calibration engine derives a single recommended value from feedback. Context bias adjustment is planned but not yet implemented.
+:::
+
 
 When application context defines `calibration_bias`, the statistically optimal threshold is adjusted before being returned as `recommended`:
 
 - `bias_direction = recall` (false_negative_cost > false_positive_cost) → threshold lowered. Adjustment: `high` = 10%, `medium` = 5%, `low` = 2%
 - `bias_direction = precision` (false_positive_cost > false_negative_cost) → threshold raised. Same adjustment factors apply
-- `bias_direction = balanced` → no adjustment. `recommended = statistically_optimal`
 - Adjusted values are always clamped to `[0.0, 1.0]`
-- If `behavioural.meaningful_windows` is defined in context, any window parameter in the recommendation is clamped to the declared min/max range. The `adjustment_explanation` field notes when clamping is applied
 
 **Example response with context-adjusted recommendation:**
 
@@ -171,10 +168,7 @@ When application context defines `calibration_bias`, the statistically optimal t
   "condition_id": "churn.high_risk",
   "condition_version": "v3",
   "status": "recommendation_available",
-  "statistically_optimal": 0.78,
-  "context_adjusted": 0.702,
   "recommended": 0.702,
-  "adjustment_explanation": "Threshold adjusted from 0.78 to 0.702 toward recall based on application context (false_negative_cost=high)",
   "calibration_token": "cal_abc123...",
   "feedback_count": 47,
   "false_positive_rate": 0.12,
