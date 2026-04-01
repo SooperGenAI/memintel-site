@@ -1,15 +1,14 @@
 ---
 id: job
 title: "Job"
-description: "Async job record. Returned by POST /execute/async and GET /jobs/&#123;id&#125;."
+description: "Async job record. Returned by POST /execute/async and GET /jobs/{id}."
 sidebar_label: "Job"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: &#123;"job_id":"string","job_type":"execute","status":"queued","poll_interval_seconds":2&#125;
+sample: {"job_id":"string","job_type":"execute","status":"queued","poll_interval_seconds":2}
 custom_edit_url: null
 ---
-
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -38,3 +37,5 @@ Internal DB fields (excluded from API serialisation):
   
 </Schema>
             
+
+

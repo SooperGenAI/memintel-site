@@ -1,15 +1,14 @@
 ---
 id: actionresult
 title: "ActionResult"
-description: "Response from POST /actions/&#123;id&#125;/trigger."
+description: "Response from POST /actions/{id}/trigger."
 sidebar_label: "ActionResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: &#123;"action_id":"string","action_version":"string","status":"triggered","payload_sent":&#123;&#125;,"error":&#123;"error":&#123;"type":"syntax_error","message":"string","location":"string","suggestion":"string"&#125;&#125;&#125;
+sample: {"action_id":"string","action_version":"string","status":"triggered","payload_sent":{},"error":{"error":{"type":"syntax_error","message":"string","location":"string","suggestion":"string"}}}
 custom_edit_url: null
 ---
-
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -44,3 +43,5 @@ error is populated only when status='failed'.
   
 </Schema>
             
+
+

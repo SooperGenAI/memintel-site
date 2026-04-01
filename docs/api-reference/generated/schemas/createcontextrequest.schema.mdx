@@ -6,10 +6,9 @@ sidebar_label: "CreateContextRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: &#123;"domain":&#123;"description":"string","entities":[&#123;"name":"string","description":"string"&#125;],"decisions":["string"]&#125;,"behavioural":&#123;"data_cadence":"batch","meaningful_windows":&#123;&#125;,"regulatory":["string"]&#125;,"semantic_hints":[&#123;"term":"string","definition":"string"&#125;],"calibration_bias":&#123;"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"&#125;&#125;
+sample: {"domain":{"description":"string","entities":[{"name":"string","description":"string"}],"decisions":["string"]},"behavioural":{"data_cadence":"batch","meaningful_windows":{},"regulatory":["string"]},"semantic_hints":[{"term":"string","definition":"string"}],"calibration_bias":{"false_negative_cost":"high","false_positive_cost":"high","bias_direction":"balanced"}}
 custom_edit_url: null
 ---
-
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -33,3 +32,5 @@ it is always auto-derived by CalibrationBias.model_validator.
   
 </Schema>
             
+
+

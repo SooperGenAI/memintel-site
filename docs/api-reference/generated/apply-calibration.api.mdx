@@ -1,7 +1,7 @@
 ---
 id: apply-calibration
 title: "Apply a calibration recommendation as a new condition version"
-description: "Creates a new immutable condition version using the parameters from a calibration recommendation. Does NOT modify the existing version. Does NOT automatically rebind any tasks — rebinding is always an explicit user action via PATCH /tasks/&#123;id&#125;. Returns tasks_pending_rebind listing tasks still bound to the previous version."
+description: "Creates a new immutable condition version using the parameters from a calibration recommendation. Does NOT modify the existing version. Does NOT automatically rebind any tasks — rebinding is always an explicit user action via PATCH /tasks/{id}. Returns tasks_pending_rebind listing tasks still bound to the previous version."
 sidebar_label: "Apply a calibration recommendation as a new condition version"
 hide_title: true
 hide_table_of_contents: true
@@ -10,7 +10,6 @@ sidebar_class_name: "post api-method"
 info_path: docs/api-reference/generated/memintel-app-developer-api
 custom_edit_url: null
 ---
-
 import MethodEndpoint from "@theme/ApiExplorer/MethodEndpoint";
 import ParamsDetails from "@theme/ParamsDetails";
 import RequestSchema from "@theme/RequestSchema";
@@ -68,3 +67,5 @@ Creates a new immutable condition version using the parameters from a calibratio
 
 
       
+
+

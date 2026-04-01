@@ -1,15 +1,14 @@
 ---
 id: applycalibrationrequest
 title: "ApplyCalibrationRequest"
-description: "Applies a calibration recommendation as a new immutable condition version. rebind_tasks is NOT a field on this request — rebinding is always a separate explicit caller action via PATCH /tasks/&#123;id&#125;. threshold is NOT a field — use calibration_token from the calibrate response; params are resolved server-side from the token."
+description: "Applies a calibration recommendation as a new immutable condition version. rebind_tasks is NOT a field on this request — rebinding is always a separate explicit caller action via PATCH /tasks/{id}. threshold is NOT a field — use calibration_token from the calibrate response; params are resolved server-side from the token."
 sidebar_label: "ApplyCalibrationRequest"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: &#123;"calibration_token":"string","new_version":"string"&#125;
+sample: {"calibration_token":"string","new_version":"string"}
 custom_edit_url: null
 ---
-
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -31,3 +30,5 @@ Applies a calibration recommendation as a new immutable condition version. rebin
   
 </Schema>
             
+
+

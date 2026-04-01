@@ -1,15 +1,14 @@
 ---
 id: lineageresult
 title: "LineageResult"
-description: "Definition lineage, returned by GET /registry/definitions/&#123;id&#125;/lineage."
+description: "Definition lineage, returned by GET /registry/definitions/{id}/lineage."
 sidebar_label: "LineageResult"
 hide_title: true
 hide_table_of_contents: true
 schema: true
-sample: &#123;"definition_id":"string","chain":[&#123;"version":"string","created_at":"2024-07-29T15:51:28.071Z","deprecated":false,"meaning_hash":"string","ir_hash":"string"&#125;],"promoted_to":&#123;&#125;&#125;
+sample: {"definition_id":"string","chain":[{"version":"string","created_at":"2024-07-29T15:51:28.071Z","deprecated":false,"meaning_hash":"string","ir_hash":"string"}],"promoted_to":{}}
 custom_edit_url: null
 ---
-
 import Schema from "@theme/Schema";
 import Heading from "@theme/Heading";
 
@@ -33,3 +32,5 @@ Each entry in the chain is a (version, namespace) pair in creation order.
   
 </Schema>
             
+
+
