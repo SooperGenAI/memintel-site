@@ -78,3 +78,63 @@ pipeline.decision.actions_triggered.forEach(a =>
   console.log(a.action_id, a.status)
 );
 ```
+
+---
+
+## Evaluate a Condition with Inline Data (Test Only)
+
+```
+POST /execute/static
+```
+
+Evaluates a registered condition using caller-supplied primitive values. No real data connectors or `memintel_config.yaml` entries needed. Use for local testing and smoke testing new conditions.
+
+:::warning Test only
+This endpoint bypasses the production data pipeline entirely. Do not use it in production workflows.
+:::
+
+### Request Body
+
+| Parameter | Type | Required | Description |
+|---|---|---|---|
+| `condition_id` | string | **Required** | The condition to evaluate. |
+| `condition_version` | string | **Required** | The specific condition version. |
+| `entity` | string | **Required** | Entity identifier. |
+| `data` | object | **Required** | Inline primitive values — `{ primitive_name: value }`. |
+
+### Response — DecisionValue
+
+| Parameter | Type | Description |
+|---|---|---|
+| `value` | boolean\|string | The decision outcome. `true`/`false` for boolean strategies; matched label for `equals`. |
+| `decision_type` | enum | `boolean` \| `categorical`. |
+| `strategy` | string | The strategy that was applied. |
+| `threshold_applied` | number\|null | The parameter value used. `null` for `equals` and `composite`. |
+| `reason` | string\|null | `null_input`, `insufficient_history`, or `history_unavailable` — present when the strategy could not fully evaluate. |
+| `history_count` | integer\|null | Number of historical results available when `reason` is `insufficient_history`. |
+
+### Response Codes
+
+| Status | Description |
+|---|---|
+| **200** | DecisionValue returned. |
+| **404** | Condition not found. |
+| **422** | Execution failed — missing data or type mismatch. |
+
+### TypeScript Example
+
+```typescript
+const result = await client.execute.static({
+  conditionId: "cond_churn_risk",
+  conditionVersion: "v1",
+  entity: "account_xyz789",
+  data: {
+    "account.active_user_rate_30d": 0.29,
+    "account.days_to_renewal": 47,
+  },
+});
+
+console.log(result.value);             // true
+console.log(result.decision_type);     // "boolean"
+console.log(result.threshold_applied); // 0.35
+```
